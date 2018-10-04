@@ -7,10 +7,10 @@
     <ul class="navbar-nav">
       <?php if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):?>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Cadastrar Avaliador<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="cad_gestor.php">Cadastrar Avaliador<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Cadastrar Avaliado</a>
+        <a class="nav-link" href="cad_avaliado.php">Cadastrar Avaliado</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="inc/sair.php">Sair</a>

@@ -4,11 +4,24 @@ require "inc/config.php";
 require "classes/avaliado.class.php";
 
 $avaliado = new Avaliado($pdo);
+$id = $_SESSION['Login'];
 
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
-    $info = $avaliado->listarAvaliado();
+	/*Retorna o funcionarios que já responderam*/
+    $info = $avaliado->respAvaliadoOK($id);
     if (count($info) > 0) {
+        echo "Respostas já realizadas<br>";
+    	foreach ($info as $dado) {
+    		echo $dado['nome']."&ensp;".$dado['matricula']."<br>";
+    	}
 
+    }else{
+    	echo "nenhum resultado encontrado";
+    }
+
+    $info = $avaliado->respAvaliadoNO($id);
+    if (count($info) > 0) {
+        echo "Os que ainda não foram respondidos<br>";
     	foreach ($info as $dado) {
     		echo $dado['nome']."&ensp;".$dado['matricula']."<br>";
     	}

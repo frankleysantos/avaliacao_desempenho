@@ -27,6 +27,12 @@
  		$sql->execute();
  		return $sql->fetchAll();
  	}
+
+ 	public function listarGestor(){
+ 		$sql = $this->pdo->prepare("SELECT * FROM gestor");
+ 		$sql ->execute();
+ 		return $sql->fetchAll();
+ 	}
  } 
 
 

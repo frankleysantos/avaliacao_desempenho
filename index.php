@@ -1,8 +1,22 @@
 <?php
 require "inc/cabecalho.php";
+require "inc/config.php";
+require "classes/avaliado.class.php";
+
+$avaliado = new Avaliado($pdo);
 
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
-    echo "Logado";
+    $info = $avaliado->listarAvaliado();
+    if (count($info) > 0) {
+
+    	foreach ($info as $dado) {
+    		echo $dado['nome']."&ensp;".$dado['matricula']."<br>";
+    	}
+
+    }else{
+    	echo "nenhum resultado encontrado";
+    }
+    
 }else{
     header("Location: login.php");
 }

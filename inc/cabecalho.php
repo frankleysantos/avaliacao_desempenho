@@ -21,3 +21,5 @@ session_start();
 		<![endif]-->
 	</head>
 	<body>
+		<?php require "inc/menu.php"; ?>
+		<div class="container">

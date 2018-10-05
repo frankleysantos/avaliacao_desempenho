@@ -19,7 +19,7 @@ class Avaliado
 	}
 
 	public function respAvaliadoNO($id){
-		$sql = $this->pdo->prepare("SELECT a.id, a.nome, a.matricula FROM avaliado as a, resposta as r WHERE a.id != r.id_gestor AND a.id_gestor = :id");
+		$sql = $this->pdo->prepare("SELECT a.id, a.nome, a.matricula, (SELECT status FROM gestor WHERE id = :id) as status FROM avaliado as a, resposta as r WHERE a.id != r.id_gestor AND a.id_gestor = :id");
 		$sql ->bindValue(":id", $id);
 		$sql ->execute();
 		return $sql->fetchAll();

@@ -18,10 +18,13 @@ class Avaliado
 		return $sql->fetchAll();
 	}
 
-	public function inserirAvaliado($nome, $matricula, $chefe){
-		$sql = $this->pdo->prepare("INSERT INTO avaliado (nome, matricula, id_gestor) VALUES (:nome, :matricula, :id_gestor)");
+	public function inserirAvaliado($nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe){
+		$sql = $this->pdo->prepare("INSERT INTO avaliado (nome, matricula, cargo, secretaria, data_nomeacao, id_gestor) VALUES (:nome, :matricula, :cargo, :secretaria, :data_nomeacao, :id_gestor)");
 		$sql ->bindValue(":nome", $nome);
 		$sql ->bindValue(":matricula", $matricula);
+		$sql ->bindValue(":cargo", $cargo);
+		$sql ->bindValue(":secretaria", $secretaria);
+		$sql ->bindValue(":data_nomeacao", $data_nomeacao);
 		$sql ->bindValue(":id_gestor", $chefe);
 		return $sql ->execute();
 	}

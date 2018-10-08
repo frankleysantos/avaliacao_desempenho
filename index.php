@@ -11,12 +11,13 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
     $info = $avaliado->respAvaliado($id);
     if (count($info) > 0) {
     ?>
-        <h4>Já foram respondidos</h4>
+        <h4>Avaliação de Desempenho</h4>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Nome</th>
                     <th>Matricula</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,8 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                     <td><?= $dado['matricula']?></td>
                     <?php if ($dado['status'] == '0' && $dado['perfil'] == 'avaliador'):?>
                     <td><a href="cad_resposta.php?id=<?=$dado['id']?>">Responder</a></td>
+                    <?php else:?>
+                    <td>Já respondido</td>
                     <?php endif?>
                     <?php if ($dado['status'] == '0' && $dado['perfil'] == 'coordenador'):?>
                     <td><a href="editar_resposta.php?id=<?=$dado['id']?>">Editar</a></td>
@@ -42,41 +45,6 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
         <?php
 
     }
-
-    /*Retorna os funcionários que ainda serão avaliados
-    $info = $avaliado->respAvaliadoOK($id);
-    if (count($info) > 0) { ?>
-    <h4>Ainda não foram avaliados</h4>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Matricula</th>
-                    <th colspan="2">Funções</th>
-                </tr>
-            </thead>
-            <tbody>
-        <?php
-    	foreach ($info as $dado) { ?>
-                <tr>
-                    <td><?= $dado['nome']?></td>
-                    <td><?= $dado['matricula']?></td>
-                    <?php if ($dado['status'] == 'avaliador'):?>
-                    <td><a href="cad_resposta.php?id=<?=$dado['id']?>">Responder</a></td>
-                    <td><a href="edit_resposta.php?id=<?=$dado['id']?>">Editar</a></td>
-                    <?php endif?>
-                    <?php if ($dado['status'] == 'coordenador'):?>
-                    <td><a href="edit_avaliador.php?id=<?=$dado['id']?>">Editar</a></td>
-                    <?php endif?>
-                </tr>
-        <?php 
-    	} ?>
-            </tbody>
-        </table>
-        <?php
-    }else{
-    	echo "nenhum resultado encontrado";
-    }*/
     
 }else{
     header("Location: login.php");

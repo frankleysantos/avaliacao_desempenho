@@ -11,15 +11,8 @@ class Avaliado
 		$this->pdo = $pdo;
 	}
 
-	public function respAvaliadoOK($id){
-		$sql = $this->pdo->prepare("SELECT a.id, a.nome, a.matricula FROM avaliado as a INNER JOIN resposta as r ON a.id = r.id_avaliado AND a.id_gestor = r.id_gestor WHERE a.id = :id");
-		$sql ->bindValue(":id", $id);
-		$sql ->execute();
-		return $sql->fetchAll();
-	}
-
-	public function respAvaliadoNO($id){
-		$sql = $this->pdo->prepare("SELECT a.id, a.nome, a.matricula, (SELECT status FROM gestor WHERE id = :id) as status FROM avaliado as a, resposta as r WHERE a.id != r.id_gestor AND a.id_gestor = :id");
+	public function respAvaliado($id){
+		$sql = $this->pdo->prepare("SELECT a.id, a.nome, a.matricula, a.status, (SELECT perfil FROM gestor WHERE id =:id) as perfil FROM avaliado as a WHERE a.id_gestor = :id");
 		$sql ->bindValue(":id", $id);
 		$sql ->execute();
 		return $sql->fetchAll();
@@ -30,6 +23,12 @@ class Avaliado
 		$sql ->bindValue(":nome", $nome);
 		$sql ->bindValue(":matricula", $matricula);
 		$sql ->bindValue(":id_gestor", $chefe);
+		return $sql ->execute();
+	}
+
+	public function updateStatus($id_avaliado){
+		$sql = $this->pdo->prepare("UPDATE avaliado SET status = '1' WHERE id = :id_avaliado");
+		$sql ->bindValue(":id_avaliado", $id_avaliado);
 		return $sql ->execute();
 	}
 }

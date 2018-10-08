@@ -8,7 +8,7 @@ $id = $_SESSION['Login'];
 
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 	/*Retorna os funcionarios que já foram avaliados*/
-    $info = $avaliado->respAvaliadoOK($id);
+    $info = $avaliado->respAvaliado($id);
     if (count($info) > 0) {
     ?>
         <h4>Já foram respondidos</h4>
@@ -27,6 +27,12 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                 <tr>
                     <td><?= $dado['nome']?></td>
                     <td><?= $dado['matricula']?></td>
+                    <?php if ($dado['status'] == '0' && $dado['perfil'] == 'avaliador'):?>
+                    <td><a href="cad_resposta.php?id=<?=$dado['id']?>">Responder</a></td>
+                    <?php endif?>
+                    <?php if ($dado['status'] == '0' && $dado['perfil'] == 'coordenador'):?>
+                    <td><a href="editar_resposta.php?id=<?=$dado['id']?>">Editar</a></td>
+                    <?php endif?>
                 </tr>
         <?php
     	}
@@ -37,8 +43,8 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 
     }
 
-    /*Retorna os funcionários que ainda serão avaliados*/
-    $info = $avaliado->respAvaliadoNO($id);
+    /*Retorna os funcionários que ainda serão avaliados
+    $info = $avaliado->respAvaliadoOK($id);
     if (count($info) > 0) { ?>
     <h4>Ainda não foram avaliados</h4>
         <table class="table table-striped table-hover">
@@ -70,7 +76,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
         <?php
     }else{
     	echo "nenhum resultado encontrado";
-    }
+    }*/
     
 }else{
     header("Location: login.php");

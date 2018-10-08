@@ -12,7 +12,7 @@ class Avaliado
 	}
 
 	public function respAvaliado($id){
-		$sql = $this->pdo->prepare("SELECT a.id, a.nome, a.matricula, a.status, (SELECT perfil FROM gestor WHERE id =:id) as perfil FROM avaliado as a WHERE a.id_gestor = :id");
+		$sql = $this->pdo->prepare("SELECT a.id, a.nome, a.matricula, a.status, (SELECT perfil FROM gestor WHERE id =:id) as perfil FROM avaliado as a WHERE a.id_gestor = :id ORDER BY status asc");
 		$sql ->bindValue(":id", $id);
 		$sql ->execute();
 		return $sql->fetchAll();
@@ -33,6 +33,13 @@ class Avaliado
 		$sql = $this->pdo->prepare("UPDATE avaliado SET status = '1' WHERE id = :id_avaliado");
 		$sql ->bindValue(":id_avaliado", $id_avaliado);
 		return $sql ->execute();
+	}
+
+	public function verificaAvaliado($matricula){
+        $sql = $this->pdo->prepare("SELECT * FROM avaliado WHERE matricula = :matricula");
+        $sql ->bindValue(":matricula", $matricula);
+        $sql ->execute();
+        return $sql = $sql ->fetchAll();
 	}
 }
 ?>

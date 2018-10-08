@@ -17,8 +17,15 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 	$secretaria = addslashes($_POST['secretaria']);
 	$data_nomeacao = addslashes($_POST['data_nomeacao']);
 	$chefe     = addslashes($_POST['chefe']);
+    
 
-	$avaliado ->inserirAvaliado($nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe);                                            
+	if (count($avaliado->verificaAvaliado($matricula)) < 1) {
+		$avaliado ->inserirAvaliado($nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe);
+		header("Location: index.php");
+	}else{
+		echo "Matricula já cadastrada";
+	}
+                                            
 }
 ?>
 <form action="" method="POST" role="form">

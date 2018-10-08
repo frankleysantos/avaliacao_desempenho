@@ -30,7 +30,8 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                     <td><?= $dado['matricula']?></td>
                     <?php if ($dado['status'] == '0' && $dado['perfil'] == 'avaliador'):?>
                     <td><a href="cad_resposta.php?id=<?=$dado['id']?>">Responder</a></td>
-                    <?php else:?>
+                    <?php endif?>
+                    <?php if ($dado['status'] == '1'):?>
                     <td>Já respondido</td>
                     <?php endif?>
                     <?php if ($dado['status'] == '0' && $dado['perfil'] == 'coordenador'):?>

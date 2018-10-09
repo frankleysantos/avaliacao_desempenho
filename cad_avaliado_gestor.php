@@ -29,7 +29,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 }
 ?>
 <form action="" method="POST" role="form">
-	<legend>Cadastro do Avaliado (Comissão)</legend>
+	<legend>Cadastro do Avaliado (Área Gestor)</legend>
 
 	<div class="form-group">
 		<label for="">Nome</label>
@@ -55,13 +55,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 
 
 	<div class="form-group">
-		<label for="">Chefe</label>
-		<select name="chefe" class="form-control" required="required">
-			<option value="">Escolha...</option>
-			<?php foreach ($chefe as $info): ?>
-			<option value="<?php echo $info['id']; ?>"><?php echo $info['nome']; ?></option>
-		    <?php endforeach ?>
-		</select>
+		<input type="hidden" name="chefe" class="form-control" value="<?php echo $chefe = $_SESSION['Login'];?>">
 	</div>
 
 	<button type="submit" class="btn btn-primary">Cadastrar</button>

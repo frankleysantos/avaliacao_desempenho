@@ -21,8 +21,7 @@ session_start();
 		<![endif]-->
 	</head>
 	<body>
-		<?php require "inc/menu.php"; ?>
-		<div class="container">
+		
            
             <?php
              if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
@@ -32,8 +31,11 @@ session_start();
  		     $sql ->bindValue(":id", $id);
  		     $sql ->execute();
  		     $sql = $sql->fetch();
- 		     echo "<h4 align='right'>Bem Vindo:<label>&ensp;".$sql['nome']."</label></h4>";
+ 		     //echo "<h4 align='right'>Bem Vindo:<label>&ensp;".$sql['nome']."</label></h4>";
  		     }
  		     //SELECT substring_index(nome, ' ', 1) as primeironome FROM login WHERE id = :id
             ?>
+
+            <?php require "inc/menu.php"; ?>
+		    <div class="container">
 			

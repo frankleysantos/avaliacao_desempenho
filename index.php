@@ -43,7 +43,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                     </td>
                     <?php endif?>
                     <?php if ($dado['status'] == '1'):?>
-                    <td>Já respondido</td>
+                    <td><label class="badge badge-warning">Já respondido</label></td>
                     <?php endif?>
                 </tr>
         <?php

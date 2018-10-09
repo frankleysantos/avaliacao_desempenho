@@ -37,7 +37,7 @@ if (isset($_POST['matricula']) && !empty($_POST['matricula']) && isset($_POST['s
 
 	
 
-	<button type="submit" class="btn btn-primary">Submit</button>
+	<button type="submit" class="btn btn-primary">Logar</button>
 </form>
 <?php
 require "inc/rodape.php";  

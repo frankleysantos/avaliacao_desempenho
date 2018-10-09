@@ -27,7 +27,7 @@ if (count($avaliado->listaAvaliado($id)) > 0) {
     $aval = $avaliado->listaAvaliado($id);
 ?>
 <form action="" method="POST" role="form">
-	<legend>Cadastro do Avaliado</legend>
+	<legend>Edição dados do Avaliado</legend>
 
 	<?php foreach ($aval as $info):?>
 

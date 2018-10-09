@@ -3,10 +3,14 @@ require "inc/cabecalho.php";
 require "inc/config.php";
 require "classes/gestor.class.php";
 require "classes/avaliado.class.php";
+require "classes/secretaria.class.php";
 
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 $gestor = new Gestor($pdo);
 $avaliado = new Avaliado($pdo);
+$secretaria = new Secretaria($pdo);
+
+$secre = $secretaria->listaSecretaria();
 
 $chefe = $gestor->listarGestor();
 $id = $_GET['id'];
@@ -38,7 +42,7 @@ if (count($avaliado->listaAvaliado($id)) > 0) {
 
 	<div class="form-group">
 		<label for="">Matricula</label>
-		<input type="text" class="form-control" id="" placeholder="Matricula" name="matricula" required value="<?=$info['matricula'];?>">
+		<input type="text" class="form-control" id="" placeholder="Matricula" name="matricula" required value="<?=$info['matricula'];?>" onkeyup="numero(this);">
 	</div>
 	<div class="form-group">
 		<label for="">Cargo</label>
@@ -46,11 +50,16 @@ if (count($avaliado->listaAvaliado($id)) > 0) {
 	</div>
 	<div class="form-group">
 		<label for="">Secretaria</label>
-		<input type="text" class="form-control" id="" placeholder="Secretaria" name="secretaria" required value="<?=$info['secretaria'];?>">
+		<select name="secretaria" class="form-control" required="required">
+			<option value="">Escolha...</option>
+			<?php foreach ($secre as $dado): ?>
+			<option value="<?=$dado['id']?>"<?php if($dado['id'] == $info['secretaria']) echo "selected"?>><?=utf8_encode($dado['nome'])?></option>		
+		    <?php endforeach ?>
+		</select>
 	</div>
 	<div class="form-group">
 		<label for="">Data de Nomeação</label>
-		<input type="date" class="form-control" id="" placeholder="Data de Nomeação" name="data_nomeacao" required value="<?=$info['data_nomeacao'];?>">
+		<input type="text" class="form-control" id="" placeholder="Data de Nomeação" name="data_nomeacao" required value="<?=$info['data_nomeacao'];?>" onkeypress="dataConta(this)" minlength="10" maxlength="10">
 	</div>
 
 

@@ -41,5 +41,32 @@ class Avaliado
         $sql ->execute();
         return $sql = $sql ->fetchAll();
 	}
+    
+    public function listaAvaliado($id){
+    	$sql = $this->pdo->prepare("SELECT * FROM avaliado WHERE id = :id");
+    	$sql ->bindValue(":id", $id);
+    	$sql ->execute();
+
+    	return $sql = $sql->fetchAll();
+    }
+
+	public function updateAvaliado($id, $nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe){
+        $sql = $this->pdo->prepare("UPDATE avaliado SET nome = :nome, matricula = :matricula, cargo = :cargo, secretaria = :secretaria, data_nomeacao = :data_nomeacao, id_gestor = :chefe WHERE id = :id");
+		$sql ->bindValue(":id", $id);
+		$sql ->bindValue(":nome", $nome);
+		$sql ->bindValue(":matricula", $matricula);
+		$sql ->bindValue(":cargo", $cargo);
+		$sql ->bindValue(":secretaria", $secretaria);
+		$sql ->bindValue(":data_nomeacao", $data_nomeacao);
+		$sql ->bindValue(":chefe", $chefe);
+		return $sql ->execute();
+	}
+
+	public function listaAvaliados(){
+    	$sql = $this->pdo->prepare("SELECT * FROM avaliado WHERE status = '1'");
+    	$sql ->execute();
+
+    	return $sql = $sql->fetchAll();
+    }
 }
 ?>

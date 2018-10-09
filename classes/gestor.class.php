@@ -33,6 +33,13 @@
  		$sql ->execute();
  		return $sql->fetchAll();
  	}
+
+ 	public function listaStatus($id){
+ 		$sql = $this->pdo->prepare("SELECT nome, perfil FROM gestor WHERE id = :id");
+ 		$sql ->bindValue(":id", $id);
+ 		$sql ->execute();
+ 		return $sql = $sql->fetch();
+ 	}
  } 
 
 

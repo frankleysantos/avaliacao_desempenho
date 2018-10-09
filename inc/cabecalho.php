@@ -23,3 +23,17 @@ session_start();
 	<body>
 		<?php require "inc/menu.php"; ?>
 		<div class="container">
+           
+            <?php
+             if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
+             require "inc/config.php";
+             $id  = $_SESSION['Login'];
+             $sql = $pdo->prepare("SELECT substring_index(nome, ' ', 1) as nome, perfil FROM gestor WHERE id = :id");
+ 		     $sql ->bindValue(":id", $id);
+ 		     $sql ->execute();
+ 		     $sql = $sql->fetch();
+ 		     echo "<h4 align='right'>Bem Vindo:<label>&ensp;".$sql['nome']."</label></h4>";
+ 		     }
+ 		     //SELECT substring_index(nome, ' ', 1) as primeironome FROM login WHERE id = :id
+            ?>
+			

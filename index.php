@@ -77,7 +77,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                     <td><?= $dado['nome']?></td>
                     <td><?= $dado['matricula']?></td>
                     <?php if ($dado['status'] == '1'):?>
-                    <td>Já respondido
+                    <td>
                         <a class="btn btn-info" href="calculo_avaliacao.php?id_avaliado=<?=$dado['id']?>">Ver resultados</a>
                     </td>
                     <?php endif?>

@@ -20,5 +20,11 @@ class Assiduidade
 		$sql ->bindValue(":assiduidade_obs2", $assiduidade_obs2);
 		return $sql->execute();
 	}
+	public function calculoAssiduidade($id_avaliado){
+        $sql = $this->pdo->prepare("SELECT SUM(assiduidade_q1+assiduidade_q2) as totalassiduidade FROM assiduidade WHERE id_avaliado = :id_avaliado");
+        $sql ->bindValue(":id_avaliado", $id_avaliado);
+        $sql ->execute();
+        return $sql = $sql->fetch();
+	}
 }
 ?>

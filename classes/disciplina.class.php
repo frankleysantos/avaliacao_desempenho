@@ -21,5 +21,12 @@ class Disciplina
 		$sql ->bindValue(":disciplina_obs2", $disciplina_obs2);
 		return $sql->execute();
 	}
+
+	public function calculoDisciplina($id_avaliado){
+        $sql = $this->pdo->prepare("SELECT SUM(disciplina_q1+disciplina_q2) as totaldisciplina FROM disciplina WHERE id_avaliado = :id_avaliado");
+        $sql ->bindValue(":id_avaliado", $id_avaliado);
+        $sql ->execute();
+        return $sql = $sql->fetch();
+	}
 }
 ?>

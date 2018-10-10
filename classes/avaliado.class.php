@@ -75,5 +75,16 @@ class Avaliado
 
     	return $sql = $sql->fetchAll();
     }
+
+    public function liberarStatus($id_avaliado){
+		$sql = $this->pdo->prepare("UPDATE avaliado SET status = '0' WHERE id = :id_avaliado");
+		$sql ->bindValue(":id_avaliado", $id_avaliado);
+		return $sql ->execute();
+	}
+	public function excluirAvaliado($id_avaliado){
+		$sql = $this->pdo->prepare("DELETE FROM avaliado WHERE id = :id_avaliado AND status = '0'");
+		$sql ->bindValue(":id_avaliado", $id_avaliado);
+		return $sql ->execute();
+	}
 }
 ?>

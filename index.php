@@ -89,6 +89,15 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
         </table>
         <?php
 
+    }else{
+        ?>
+        <div class="jumbotron">
+          <h1 class="display-4">Bem Vindo!</h1>
+          <p class="lead">Sistema de Avaliação de Desempenho.</p>
+          <hr class="my-4">
+          <p>Nenhum funcionário avaliado até o momento.</p>
+        </div>
+        <?php
     }
 }
     

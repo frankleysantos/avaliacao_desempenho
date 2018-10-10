@@ -29,7 +29,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 	$chefe     = addslashes($_POST['chefe']);
 
     $avaliado ->updateAvaliado($id, $nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe);
-    header("Location: index.php");                                         
+    header("Location: lista_avaliado.php");                                         
 }
 
 if (count($avaliado->listaAvaliado($id)) > 0) {

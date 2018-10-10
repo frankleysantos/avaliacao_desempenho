@@ -68,5 +68,12 @@ class Avaliado
 
     	return $sql = $sql->fetchAll();
     }
+
+    public function todosAvaliado(){
+    	$sql = $this->pdo->prepare("SELECT * FROM avaliado ORDER BY id DESC");
+    	$sql ->execute();
+
+    	return $sql = $sql->fetchAll();
+    }
 }
 ?>

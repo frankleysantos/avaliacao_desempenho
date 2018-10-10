@@ -4,13 +4,18 @@ require "inc/config.php";
 require "classes/gestor.class.php";
 require "classes/avaliado.class.php";
 require "classes/secretaria.class.php";
+require "classes/cargo.class.php";
 
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 $gestor = new Gestor($pdo);
 $avaliado = new Avaliado($pdo);
 $secretaria = new Secretaria($pdo);
 
+$cargo = new Cargo($pdo);
+
 $secre = $secretaria->listaSecretaria();
+
+$cargo = $cargo->listaCargo();
 
 $chefe = $gestor->listarGestor();
 $id = $_GET['id'];
@@ -46,7 +51,12 @@ if (count($avaliado->listaAvaliado($id)) > 0) {
 	</div>
 	<div class="form-group">
 		<label for="">Cargo</label>
-		<input type="text" class="form-control" id="" placeholder="Cargo" name="cargo" required value="<?=$info['cargo'];?>">
+		<select name="cargo" class="form-control" required="required">
+			<option value="">Escolha...</option>
+			<?php foreach ($cargo as $funcao): ?>
+			<option value="<?=$funcao['id']?>"<?php if($funcao['id'] == $info['cargo']) echo "selected"?>><?=utf8_encode($funcao['nome'])?></option>	
+		    <?php endforeach ?>
+		</select>
 	</div>
 	<div class="form-group">
 		<label for="">Secretaria</label>

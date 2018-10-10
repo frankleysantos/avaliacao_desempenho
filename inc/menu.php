@@ -10,16 +10,6 @@
       <li class="nav-item active">
         <a class="nav-link" href="cad_gestor.php">Cadastrar Avaliador<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="cad_avaliado">Cadastrar Avaliado</a>
-      </li>
-        <?php endif ?>
-        <?php if ($sql['perfil'] == 'avaliador'):?>
-      <li class="nav-item">
-        <a class="nav-link" href="cad_avaliado_gestor">Cadastrar Avaliado</a>
-      </li>
-        <?php endif ?>
-      <!--
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Avaliado
@@ -27,10 +17,23 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="cad_avaliado.php">Cadastrar Avaliado</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="cad_gestor">Cadastrar Gestor</a>
+          <a class="dropdown-item" href="lista_avaliado.php">Listar Avaliados</a>
         </div>
       </li>
-      -->
+      <!--
+      <li class="nav-item">
+        <a class="nav-link" href="cad_avaliado.php">Cadastrar Avaliado</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="lista_avaliado.php">Listar Avaliados</a>
+      </li>
+    -->
+        <?php endif ?>
+        <?php if ($sql['perfil'] == 'avaliador'):?>
+      <li class="nav-item">
+        <a class="nav-link" href="cad_avaliado_gestor.php">Cadastrar Avaliado</a>
+      </li>
+        <?php endif ?>
       <li class="nav-item">
         <a class="nav-link" href="inc/sair.php">Sair</a>
       </li>

@@ -16,5 +16,13 @@ class Secretaria
 
 		return $sql->fetchAll();
 	}
+
+	public function listaSecretariaID($id_secretaria){
+		$sql = $this->pdo->prepare("SELECT nome FROM secretaria WHERE id = :id_secretaria");
+		$sql ->bindValue(":id_secretaria", $id_secretaria);
+		$sql -> execute();
+
+		return $sql->fetch();
+	}
 }
 ?>

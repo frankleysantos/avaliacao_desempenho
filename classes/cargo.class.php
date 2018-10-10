@@ -15,6 +15,13 @@ class Cargo
 		$sql -> execute();
 		return $sql->fetchAll();
 	}
+
+	public function listaCargoID($id_cargo){
+		$sql = $this->pdo->prepare("SELECT nome FROM cargo WHERE id = :id_cargo");
+		$sql ->bindValue(":id_cargo", $id_cargo);
+		$sql -> execute();
+		return $sql->fetch();
+	}
 }
 
 ?>

@@ -7,9 +7,17 @@ require "classes/iniciativa.class.php";
 require "classes/produtividade.class.php";
 require "classes/responsabilidade.class.php";
 require "classes/assiduidade.class.php";
+require "classes/secretaria.class.php";
+require "classes/cargo.class.php";
+
+
 
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 	if ($sql['perfil'] == 'coordenador') {
+
+$secretaria = new Secretaria($pdo);
+
+$cargo = new Cargo($pdo);
 
 $id_avaliado = $_GET['id_avaliado'];
 
@@ -51,11 +59,15 @@ foreach ($aval as $dado):
 		<tr>
 			<th>Data da nomeação:</th>
 			<td><?php echo $dado['data_nomeacao']; ?></td>
-			<td><b>Cargo:</b>&ensp;<?php  echo $dado['cargo'];?></td>
+			<?php $id_cargo = $dado['cargo']; ?>
+			<?php $cargo = $cargo->listaCargoID($id_cargo); ?>
+			<td><b>Cargo:</b>&ensp;<?php  echo $cargo['nome'];?></td>
 		</tr>
 		<tr>
 			<th>Unidade Administrativa:</th>
-			<td colspan="2"><?php echo $dado['secretaria']; ?></td>
+			<?php $id_secretaria = $dado['secretaria']; ?>
+			<?php $secre = $secretaria->listaSecretariaID($id_secretaria); ?>
+			<td colspan="2"><?php echo $secre['nome']; ?></td>
 		</tr>
 		<tr>
 			<th>Matrícula:</th>

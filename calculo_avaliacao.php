@@ -20,14 +20,14 @@ $avaliacao = $avaliacao->listaAvaliacao();
 ?>
 
 <form action="" method="POST" role="form">
-	<legend>Avaliação</legend>
+	<legend>Avaliação de Desempenho</legend>
 
 	<div class="form-group">
 		<label for="">Avaliações Cadastradas</label>
 		<select name="id_avaliacao" id="inputNome" class="form-control" required="required">
 			  <option value="">Escolha...</option>
 			<?php foreach ($avaliacao as $info): ?>
-			  <option value="<?=$info['id']?>"><?=$info['nome'];?></option>	
+			  <option value="<?=$info['id']?>"><?=$info['nome'];?>-<?=$info['data_avaliacao']?></option>	
 			<?php endforeach ?>
 		</select>
 	</div>
@@ -169,6 +169,9 @@ foreach ($aval as $dado):
 </table>
 
 <?php
+if ($total < 1) {
+	echo "<label class='form-control btn-danger' align='center'>Ainda não foi avaliado para esta avaliação</label>";
+}
 }
  }else{
  	header("Location: index.php");

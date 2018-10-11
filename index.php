@@ -95,8 +95,41 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
           <h1 class="display-4">Bem Vindo!</h1>
           <p class="lead">Sistema de Avaliação de Desempenho.</p>
           <hr class="my-4">
-          <p>Nenhum funcionário avaliado até o momento.</p>
+          <p>Para ver as avaliações escolha o funcionário desejado.</p>
         </div>
+        <?php
+$info = $avaliado->listaAvaliadosResp();
+    if (count($info) > 0) {
+    ?>
+        <h4>Ver avaliações que já foram realizadas</h4>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Matricula</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+    <?php
+        foreach ($info as $dado) {
+        ?>
+                <tr>
+                    <td><?= $dado['nome']?></td>
+                    <td><?= $dado['matricula']?></td>
+                    <?php if ($dado['status'] == '0'):?>
+                    <td>
+                        <a class="btn btn-info" href="calculo_avaliacao.php?id_avaliado=<?=$dado['id']?>">Ver resultados</a>
+                    </td>
+                    <?php endif?>
+                </tr>
+        <?php
+        }
+        ?>
+          </tbody>
+        </table>
+    <?php } ?>
         <?php
     }
 }

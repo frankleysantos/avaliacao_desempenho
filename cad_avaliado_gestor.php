@@ -13,7 +13,7 @@ $secretaria = new Secretaria($pdo);
 $cargo      = new Cargo($pdo);
 
 $secre = $secretaria->listaSecretaria();
-$cargo = $cargo->listaCargo();
+$carg  = $cargo->listaCargo();
 $chefe = $gestor->listarGestor();
 
 if (isset($_POST['nome']) && !empty($_POST['nome'])) {
@@ -29,7 +29,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 		$avaliado ->inserirAvaliado($nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe);
 		header("Location: index.php");
 	}else{
-		echo "<label class='btn btn-danger'>Matricula já cadastrada</label>";
+		echo "<label class='form-control btn btn-danger'>Matricula já cadastrada</label>";
 	}
                                             
 }
@@ -50,7 +50,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 		<label for="">Cargo</label>
 		<select name="cargo" class="form-control" required="required">
 			<option value="">Escolha...</option>
-			<?php foreach ($cargo as $funcao): ?>
+			<?php foreach ($carg as $funcao): ?>
 			<option value="<?=$funcao['id']?>"><?=utf8_encode($funcao['nome'])?></option>	
 		    <?php endforeach ?>
 		</select>

@@ -20,11 +20,11 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])){
 
 	<div class="form-group">
 		<label for="">Nome</label>
-		<input type="text" class="form-control" id="" placeholder="Nome" name="nome">
+		<input type="text" class="form-control" id="" placeholder="Ex: primeira avaliação" name="nome">
 	</div>
 	<div class="form-group">
 		<label for="">Data da Avaliação</label>
-		<input type="text" class="form-control" id="" placeholder="Data" name="data_avaliacao">
+		<input type="text" class="form-control" id="" placeholder="Ex: 00/00/0000" name="data_avaliacao" onkeypress="dataConta(this)" minlength="10" maxlength="10">
 	</div>
 
 	<button type="submit" class="btn btn-primary">Cadastrar</button>

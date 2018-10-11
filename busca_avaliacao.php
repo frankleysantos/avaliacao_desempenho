@@ -22,7 +22,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
 
 	if (isset($_POST['id_avaliacao']) && !empty($_POST['id_avaliacao'])) {
 		$id_avaliacao = $_POST['id_avaliacao'];
-		$ass = $assiduidade->avaliacaoAssiduidade($id_avaliacao);
+		$ass = $assiduidade->avaliacaoAssiduidade($id_avaliacao, $id_avaliado);
 		if (count($ass) > 0) {
 			echo "<label class='form-control btn btn-danger'>Esta avaliação já foi realizada para este funcionário.</label>";
 		}else{

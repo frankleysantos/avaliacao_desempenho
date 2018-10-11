@@ -42,7 +42,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) { ?>
                         <td><?=$aval['status']?></td>
                         <td><a class="btn btn-success" href="edit_avaliado.php?id=<?=$aval['id']?>">Editar</a></td>
                         <td><label class="badge badge-warning">Já respondido</label></td>
-                        <td><a href="liberar_resp_avaliado.php?id=<?=$aval['id']?>">Nova Resposta</a></td>
+                        <td><a class="btn btn-info" href="liberar_resp_avaliado.php?id=<?=$aval['id']?>">Liberar Proxima Avaliação</a></td>
                   </tr>
                   <?php endif ?>
       		<?php endforeach ?>

@@ -9,12 +9,35 @@ require "classes/responsabilidade.class.php";
 require "classes/assiduidade.class.php";
 require "classes/secretaria.class.php";
 require "classes/cargo.class.php";
+require "classes/avaliacao.class.php";
 
+$avaliacao = new Avaliacao($pdo);
 
 
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
-	if ($sql['perfil'] == 'coordenador') {
+	if ($sql['perfil'] == 'coordenador') { 
+$avaliacao = $avaliacao->listaAvaliacao();
+?>
 
+<form action="" method="POST" role="form">
+	<legend>Avaliação</legend>
+
+	<div class="form-group">
+		<label for="">Avaliações Cadastradas</label>
+		<select name="id_avaliacao" id="inputNome" class="form-control" required="required">
+			  <option value="">Escolha...</option>
+			<?php foreach ($avaliacao as $info): ?>
+			  <option value="<?=$info['id']?>"><?=$info['nome'];?></option>	
+			<?php endforeach ?>
+		</select>
+	</div>
+	<button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+<?php
+
+if (isset($_POST['id_avaliacao']) && !empty($_POST['id_avaliacao'])){
+
+$id_avaliacao = $_POST['id_avaliacao'];
 $secretaria = new Secretaria($pdo);
 
 $cargo = new Cargo($pdo);
@@ -25,23 +48,23 @@ $avaliado = new Avaliado($pdo);
 
 $assiduidade = new Assiduidade($pdo);
 
-$ass = $assiduidade->calculoAssiduidade($id_avaliado);
+$ass = $assiduidade->calculoAssiduidade($id_avaliado, $id_avaliacao);
 
 $disciplina = new Disciplina($pdo);
 
-$dis = $disciplina->calculoDisciplina($id_avaliado);
+$dis = $disciplina->calculoDisciplina($id_avaliado, $id_avaliacao);
 
 $iniciativa = new Iniciativa($pdo);
 
-$ini = $iniciativa->calculoIniciativa($id_avaliado);
+$ini = $iniciativa->calculoIniciativa($id_avaliado, $id_avaliacao);
 
 $produtividade = new Produtividade($pdo);
 
-$pro = $produtividade->calculoProdutividade($id_avaliado);
+$pro = $produtividade->calculoProdutividade($id_avaliado, $id_avaliacao);
 
 $responsabilidade = new Responsabilidade($pdo);
 
-$resp = $responsabilidade->calculoResponsabilidade($id_avaliado);
+$resp = $responsabilidade->calculoResponsabilidade($id_avaliado, $id_avaliacao);
 
 
 $aval = $avaliado->listaAvaliado($id_avaliado);
@@ -146,6 +169,7 @@ foreach ($aval as $dado):
 </table>
 
 <?php
+}
  }else{
  	header("Location: index.php");
  }

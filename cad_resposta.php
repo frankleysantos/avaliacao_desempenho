@@ -21,12 +21,13 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 if (isset($_POST['assiduidade_q1']) && !empty($_POST['assiduidade_q1'])) {
 	$id_gestor        = $_SESSION['Login'];
 	$id_avaliado      = $_GET['id'];
+	$id_avaliacao     = $_GET['id_avaliacao'];
 	$assiduidade_q1   = $_POST['assiduidade_q1'];
 	$assiduidade_obs1 = $_POST['assiduidade_obs1'];
 	$assiduidade_q2   = $_POST['assiduidade_q2'];
 	$assiduidade_obs2 = $_POST['assiduidade_obs2'];
     
-    $assiduidade->inserirAssiduidade($id_gestor, $id_avaliado, $assiduidade_q1, $assiduidade_obs1, $assiduidade_q2, $assiduidade_obs2);
+    $assiduidade->inserirAssiduidade($id_avaliacao, $id_gestor, $id_avaliado, $assiduidade_q1, $assiduidade_obs1, $assiduidade_q2, $assiduidade_obs2);
     //$avaliado->updateStatus($id_avaliado);
 }
 
@@ -34,12 +35,13 @@ if (isset($_POST['assiduidade_q1']) && !empty($_POST['assiduidade_q1'])) {
 if (isset($_POST['disciplina_q1']) && !empty($_POST['disciplina_q1'])) {
 	$id_gestor        = $_SESSION['Login'];
 	$id_avaliado      = $_GET['id'];
+	$id_avaliacao     = $_GET['id_avaliacao'];
 	$disciplina_q1    = $_POST['disciplina_q1'];
 	$disciplina_obs1  = $_POST['disciplina_obs1'];
 	$disciplina_q2    = $_POST['disciplina_q2'];
 	$disciplina_obs2  = $_POST['disciplina_obs2'];
 
-    $disciplina->inserirDisciplina($id_avaliado, $id_gestor, $disciplina_q1, $disciplina_obs1, $disciplina_q2, $disciplina_obs2);
+    $disciplina->inserirDisciplina($id_avaliacao, $id_avaliado, $id_gestor, $disciplina_q1, $disciplina_obs1, $disciplina_q2, $disciplina_obs2);
     //$avaliado->updateStatus($id_avaliado);
     header("Location: index.php");
 
@@ -48,12 +50,13 @@ if (isset($_POST['disciplina_q1']) && !empty($_POST['disciplina_q1'])) {
 if (isset($_POST['iniciativa_q1']) && !empty($_POST['iniciativa_q1'])) {
 	$id_gestor        = $_SESSION['Login'];
 	$id_avaliado      = $_GET['id'];
+	$id_avaliacao     = $_GET['id_avaliacao'];
 	$iniciativa_q1    = $_POST['iniciativa_q1'];
 	$iniciativa_obs1  = $_POST['iniciativa_obs1'];
 	$iniciativa_q2    = $_POST['iniciativa_q2'];
 	$iniciativa_obs2  = $_POST['iniciativa_obs2'];
 
-    $iniciativa->inserirIniciativa($id_avaliado, $id_gestor, $iniciativa_q1, $iniciativa_obs1, $iniciativa_q2, $iniciativa_obs2);
+    $iniciativa->inserirIniciativa($id_avaliacao, $id_avaliado, $id_gestor, $iniciativa_q1, $iniciativa_obs1, $iniciativa_q2, $iniciativa_obs2);
     //$avaliado->updateStatus($id_avaliado);
     header("Location: index.php");
 
@@ -62,12 +65,13 @@ if (isset($_POST['iniciativa_q1']) && !empty($_POST['iniciativa_q1'])) {
 if (isset($_POST['produtividade_q1']) && !empty($_POST['produtividade_q1'])) {
 	$id_gestor        = $_SESSION['Login'];
 	$id_avaliado      = $_GET['id'];
+	$id_avaliacao     = $_GET['id_avaliacao'];
 	$produtividade_q1    = $_POST['produtividade_q1'];
 	$produtividade_obs1  = $_POST['produtividade_obs1'];
 	$produtividade_q2    = $_POST['produtividade_q2'];
 	$produtividade_obs2  = $_POST['produtividade_obs2'];
 
-    $produtividade->inserirProdutividade($id_avaliado, $id_gestor, $produtividade_q1, $produtividade_obs1, $produtividade_q2, $produtividade_obs2);
+    $produtividade->inserirProdutividade($id_avaliacao, $id_avaliado, $id_gestor, $produtividade_q1, $produtividade_obs1, $produtividade_q2, $produtividade_obs2);
     //$avaliado->updateStatus($id_avaliado);
     header("Location: index.php");
 
@@ -76,12 +80,13 @@ if (isset($_POST['produtividade_q1']) && !empty($_POST['produtividade_q1'])) {
 if (isset($_POST['responsabilidade_q1']) && !empty($_POST['responsabilidade_q1'])) {
 	$id_gestor        = $_SESSION['Login'];
 	$id_avaliado      = $_GET['id'];
+	$id_avaliacao     = $_GET['id_avaliacao'];
 	$responsabilidade_q1    = $_POST['responsabilidade_q1'];
 	$responsabilidade_obs1  = $_POST['responsabilidade_obs1'];
 	$responsabilidade_q2    = $_POST['responsabilidade_q2'];
 	$responsabilidade_obs2  = $_POST['responsabilidade_obs2'];
 
-    $responsabilidade->inserirResponsabilidade($id_avaliado, $id_gestor, $responsabilidade_q1, $responsabilidade_obs1, $responsabilidade_q2, $responsabilidade_obs2);
+    $responsabilidade->inserirResponsabilidade($id_avaliacao, $id_avaliado, $id_gestor, $responsabilidade_q1, $responsabilidade_obs1, $responsabilidade_q2, $responsabilidade_obs2);
     $avaliado->updateStatus($id_avaliado);
     header("Location: index.php");
 

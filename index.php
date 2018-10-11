@@ -38,7 +38,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                     <td><?= $dado['nome']?></td>
                     <td><?= $dado['matricula']?></td>
                     <?php if ($dado['status'] == '0' && $dado['perfil'] == 'avaliador'):?>
-                    <td><a class="btn btn-success" href="cad_resposta.php?id=<?=$dado['id']?>">Responder</a>
+                    <td><a class="btn btn-success" href="busca_avaliacao.php?id=<?=$dado['id']?>">Avaliar Funcionário</a>
                         <a class="btn btn-info" href="edit_avaliado.php?id=<?=$dado['id']?>">Editar</a>
                     </td>
                     <?php endif?>

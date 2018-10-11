@@ -20,6 +20,9 @@
           <a class="dropdown-item" href="lista_avaliado.php">Listar Avaliados</a>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="cad_avaliacao_desempenho.php">Cadastrar Avaliacão<span class="sr-only">(current)</span></a>
+      </li>
       <!--
       <li class="nav-item">
         <a class="nav-link" href="cad_avaliado.php">Cadastrar Avaliado</a>

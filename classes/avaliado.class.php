@@ -88,7 +88,7 @@ class Avaliado
 	}
 
 	public function listaAvaliadosResp(){
-    	$sql = $this->pdo->prepare("SELECT a.id, a.nome, a.matricula, a.status FROM avaliado as a, assiduidade as ass WHERE a.status = '0' AND ass.id_avaliacao > 0 GROUP BY a.matricula");
+    	$sql = $this->pdo->prepare("SELECT a.id, a.nome, a.matricula, a.status FROM avaliado as a, assiduidade as ass WHERE ass.id_avaliacao > 0 AND a.id = ass.id_avaliado GROUP BY a.matricula");
     	$sql ->execute();
 
     	return $sql = $sql->fetchAll();

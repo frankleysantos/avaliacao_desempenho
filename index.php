@@ -3,25 +3,25 @@ require "inc/cabecalho.php";
 require "inc/config.php";
 require "classes/avaliado.class.php";
 require "classes/gestor.class.php";
-
 $avaliado = new Avaliado($pdo);
 $gestor   = new Gestor($pdo);
 $id = $_SESSION['Login'];
-
+?>
+<div class="jumbotron">
+  <h1 class="display-4">Bem Vindo</h1>
+  <p class="lead">Avaliação de Desempenho Prefeitura Municipal de Teófilo otoni</p>
+</div>
+<?php
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
-
     $perfil = $gestor->listaStatus($id);
-
     /*Verifica o tipo de perfil, para cada tipo de permissão*/
-
     if ($perfil['perfil'] == 'avaliador'){
-
 	/*Retorna os funcionarios por login*/
-    $info = $avaliado->respAvaliado($id);
-    if (count($info) > 0) {
-    ?>
-        <h4>Avaliação de Desempenho</h4>
-        <table class="table table-striped table-hover">
+      $info = $avaliado->respAvaliado($id);
+        if (count($info) > 0) {
+?>
+         <h4>Avaliação de Desempenho</h4>
+          <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Nome</th>
@@ -29,11 +29,8 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                     <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
-                
-    <?php
-    	foreach ($info as $dado) {
-        ?>
+            <tbody>              
+<?php    foreach ($info as $dado):?>
                 <tr>
                     <td><?= $dado['nome']?></td>
                     <td><?= $dado['matricula']?></td>
@@ -43,66 +40,20 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                     </td>
                     <?php endif?>
                     <?php if ($dado['status'] == '1'):?>
-                    <td><label class="badge badge-warning">Já respondido</label></td>
+                    <td><label class="badge badge-warning">Já respondido todas as avaliações</label></td>
                     <?php endif?>
                 </tr>
-        <?php
-    	}
-        ?>
-          </tbody>
-        </table>
-        <?php
-
-    }
-}else{
-
-  $info = $avaliado->listaAvaliados();
-    if (count($info) > 0) {
-    ?>
-        <h4>Avaliação de Desempenho</h4>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Matricula</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-    <?php
-        foreach ($info as $dado) {
-        ?>
-                <tr>
-                    <td><?= $dado['nome']?></td>
-                    <td><?= $dado['matricula']?></td>
-                    <?php if ($dado['status'] == '1'):?>
-                    <td>
-                        <a class="btn btn-info" href="calculo_avaliacao.php?id_avaliado=<?=$dado['id']?>">Ver resultados</a>
-                    </td>
-                    <?php endif?>
-                </tr>
-        <?php
+<?php    endforeach ?>
+            </tbody>
+          </table>
+<?php
         }
-        ?>
-          </tbody>
-        </table>
-        <?php
-
     }else{
-        ?>
-        <div class="jumbotron">
-          <h1 class="display-4">Bem Vindo!</h1>
-          <p class="lead">Sistema de Avaliação de Desempenho.</p>
-          <hr class="my-4">
-          <p>Para ver as avaliações escolha o funcionário desejado.</p>
-        </div>
-        <?php
-$info = $avaliado->listaAvaliadosResp();
-    if (count($info) > 0) {
-    ?>
-        <h4>Ver avaliações que já foram realizadas</h4>
-        <table class="table table-striped table-hover">
+    $info = $avaliado->listaAvaliadosResp();
+        if (count($info) > 0) {
+?>
+         <h4>Avaliação de Desempenho</h4>
+          <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Nome</th>
@@ -110,27 +61,21 @@ $info = $avaliado->listaAvaliadosResp();
                     <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
-                
-    <?php
-        foreach ($info as $dado) {
-        ?>
+            <tbody>            
+<?php   foreach ($info as $dado):?>
                 <tr>
                     <td><?= $dado['nome']?></td>
                     <td><?= $dado['matricula']?></td>
-                    <?php if ($dado['status'] == '0'):?>
+                    <?php if ($dado['status'] == '1' || $dado['status'] == '0'):?>
                     <td>
                         <a class="btn btn-info" href="calculo_avaliacao.php?id_avaliado=<?=$dado['id']?>">Ver resultados</a>
                     </td>
                     <?php endif?>
                 </tr>
-        <?php
-        }
-        ?>
-          </tbody>
-        </table>
-    <?php } ?>
-        <?php
+<?php   endforeach?>
+            </tbody>
+          </table>
+<?php
     }
 }
     

@@ -45,5 +45,5 @@
   </div>
 </nav>
 <?php if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])): ?>
-<h4 align="right"><label>Bem Vindo:&ensp;</label><?php echo $sql['nome']; ?>&ensp;</h4>
+<h4 align="right"><label>Usuário:&ensp;</label><?php echo $sql['nome']; ?>&ensp;</h4>
 <?php endif ?>

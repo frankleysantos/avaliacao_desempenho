@@ -70,6 +70,7 @@ $resp = $responsabilidade->calculoResponsabilidade($id_avaliado, $id_avaliacao);
 $aval = $avaliado->listaAvaliado($id_avaliado);
 foreach ($aval as $dado):
 ?>
+<h4 align="center"><?=$id_avaliacao?>º Avaliação</h4>
 <table class="table table-striped table-hover">
 	<legend align="center" class="table-success">Avaliação Especial de Desempenho em Estágio Probatório</legend>
 	<thead>

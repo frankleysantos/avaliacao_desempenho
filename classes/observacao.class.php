@@ -20,6 +20,13 @@ class Observacao
 		$sql ->bindValue(":membro_dois", $membro_dois);
 		return $sql->execute();
 	}
+	public function listaObservacao($id_avaliado, $id_avaliacao){
+		$sql = $this->pdo->prepare("SELECT * FROM observacao WHERE id_avaliado = :id_avaliado AND id_avaliacao = :id_avaliacao");
+		$sql ->bindValue(":id_avaliado", $id_avaliado);
+		$sql ->bindValue(":id_avaliacao", $id_avaliacao);
+		$sql ->execute();
+		return $sql = $sql->fetchAll();
+	}
 
 }
 ?>

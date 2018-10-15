@@ -10,13 +10,14 @@ require "classes/assiduidade.class.php";
 require "classes/secretaria.class.php";
 require "classes/cargo.class.php";
 require "classes/avaliacao.class.php";
+require "classes/observacao.class.php";
 
-$avaliacao = new Avaliacao($pdo);
-
+$avaliacao  = new Avaliacao($pdo);
+$observacao = new observacao($pdo);
 
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 	if ($sql['perfil'] == 'coordenador') { 
-$avaliacao = $avaliacao->listaAvaliacao();
+$avaliacao  = $avaliacao->listaAvaliacao();
 ?>
 
 <form action="" method="POST" role="form">
@@ -68,6 +69,7 @@ $resp = $responsabilidade->calculoResponsabilidade($id_avaliado, $id_avaliacao);
 
 
 $aval = $avaliado->listaAvaliado($id_avaliado);
+$observacao = $observacao->listaObservacao($id_avaliado, $id_avaliacao);
 foreach ($aval as $dado):
 ?>
 <h4 align="center"><?=$id_avaliacao?>º Avaliação</h4>
@@ -166,8 +168,18 @@ foreach ($aval as $dado):
             <td colspan="4"><h4>Resultado da Avaliação: <label class="btn btn-primary">Excelente</label><p>Desempenho  ultrapassa , efetiva</p></h4></td>
 		<?php endif ?>
 		</tr>
+		<tr align="center">
+			<td colspan="4"><b>Observações</b></td>
+		</tr>
+		    <?php foreach ($observacao as $obs): ?>
 		<tr>
-		    <td>
+		    <td colspan="4">
+		    	<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly><?=$obs['obs_comissao'];?></textarea>
+		    </td>
+		</tr>
+		    <?php endforeach ?>
+		<tr>
+		    <td colspan="4">
               <a class="btn btn-success" href="cad_observacao.php?id=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Cadastrar Observações</a>
             </td>
 		</tr>

@@ -91,7 +91,7 @@ foreach ($aval as $dado):
 			<th>Unidade Administrativa:</th>
 			<?php $id_secretaria = $dado['secretaria']; ?>
 			<?php $secre = $secretaria->listaSecretariaID($id_secretaria); ?>
-			<td colspan="2"><?php echo $secre['nome']; ?></td>
+			<td colspan="2"><?php echo utf8_encode($secre['nome']); ?></td>
 		</tr>
 		<tr>
 			<th>Matrícula:</th>
@@ -166,12 +166,22 @@ foreach ($aval as $dado):
             <td colspan="4"><h4>Resultado da Avaliação: <label class="btn btn-primary">Excelente</label><p>Desempenho  ultrapassa , efetiva</p></h4></td>
 		<?php endif ?>
 		</tr>
+		<tr>
+		    <td>
+              <a class="btn btn-success" href="cad_observacao.php?id=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Cadastrar Observações</a>
+            </td>
+		</tr>
 	</tbody>
 </table>
 
 <?php
 if ($total < 1) {
-	echo "<label class='form-control btn-danger' align='center'>Ainda não foi avaliado para esta avaliação</label>";
+	echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+               <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+               </button>
+                <strong>Ainda não foi avaliado!</strong>
+          </div>";
 }
 }
  }else{

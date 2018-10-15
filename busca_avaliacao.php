@@ -24,7 +24,12 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
 		$id_avaliacao = $_POST['id_avaliacao'];
 		$ass = $assiduidade->avaliacaoAssiduidade($id_avaliacao, $id_avaliado);
 		if (count($ass) > 0) {
-			echo "<label class='form-control btn btn-danger'>Esta avaliação já foi realizada para este funcionário.</label>";
+			echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+               <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+               </button>
+                <strong>Esta avaliação já foi realizada para este funcionário.</strong>
+              </div>";
 		}else{
 			header("Location: cad_resposta.php?id=$id_avaliado&id_avaliacao=$id_avaliacao");
 		}
@@ -48,3 +53,6 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
 	<button type="submit" class="btn btn-primary">Buscar</button>
 </form>
 <?php endif ?>
+<?php 
+require "inc/rodape.php";
+ ?>

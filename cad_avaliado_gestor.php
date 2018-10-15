@@ -29,7 +29,12 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 		$avaliado ->inserirAvaliado($nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe);
 		header("Location: index.php");
 	}else{
-		echo "<label class='form-control btn btn-danger'>Matricula já cadastrada</label>";
+		echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+               <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+               </button>
+                <strong>Matricula já cadastrada!</strong>
+              </div>";
 	}
                                             
 }

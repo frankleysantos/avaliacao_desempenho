@@ -12,7 +12,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 	$senha     = addslashes(md5($_POST['senha']));
 
 	$gestor->inserirGestor($nome, $matricula, $cargo, $senha);
-	echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+	echo "<div class='alert alert-success alert-dismissible fade show' role='alert' align='center'>
                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
                </button>

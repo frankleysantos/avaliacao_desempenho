@@ -12,7 +12,7 @@ class Disciplina
 	}
 
 	public function inserirDisciplina($id_avaliacao, $id_avaliado, $id_gestor,	$disciplina_q1, $disciplina_obs1, $disciplina_q2, $disciplina_obs2){
-        $sql = $this->pdo->prepare("INSERT INTO disciplina (id_avaliacao, id_avaliado, id_gestor, disciplina_q1, disciplina_obs1, disciplina_q2, disciplina_obs2) VALUES (:id_avaliacao, :id_avaliado, :id_gestor, :disciplina_q1, :disciplina_obs1, :disciplina_q2, :disciplina_obs2)");
+        $sql = $this->pdo->prepare("INSERT INTO disciplina (id_avaliacao, id_avaliado, id_gestor, disciplina_q1, disciplina_obs1, disciplina_q2, disciplina_obs2, insercao) VALUES (:id_avaliacao, :id_avaliado, :id_gestor, :disciplina_q1, :disciplina_obs1, :disciplina_q2, :disciplina_obs2, now())");
 		$sql ->bindValue(":id_avaliacao", $id_avaliacao);
 		$sql ->bindValue(":id_gestor", $id_gestor);
 		$sql ->bindValue(":id_avaliado", $id_avaliado);

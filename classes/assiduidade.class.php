@@ -11,7 +11,7 @@ class Assiduidade
 	}
 
 	public function inserirAssiduidade($id_avaliacao, $id_gestor, $id_avaliado, $assiduidade_q1, $assiduidade_obs1, $assiduidade_q2, $assiduidade_obs2){
-		$sql = $this->pdo->prepare("INSERT INTO assiduidade (id_avaliacao, id_gestor, id_avaliado, assiduidade_q1, assiduidade_obs1, assiduidade_q2, assiduidade_obs2) VALUES (:id_avaliacao, :id_gestor, :id_avaliado, :assiduidade_q1, :assiduidade_obs1, :assiduidade_q2, :assiduidade_obs2)");
+		$sql = $this->pdo->prepare("INSERT INTO assiduidade (id_avaliacao, id_gestor, id_avaliado, assiduidade_q1, assiduidade_obs1, assiduidade_q2, assiduidade_obs2, insercao) VALUES (:id_avaliacao, :id_gestor, :id_avaliado, :assiduidade_q1, :assiduidade_obs1, :assiduidade_q2, :assiduidade_obs2, now())");
 		$sql ->bindValue(":id_avaliacao", $id_avaliacao);
 		$sql ->bindValue(":id_gestor", $id_gestor);
 		$sql ->bindValue(":id_avaliado", $id_avaliado);

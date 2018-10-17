@@ -12,7 +12,7 @@
  	}
 
  	public function inserirGestor($nome, $matricula, $cargo, $senha){
- 		$sql = $this->pdo->prepare("INSERT INTO gestor (nome, matricula, cargo, senha) VALUES (:nome, :matricula, :cargo, :senha)");
+ 		$sql = $this->pdo->prepare("INSERT INTO gestor (nome, matricula, cargo, senha, insercao) VALUES (:nome, :matricula, :cargo, :senha, now())");
  		$sql->bindValue(":nome", $nome);
  		$sql->bindValue(":matricula", $matricula);
  		$sql->bindValue(":cargo", $cargo);

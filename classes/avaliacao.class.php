@@ -24,7 +24,7 @@ class Avaliacao
 	}
 
 	public function inserirAvaliacao($nome, $data_avaliacao){
-		$sql = $this->pdo->prepare("INSERT INTO avaliacao (nome, data_avaliacao, liberacao) VALUES (:nome, :data_avaliacao, '1')");
+		$sql = $this->pdo->prepare("INSERT INTO avaliacao (nome, data_avaliacao, liberacao, insercao) VALUES (:nome, :data_avaliacao, '1', now())");
 		$sql ->bindValue(":nome", $nome);
 		$sql ->bindValue(":data_avaliacao", $data_avaliacao);
 		$sql -> execute();

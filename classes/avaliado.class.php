@@ -19,7 +19,7 @@ class Avaliado
 	}
 
 	public function inserirAvaliado($nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe){
-		$sql = $this->pdo->prepare("INSERT INTO avaliado (nome, matricula, cargo, secretaria, data_nomeacao, id_gestor) VALUES (:nome, :matricula, :cargo, :secretaria, :data_nomeacao, :id_gestor)");
+		$sql = $this->pdo->prepare("INSERT INTO avaliado (nome, matricula, cargo, secretaria, data_nomeacao, id_gestor, insercao) VALUES (:nome, :matricula, :cargo, :secretaria, :data_nomeacao, :id_gestor, now())");
 		$sql ->bindValue(":nome", $nome);
 		$sql ->bindValue(":matricula", $matricula);
 		$sql ->bindValue(":cargo", $cargo);

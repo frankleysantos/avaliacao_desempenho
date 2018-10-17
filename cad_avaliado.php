@@ -31,7 +31,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 		$avaliado ->inserirAvaliado($nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe);
 		header("Location: index.php");
 	}else{
-		echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+		echo "<div class='alert alert-danger alert-dismissible fade show' role='alert' align='center'>
                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
                </button>

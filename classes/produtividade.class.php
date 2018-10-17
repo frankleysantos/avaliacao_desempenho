@@ -11,7 +11,7 @@ class Produtividade
 	}
 
 	public function inserirProdutividade($id_avaliacao, $id_avaliado, $id_gestor, $produtividade_q1, $produtividade_obs1, $produtividade_q2, $produtividade_obs2){
-		$sql = $this->pdo->prepare("INSERT INTO produtividade (id_avaliacao, id_avaliado, id_gestor, produtividade_q1, produtividade_obs1, produtividade_q2, produtividade_obs2) VALUES (:id_avaliacao, :id_avaliado, :id_gestor, :produtividade_q1, :produtividade_obs1, :produtividade_q2, :produtividade_obs2)");
+		$sql = $this->pdo->prepare("INSERT INTO produtividade (id_avaliacao, id_avaliado, id_gestor, produtividade_q1, produtividade_obs1, produtividade_q2, produtividade_obs2, insercao) VALUES (:id_avaliacao, :id_avaliado, :id_gestor, :produtividade_q1, :produtividade_obs1, :produtividade_q2, :produtividade_obs2, now())");
 		$sql ->bindValue(":id_avaliacao", $id_avaliacao);
 		$sql ->bindValue(":id_gestor", $id_gestor);
 		$sql ->bindValue(":id_avaliado", $id_avaliado);

@@ -21,7 +21,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
         $membro_um    = $_POST['membro_um'];
         $membro_dois  = $_POST['membro_dois'];
         $observacao ->inserirObservacao($id_avaliado, $id_avaliacao, $obs_comissao, $presidente, $membro_um, $membro_dois);
-        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert' align='center'>
                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
                </button>

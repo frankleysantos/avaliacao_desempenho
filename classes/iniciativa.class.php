@@ -11,7 +11,7 @@ class Iniciativa
 	}
 
 	public function inserirIniciativa($id_avaliacao, $id_avaliado, $id_gestor, $iniciativa_q1, $iniciativa_obs1, $iniciativa_q2, $iniciativa_obs2){
-		$sql = $this->pdo->prepare("INSERT INTO iniciativa (id_avaliacao, id_avaliado, id_gestor, iniciativa_q1, iniciativa_obs1, iniciativa_q2, iniciativa_obs2) VALUES (:id_avaliacao, :id_avaliado, :id_gestor, :iniciativa_q1, :iniciativa_obs1, :iniciativa_q2, :iniciativa_obs2)");
+		$sql = $this->pdo->prepare("INSERT INTO iniciativa (id_avaliacao, id_avaliado, id_gestor, iniciativa_q1, iniciativa_obs1, iniciativa_q2, iniciativa_obs2, insercao) VALUES (:id_avaliacao, :id_avaliado, :id_gestor, :iniciativa_q1, :iniciativa_obs1, :iniciativa_q2, :iniciativa_obs2, now())");
 		$sql ->bindValue(":id_avaliacao", $id_avaliacao);
 		$sql ->bindValue(":id_gestor", $id_gestor);
 		$sql ->bindValue(":id_avaliado", $id_avaliado);

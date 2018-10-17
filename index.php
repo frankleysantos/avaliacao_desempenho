@@ -58,7 +58,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                 <tr>
                     <th>Nome</th>
                     <th>Matricula</th>
-                    <th colspan="2">Ações</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>            
@@ -69,9 +69,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                     <?php if ($dado['status'] == '1' || $dado['status'] == '0'):?>
                     <td>
                         <a class="btn btn-info" href="calculo_avaliacao.php?id_avaliado=<?=$dado['id']?>">Ver resultados</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-warning" href="impressao_capa_avaliacao.php?id_avaliado=<?=$dado['id']?>">Impressão</a>
+                        <a class="btn btn-danger" href="relatorios.php?id_avaliado=<?=$dado['id']?>&nome=<?= $dado['nome']?>">Relatórios</a>
                     </td>
                     <?php endif?>
                 </tr>

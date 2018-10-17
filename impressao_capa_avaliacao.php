@@ -23,13 +23,12 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
     $avaliacao  = $avaliacao->listaAvaliacao();
 ?>
 <div class="hidden-print">
+<h3 align="center">Avaliação de Desempenho</h3>
 <form action="" method="POST" role="form">
-	<legend>Avaliação de Desempenho</legend>
-
 	<div class="form-group">
-		<label for="">Avaliações Cadastradas</label>
+		<h3 align="center">Capa Avaliação de Desempenho</h3>
 		<select name="id_avaliacao" id="inputNome" class="form-control" required="required">
-			  <option value="">Escolha...</option>
+			  <option value="">Escolha a Avaliação...</option>
 			<?php foreach ($avaliacao as $info): ?>
 			  <option value="<?=$info['id']?>"><?=$info['nome'];?>-<?=$info['data_avaliacao']?></option>	
 			<?php endforeach ?>
@@ -74,12 +73,16 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
            foreach ($aval as $dado):
 ?>
             <div class="hidden-print">
+            <p align="center"></p>
             <h4 align="center"><?=$id_avaliacao?>º Avaliação</h4>
             </div>
+            <div class="row" align="center">
+            <img src="resources/images/brasao.png" class="img-thumbnail">
             <h4 align="center"><p>PREFEITURA MUNICIPAL DE TEÓFILO OTONI</p>
                 <p>SECRETARIA MUNICIPAL DE ADMINISTRAÇÃO</p>
                 <p>COMISSÃO DE AVALIAÇÃO DE DSEMPENHO DO ESTÁGIO PROBATÓRIO</p>
             </h4>
+            </div>
             <h1 align="center"><p>AVALIAÇÃO</p>
                 <p>DE</p>
                 <p>DESEMPENHO</p>
@@ -180,7 +183,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
            <div class="hidden-print container">
    <p>
     <a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a>
-    <a href="capa_avaliacao.php"  class="btn btn-warning">Gerar PDF</a>
+    <a href="capa_avaliacao.php"  class="btn btn-danger" target="_blank">Gerar PDF</a>
    </p>
   </div>
 <?php

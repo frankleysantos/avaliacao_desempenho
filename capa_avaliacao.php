@@ -2,7 +2,8 @@
 session_start();
 ob_start();
 ?>
-<h4 align="center">PREFEITURA MUNICIPAL DE TEÓFILO OTONI</h4>
+
+<h4 align="center"><img src="resources/images/brasao.png" width="50px">PREFEITURA MUNICIPAL DE TEÓFILO OTONI</h4>
 <p align="center">SECRETARIA MUNICIPAL DE ADMINISTRAÇÃO</p>
 <p align="center">COMISSÃO DE AVALIAÇÃO DE DSEMPENHO DO ESTÁGIO PROBATÓRIO</p>
                 <br>
@@ -21,15 +22,12 @@ ob_start();
             <br>
             <br>
             <br>
-            <br>
 <h1 align="center">ESTÁGIO</h1>
 <h1 align="center">PROBATÓRIO</h1>
             <br>
             <br>
             <br>
             <br> 
-            <br>
-            <br>
             <br>
             <br>
             <p>Processo nº: <?=$_SESSION['avaliado']['processo']?></p>

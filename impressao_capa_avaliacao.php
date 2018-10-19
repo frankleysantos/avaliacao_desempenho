@@ -13,9 +13,11 @@ require "classes/secretaria.class.php";
 require "classes/cargo.class.php";
 require "classes/avaliacao.class.php";
 require "classes/observacao.class.php";
+require "classes/gestor.class.php";
 
 $avaliacao  = new Avaliacao($pdo);
 $observacao = new observacao($pdo);
+$gestor     = new Gestor($pdo);
 // faz a verificação se o usuário está logado
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 	//verifica se o perfil é coordenador
@@ -175,17 +177,52 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                <p><b>Reprovado</b></p>
                <?php $_SESSION['avaliado']['desempenho'] = 'Reprovado'; ?>
 		     <?php endif ?>
-		  <?php setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+		       <?php setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
            date_default_timezone_set('America/Sao_Paulo');
            ?>
-           <p align="center">Téofilo Otoni <?php echo strftime('%d de %B de %Y', strtotime('today'));?></p>
-           <p align="center">Presidente da Comissão de Avaliação</p>
+           <p align="center">Teófilo Otoni <?php echo strftime('%d de %B de %Y', strtotime('today'));?></p>
+           <?php if (count($observacao) > 0): ?>
+           <?php foreach ($observacao as $obs): 
+           $id = $obs['presidente'];
+           $presidente = $gestor->listaStatus($id);
+           endforeach; ?> 
+           <p align="center" style="padding-top: 80px;"><?=$_SESSION['avaliado']['presidente'] = $presidente['nome']?><br>Presidente da Comissão de Avaliação</p>
+           <?php  else: ?>
+            <p align="center" style="padding-top: 80px;"><?=$_SESSION['avaliado']['presidente'] = ''?><br>Presidente da Comissão de Avaliação</p>
+            <?php endif ?>
+
+           <div class="row" style="padding-top: 80px;">
+            <div class="col-md">
+            <?php if (count($observacao) > 0): ?>
+             <?php foreach ($observacao as $obs): 
+             $id = $obs['membro_um'];
+             $membro_um = $gestor->listaStatus($id);
+             endforeach; ?> 
+             <p align="center"><?=$_SESSION['avaliado']['membro_um'] = $membro_um['nome']?><br>Membro da Comissão</p>
+             <?php  else: ?>
+              <p align="center"><?=$_SESSION['avaliado']['membro_um'] = ''?><br>Membro da Comissão</p>
+            <?php endif ?>
+            </div>
+
+            <div class="col-md">
+            <?php if (count($observacao) > 0): ?>
+             <?php foreach ($observacao as $obs): 
+             $id = $obs['membro_dois'];
+             $membro_dois = $gestor->listaStatus($id);
+             endforeach; ?> 
+             <p align="center"><?=$_SESSION['avaliado']['membro_dois'] = $membro_dois['nome']?><br>Membro da Comissão</p>
+             <?php  else: ?>
+             <p align="center"><?=$_SESSION['avaliado']['membro_dois'] = ''?><br>Membro da Comissão</p>
+            <?php endif ?>
+            </div>
+           </div>
+
            <div class="hidden-print container">
-   <p>
-    <a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a>
-    <a href="capa_avaliacao.php"  class="btn btn-danger" target="_blank">Gerar PDF</a>
-   </p>
-  </div>
+            <p>
+             <a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a>
+             <a href="capa_avaliacao.php"  class="btn btn-danger" target="_blank">Gerar PDF</a>
+            </p>
+           </div>
 <?php
         } //aqui fecha o formulário de busca. 
       } // aqui termina o codigo de perfil coordenador, se o perfil for diferente direciona para o index.php

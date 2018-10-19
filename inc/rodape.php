@@ -1,8 +1,4 @@
 </div>
-<div class="container">
-	<hr class="my-4">
-</div>
-
 <!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->

@@ -114,11 +114,11 @@ ob_start();
            <br>
            <br>
            <br>
-           <p align="center">Téofilo Otoni <?php echo strftime('%d de %B de %Y', strtotime('today'));?></p>
+           <p align="center">Teófilo Otoni <?php echo strftime('%d de %B de %Y', strtotime('today'));?></p>
            <br>
            <br>
            <br>
-           <p align="center">Presidente da Comissão de Avaliação</p>
+           <p align="center"><?=$_SESSION['avaliado']['presidente']?><br>Presidente da Comissão de Avaliação</p>
            <br>
            <br>
            <br>
@@ -126,8 +126,8 @@ ob_start();
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Membro da comissão</th>
-      <th align="right">Membro da comissão</th>
+      <th><?=$_SESSION['avaliado']['membro_um']?><br>Membro da comissão</th>
+      <th align="right"><?=$_SESSION['avaliado']['membro_dois']?><br>Membro da comissão</th>
     </tr>
   </thead>
 </table>

@@ -34,7 +34,7 @@
 <br>
 <p align="center">_____________________________________________________________</p>
 <p align="center">Assinatura do Servidor: <b><?=$_SESSION['notificacao']['nome'];?></b></p>
-<p align="center">Téofilo Otoni <?php echo strftime('%d de %B de %Y', strtotime('today'));?>
+<p align="center">Teófilo Otoni <?php echo strftime('%d de %B de %Y', strtotime('today'));?>
 </div>
 <?php
 $html = ob_get_contents();

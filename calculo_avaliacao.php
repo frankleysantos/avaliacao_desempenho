@@ -148,8 +148,8 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 	        <tbody>
 		     <tr>
 			   <td>De 10 a 24</td>
-			   <td>De 25 a 54</td>
-			   <td>De 55 a 84</td>
+			   <td>De 25 a 59</td>
+			   <td>De 60 a 84</td>
 			   <td>De 85 a 100</td>
 		     </tr>
 		     <tr align="center">
@@ -157,11 +157,11 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                <td colspan="4"><h4>Resultado da Avaliação: <label class="btn btn-danger">Insatisfatório</label><p>Desempenho ruim, desta forma exonera.</p></h4></td>
 		     <?php endif ?>
 
-		     <?php if ($total >= 25 && $total < 55):?>
+		     <?php if ($total >= 25 && $total < 60):?>
                <td colspan="4"><h4>Resultado da Avaliação: <label class="btn btn-warning">Regular</label><p>Desempenho satisfaz, em parte, e assim com dois conceito de REGULAR, exonera</p></h4></td>
 		     <?php endif ?>
 
-		     <?php if ($total >= 55 && $total < 85):?>
+		     <?php if ($total >= 60 && $total < 85):?>
                <td colspan="4"><h4>Resultado da Avaliação: <label class="btn btn-success">Bom</label><p>Desempenho satisfaz, efetiva  (média de 60 % )</p></h4></td>
 		     <?php endif ?>
 
@@ -183,9 +183,15 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 
 		     <?php if ($total > 1): ?>
 		     <tr>
-		       <td colspan="4">
+		       <td>
                <a class="btn btn-success" href="cad_observacao.php?id=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Cadastrar Observações</a>
                </td>
+               <td>
+               	<a class="btn btn-danger" href="resumo_avaliacao.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Resumo das Avaliações</a>
+               </td>
+               <?php if ($total >= 60):?>
+               <td align="right" colspan="2"><a class="btn btn-info" href="parecer_final.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Parecer final</a></td>
+              <?php endif ?>
 		     </tr>
 		     <?php endif ?>
 	        </tbody>

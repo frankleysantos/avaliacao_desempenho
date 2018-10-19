@@ -43,7 +43,7 @@ $responsabilidade = new Responsabilidade($pdo);
 		   <option value="<?=$avaliacao['id'];?>"><?=$avaliacao['nome'];?></option>	
 		    <?php endforeach ?>
 	      </select>
-        </div>
+    </div>
         <button type="submit" class="btn btn-primary">Buscar</button>
 	</div>
 </form>
@@ -89,7 +89,7 @@ $total = $ass['totalassiduidade'] + $dis['totaldisciplina'] + $ini['totaliniciat
       <p style="padding-top: 50px; padding-bottom: 50px">Ciente em ____/____/_____</p>
       <p align="center">_____________________________________________________________</p>
       <p align="center">Assinatura do Servidor: <b><?=$_SESSION['notificacao']['nome'];?></b></p>
-      <p align="center">Téofilo Otoni <?php echo strftime('%d de %B de %Y', strtotime('today'));?>
+      <p align="center">Teófilo Otoni <?php echo strftime('%d de %B de %Y', strtotime('today'));?>
 
        <div class="hidden-print">
         <p>

@@ -29,5 +29,6 @@ class Iniciativa
         $sql ->execute();
         return $sql = $sql->fetch();
 	}
+	
 }
 ?>

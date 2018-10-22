@@ -1,3 +1,4 @@
+<link href="resources/css/print.css" rel="stylesheet" media="print">
 <?php
 require "inc/cabecalho.php";
 require "inc/config.php";
@@ -21,7 +22,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
     $avaliacao  = $avaliacao->listaAvaliacao();
 ?>
 
-<form action="" method="POST" role="form">
+<form action="" method="POST" role="form" class="hidden-print">
 	<legend>Avaliação de Desempenho</legend>
 
 	<div class="form-group">
@@ -70,7 +71,21 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
            $observacao = $observacao->listaObservacao($id_avaliado, $id_avaliacao);
            foreach ($aval as $dado):
 ?>
-            <h4 align="center"><?=$id_avaliacao?>º Avaliação</h4>
+<div class="hidden-print" style="padding-top: 20px;">
+   <div class="row">
+   	<div class="col-md">
+    <p><a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a></p>
+    </div>
+    <div class="col-md" align="center">
+       <a class="btn btn-info" href="parecer_final.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Parecer final</a>
+    </div>
+    <div class="col-md" align="right">
+    	<a class="btn btn-danger" href="resumo_avaliacao.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Resumo das Avaliações</a>
+    </div>
+   </div>
+</div>
+            <h4 align="center" class="hidden-print"><?=$id_avaliacao?>º Avaliação</h4>
+            <h4 style="padding-top: 50px;" align="center">Anexo VII</h4>
             <table class="table table-striped table-hover">
             	<legend align="center" class="table-success">Avaliação Especial de Desempenho em Estágio Probatório</legend>
             	<thead>
@@ -176,22 +191,16 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 		     <?php foreach ($observacao as $obs): ?>
 		     <tr>
 		       <td colspan="4">
-		       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly><?=$obs['obs_comissao'];?></textarea>
+		       <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" readonly><?=$obs['obs_comissao'];?></textarea>
 		       </td>
 		     </tr>
 		     <?php endforeach ?>
 
 		     <?php if ($total > 1): ?>
-		     <tr>
-		       <td>
+		     <tr class="hidden-print">
+		       <td colspan="4">
                <a class="btn btn-success" href="cad_observacao.php?id=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Cadastrar Observações</a>
-               </td>
-               <td>
-               	<a class="btn btn-danger" href="resumo_avaliacao.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Resumo das Avaliações</a>
-               </td>
-               <?php if ($total >= 60):?>
-               <td align="right" colspan="2"><a class="btn btn-info" href="parecer_final.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Parecer final</a></td>
-              <?php endif ?>
+           </td>
 		     </tr>
 		     <?php endif ?>
 	        </tbody>

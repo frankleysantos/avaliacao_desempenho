@@ -34,6 +34,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 	if ($sql['perfil'] == 'coordenador') {        
            foreach ($aval as $dado):
 ?>
+<div class="container">
             <div class="row">
             	<legend align="center" style="padding-top:50px; padding-bottom: 20px"><img src="resources/images/brasao.png" width="50px">PARECER FINAL E ENCAMINHAMENTO AO PREFEITO MUNICIPAL</legend>
             			<div class="col-md" style="padding-bottom: 30px;"><b>AVALIADO:</b> <?php echo $_SESSION['resumo']['nome'] = $dado['nome']; ?>               
@@ -41,32 +42,33 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 
                               <div class="w-100"></div>
                               
-                              <div class="col-md" style="padding-bottom: 100px;">
+                              <div class="col-md" style="padding-bottom: 120px;">
                                     <p align="justify">&ensp;&ensp;&ensp;&ensp;&ensp;De acordo com as normas estabelecidas na Lei Complementar Municipal nº88/2011 e em Atendimento ao disposto no paragrafo 4º do art.41 da Constituição Federal, estamos encaminhando o Processo Administrativo de Avaliação Especial de Desempenho em Estágio Probatório, devidamente instruído e aprovado pela Comissão de Avaliação, informando que o servidor acima mencionado, está devidamente aprovado, neste período avaliatório, incubido a V.Exª. ratificar o resultado para todos os fins de direito.</p>
                               </div>
+            </div>
 
-                              <div class="w-100"></div>
+
+            <div class="row" style="padding-bottom: 100px;">
                     <?php if (count($observacao) > 0): ?>
             		    <?php foreach ($observacao as $obs): 
             		     $id = $obs['presidente'];
             		     $presidente = $gestor->listaStatus($id);
             		     endforeach; ?>
-                     <div class="w-100"></div>
-            		     <div class="col-md" align="center" style="padding-bottom: 100px;">Presidente <br><?=$_SESSION['resumo']['presidente'] = $presidente['nome']?></div>
-                             <div class="w-100"></div>
+            		     <div class="col-md" align="center"><b>Presidente da Comissão</b><br><?=$_SESSION['resumo']['presidente'] = $presidente['nome']?></div>
                       <?php  else: ?>
-                      <div class="w-100"></div>
-                      <div class="col-md" align="center" style="padding-bottom: 100px;">Presidente<br><?=$_SESSION['resumo']['presidente'] = ''?></div>
+                      <div class="col-md" align="center"><b>Presidente da Comissão</b><br><?=$_SESSION['resumo']['presidente'] = ''?></div>
                     <?php endif ?>
+            </div>
 
+            <div class="row" style="padding-bottom: 100px;">
                     <?php if (count($observacao) > 0): ?> 
             		    <?php foreach ($observacao as $obs_membro_um): 
             		     $id = $obs_membro_um['membro_um'];
             		     $membro_um = $gestor->listaStatus($id);
             		     endforeach; ?>	
-            		     <div class="col-md" align="center">Membro<br><?=$_SESSION['resumo']['membro_um'] = $membro_um['nome']?></div>
+            		     <div class="col-md" align="center"><b>Membro</b><br><?=$_SESSION['resumo']['membro_um'] = $membro_um['nome']?></div>
                      <?php  else: ?>
-                      <div class="col-md" align="center">Membro<br><?=$_SESSION['resumo']['membro_um'] = ''?></div>
+                      <div class="col-md" align="center"><b>Membro</b><br><?=$_SESSION['resumo']['membro_um'] = ''?></div>
                     <?php endif ?>
 
                     <?php if (count($observacao) > 0): ?>
@@ -74,24 +76,27 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
             		     $id = $obs_membro_dois['membro_dois'];
             		     $membro_dois = $gestor->listaStatus($id);
             		     endforeach; ?>
-            		     <div class="col-md" align="center" style="padding-bottom: 100px;">Membro <br><?=$_SESSION['resumo']['membro_dois'] = $membro_dois['nome']?></div>
+            		     <div class="col-md" align="center"><b>Membro</b><br><?=$_SESSION['resumo']['membro_dois'] = $membro_dois['nome']?></div>
                      <?php  else: ?>
-                      <div class="col-md" align="center" style="padding-bottom: 100px;">Membro <br><?=$_SESSION['resumo']['membro_dois'] = ''?></div>
+                      <div class="col-md" align="center"><b>Membro</b><br><?=$_SESSION['resumo']['membro_dois'] = ''?></div>
                     <?php endif ?>
-
-                    <div class="w-100"></div>
-
-                    <div class="col-md" align="center" style="padding-bottom: 100px;"><b>Secretário Municipal de Administração</b></div>
             </div>
-            <p style="padding-bottom: 50px">Ciente em ____/____/_____</p>
-            <p align="center" style="padding-bottom: 30px">Assinatura do Servidor <br> <b><?=$_SESSION['notificacao']['nome'];?></b></p>
-      <p align="center">Teófilo Otoni <?php echo strftime('%d de %B de %Y', strtotime('today'));?>
-            <div class="hidden-print">
+            
+            <div class="row" style="padding-bottom: 100px;">
+                    <div class="col-md" align="center"><b>______________________________________________________________<br>Secretário Municipal de Administração</b></div>
+            </div>
+            
+            <p style="padding-bottom: 120px">Ciente em ____/____/_____</p>
+            <p align="center"><b>______________________________________________________________<br>Prefeito Municipal</b></p>
+            <!--<p align="center">Teófilo Otoni <?php echo strftime('%d de %B de %Y', strtotime('today'));?></p>-->
+            <div class="hidden-print" style="padding-bottom: 50px;">
             	<div class="row">
                    <div class="col-md"> <a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a></div>
                    <!--<div class="col-md"><a href="resumo_avaliacao_pdf.php" class="btn btn-danger" target="_blank">Gerar PDF</a></div>-->
+                   <div class="col-md" align="right"><a href="calculo_avaliacao.php?id_avaliado=<?=$id_avaliado?>" class="btn btn-success">Voltar</a></div>
                 </div>
             </div>
+</div>
 
            <?php endforeach ?>
 <?php

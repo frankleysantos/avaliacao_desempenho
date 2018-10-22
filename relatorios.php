@@ -16,7 +16,11 @@ if (isset($_POST['relatorio']) && !empty($_POST['relatorio'])) {
 	}
 	if ($_POST['relatorio'] == 'ratificacao') {
 		$id_avaliado = $_GET['id_avaliado'];
-	    header("Location: calculo_avaliacao.php?id_avaliado=$id_avaliado");
+	    header("Location: ratificacao.php?id_avaliado=$id_avaliado");
+	}
+	if ($_POST['relatorio'] == 'termo') {
+		$id_avaliado = $_GET['id_avaliado'];
+	    header("Location: http://localhost/avaliacao/termo_circunstanciado.php?id_avaliado=$id_avaliado");
 	}
 }
 ?>
@@ -31,6 +35,7 @@ if (isset($_POST['relatorio']) && !empty($_POST['relatorio'])) {
 		<option value="notificacao">Notificação Resultado da Avaliação</option>
 		<option value="parecer">Parecer Final</option>
 		<option value="ratificacao">Ratificação do Ato de aprovação</option>
+		<option value="termo">Termo Circunstanciado</option>
 	</select>
     </div>
 	<button type="submit" class="btn btn-primary" >Buscar</button>

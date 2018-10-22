@@ -29,6 +29,12 @@ class Avaliacao
 		$sql ->bindValue(":data_avaliacao", $data_avaliacao);
 		$sql -> execute();
 	}
+
+	public function todosAvaliacao(){
+		$sql = $this->pdo->prepare("SELECT * FROM avaliacao");
+		$sql -> execute();
+		return $sql->fetchAll();
+	}
 }
 
 ?>

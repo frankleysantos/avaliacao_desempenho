@@ -22,7 +22,7 @@ class Assiduidade
 		return $sql->execute();
 	}
 	public function calculoAssiduidade($id_avaliado, $id_avaliacao){
-        $sql = $this->pdo->prepare("SELECT SUM(assiduidade_q1+assiduidade_q2) as totalassiduidade FROM assiduidade WHERE id_avaliado = :id_avaliado AND id_avaliacao = :id_avaliacao");
+        $sql = $this->pdo->prepare("SELECT SUM(assiduidade_q1+assiduidade_q2) as totalassiduidade, insercao FROM assiduidade WHERE id_avaliado = :id_avaliado AND id_avaliacao = :id_avaliacao");
         $sql ->bindValue(":id_avaliado", $id_avaliado);
         $sql ->bindValue(":id_avaliacao", $id_avaliacao);
         $sql ->execute();

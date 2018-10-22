@@ -7,7 +7,7 @@ session_start();
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Avaliação de Desempenho</title>
+		<title>Prefeitura Municipal de Teófilo Otoni</title>
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="resources/css/bootstrap.min.css">

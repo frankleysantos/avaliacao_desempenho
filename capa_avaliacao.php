@@ -103,7 +103,14 @@ ob_start();
 <br>
 <p>A saber, os pontos atribuídos aos quesitos abaixo foram os constantes do presente processo de avaliação:</p>
           <p>Visto que o colaborador obteve na Avaliação Especial de Desempenho o total de <b><?=$_SESSION['avaliado']['total'];?></b> pontos, nos termos do Artigo 4º do Decreto nº 6.811/2012 que regulamenta a Lei Complementar nº 88/2011, foi considerado:</p>
-<b><?php echo $_SESSION['avaliado']['desempenho']; ?></b>
+<b><?php 
+if ($_SESSION['avaliado']['desempenho'] == 'Aprovado') {
+  echo "<p><b>(X)Aprovado</b>  (&ensp;)Reprovado</p>";
+}
+if ($_SESSION['avaliado']['desempenho'] == 'Reprovado') {
+  echo "<p>(&ensp;)Aprovado  <b>(X)Reprovado</b></p>";
+}
+?></b>
            <br>
            <br>
            <br>
@@ -118,7 +125,7 @@ ob_start();
            <br>
            <br>
            <br>
-           <p align="center"><?=$_SESSION['avaliado']['presidente']?><br>Presidente da Comissão de Avaliação</p>
+           <p align="center"><b><?=$_SESSION['avaliado']['presidente']?><br>Presidente da Comissão de Avaliação</b></p>
            <br>
            <br>
            <br>

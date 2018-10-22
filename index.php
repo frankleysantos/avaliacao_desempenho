@@ -16,6 +16,14 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
     $perfil = $gestor->listaStatus($id);
     /*Verifica o tipo de perfil, para cada tipo de permissão*/
     if ($perfil['perfil'] == 'avaliador'){
+    if (isset($_GET['cad']) && !empty($_GET['cad'])) {
+        echo "<div class='alert alert-success alert-dismissible fade show' role='alert' align='center'>
+               <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+               </button>
+                <strong>Funcionário cadastrado com sucesso!</strong>
+              </div>";
+    }
 	/*Retorna os funcionarios por login*/
       $info = $avaliado->respAvaliado($id);
         if (count($info) > 0) {

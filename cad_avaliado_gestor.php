@@ -27,7 +27,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 
 	if (count($avaliado->verificaAvaliado($matricula)) < 1) {
 		$avaliado ->inserirAvaliado($nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe);
-		header("Location: index.php");
+		header("Location: index.php?cad=cadastrado");
 	}else{
 		echo "<div class='alert alert-danger alert-dismissible fade show' role='alert' align='center'>
                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>

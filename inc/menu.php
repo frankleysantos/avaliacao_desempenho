@@ -20,17 +20,28 @@
           <a class="dropdown-item" href="lista_avaliado.php">Listar Avaliados</a>
         </div>
       </li>
+      <!--
       <li class="nav-item">
         <a class="nav-link" href="cad_avaliacao_desempenho.php">Cadastrar Avaliacão<span class="sr-only">(current)</span></a>
       </li>
-      <!--
+      
       <li class="nav-item">
         <a class="nav-link" href="cad_avaliado.php">Cadastrar Avaliado</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="lista_avaliado.php">Listar Avaliados</a>
       </li>
-    -->
+      -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Avaliacão
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="cad_avaliacao_desempenho.php">Cadastrar Avaliacão</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="liberar_avaliacao_all.php">Liberar Proxima Avaliação</a>
+        </div>
+      </li>
         <?php endif ?>
         <?php if ($sql['perfil'] == 'avaliador'):?>
       <li class="nav-item">

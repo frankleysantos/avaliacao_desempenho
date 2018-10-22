@@ -169,12 +169,12 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
           <p>Visto que o colaborador obteve na Avaliação Especial de Desempenho o total de <b><?=$total?></b> pontos, nos termos do Artigo 4º do Decreto nº 6.811/2012 que regulamenta a Lei Complementar nº 88/2011, foi considerado:</p>
 
 		     <?php if ($total >= 55):?>
-               <p><b>Aprovado</b></p>
+               <p><b>(X)Aprovado</b>  (&ensp;)Reprovado</p>
                <?php $_SESSION['avaliado']['desempenho'] = 'Aprovado'; ?>
 		     <?php endif ?>
 
 		     <?php if ($total < 55):?>
-               <p><b>Reprovado</b></p>
+               <p>(&ensp;)Aprovado  <b>(X)Reprovado</b></p>
                <?php $_SESSION['avaliado']['desempenho'] = 'Reprovado'; ?>
 		     <?php endif ?>
 		       <?php setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
@@ -219,8 +219,8 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 
            <div class="hidden-print container">
             <p>
-             <a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a>
-             <a href="capa_avaliacao.php"  class="btn btn-danger" target="_blank">Gerar PDF</a>
+             <!--<a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a>-->
+             <a href="capa_avaliacao.php"  class="btn btn-danger" target="_blank">Gerar PDF e Imprimir</a>
             </p>
            </div>
 <?php

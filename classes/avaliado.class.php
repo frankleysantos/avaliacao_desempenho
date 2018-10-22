@@ -93,5 +93,10 @@ class Avaliado
 
     	return $sql = $sql->fetchAll();
     }
+
+    public function statusAvaliacaoAll(){
+		$sql = $this->pdo->prepare("UPDATE avaliado SET status = '0'");
+		return $sql ->execute();
+	}
 }
 ?>

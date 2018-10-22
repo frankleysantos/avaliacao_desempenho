@@ -148,6 +148,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
             	<div class="row">
                    <div class="col-md"> <a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a></div>
                    <!--<div class="col-md"><a href="resumo_avaliacao_pdf.php" class="btn btn-danger" target="_blank">Gerar PDF</a></div>-->
+                   <div class="col-md" align="right"><a href="calculo_avaliacao.php?id_avaliado=<?=$id_avaliado?>" class="btn btn-success">Voltar</a></div>
                 </div>
             </div>
 

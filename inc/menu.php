@@ -39,7 +39,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="cad_avaliacao_desempenho.php">Cadastrar Avaliacão</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="liberar_avaliacao_all.php">Liberar Proxima Avaliação</a>
+          <a class="dropdown-item" href="liberar_avaliacao_all.php">Liberar Avaliação</a>
         </div>
       </li>
         <?php endif ?>

@@ -22,29 +22,29 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 }
 ?>
 <form action="" method="POST" role="form">
-	<legend>Cadastro do Gestor (Avaliador) </legend>
+	<legend align="center">Cadastro do Gestor (Avaliador) </legend>
 
 	<div class="form-group">
-		<label for="">Nome</label>
+		<label class="fas fa-users">Nome</label>
 		<input type="text" class="form-control" id="" placeholder="Nome do Gestor" name="nome" required>
 	</div>
 
 	<div class="form-group">
-		<label for="">Matricula</label>
+		<label class="fas fa-file-signature">Matricula</label>
 		<input type="text" class="form-control" id="" placeholder="Matricula" name="matricula" required>
 	</div>
 
 	<div class="form-group">
-		<label for="">Cargo</label>
+		<label class="fas fa-address-card">Cargo</label>
 		<input type="text" class="form-control" id="" placeholder="Cargo" name="cargo" required>
 	</div>
 
 	<div class="form-group">
-		<label for="">Senha</label>
+		<label class="fas fa-key">Senha</label>
 		<input type="password" class="form-control" id="" placeholder="Cargo" name="senha" required>
 	</div>
 
-	<button type="submit" class="btn btn-primary">Cadastrar</button>
+	<button type="submit" class="btn btn-primary fas fa-edit">Cadastrar</button>
 </form>
 
 <?php

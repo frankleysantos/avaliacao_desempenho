@@ -32,9 +32,9 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
           <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>Matricula</th>
-                    <th>Ações</th>
+                    <th><label class="fas fa-users">Nome</label></th>
+                    <th><label class="fas fa-file-alt">Matricula</label></th>
+                    <th><label class="fas fa-user-edit">Ações</label></th>
                 </tr>
             </thead>
             <tbody>              
@@ -43,12 +43,12 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                     <td><?= $dado['nome']?></td>
                     <td><?= $dado['matricula']?></td>
                     <?php if ($dado['status'] == '0' && $dado['perfil'] == 'avaliador'):?>
-                    <td><a class="btn btn-success" href="busca_avaliacao.php?id=<?=$dado['id']?>">Avaliar Funcionário</a>
-                        <a class="btn btn-info" href="edit_avaliado.php?id=<?=$dado['id']?>">Editar</a>
+                    <td><a class="btn btn-success" href="busca_avaliacao.php?id=<?=$dado['id']?>"><label class="fas fa-search">Avaliar Funcionário</label></a>
+                        <a class="btn btn-info" href="edit_avaliado.php?id=<?=$dado['id']?>"><label class="fas fa-user-edit">Editar</label></a>
                     </td>
                     <?php endif?>
                     <?php if ($dado['status'] == '1'):?>
-                    <td><label class="badge badge-warning">Já respondido todas as avaliações</label></td>
+                    <td><label class="badge badge-warning">Avaliação respondida</label></td>
                     <?php endif?>
                 </tr>
 <?php    endforeach ?>
@@ -64,9 +64,9 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
           <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>Matricula</th>
-                    <th>Ações</th>
+                    <th><label class="fas fa-users">Nome</label></th>
+                    <th><label class="fas fa-file-alt">Matricula</label></th>
+                    <th><label class="fas fa-user-edit">Ações</label></th>
                 </tr>
             </thead>
             <tbody>            
@@ -76,8 +76,8 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                     <td><?= $dado['matricula']?></td>
                     <?php if ($dado['status'] == '1' || $dado['status'] == '0'):?>
                     <td>
-                        <a class="btn btn-info" href="calculo_avaliacao.php?id_avaliado=<?=$dado['id']?>">Ver resultados</a>
-                        <a class="btn btn-danger" href="relatorios.php?id_avaliado=<?=$dado['id']?>&nome=<?= $dado['nome']?>">Relatórios</a>
+                        <a class="btn btn-info" href="calculo_avaliacao.php?id_avaliado=<?=$dado['id']?>"><label class="fas fa-search">&ensp;Ver resultados</label></a>
+                        <a class="btn btn-danger" href="relatorios.php?id_avaliado=<?=$dado['id']?>&nome=<?= $dado['nome']?>"><label i class="fas fa-file-pdf">&ensp;Relatórios</label></a>
                     </td>
                     <?php endif?>
                 </tr>

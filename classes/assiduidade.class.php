@@ -37,6 +37,20 @@ class Assiduidade
         return $sql = $sql->fetchAll();
 	}
 
+	public function listaAssiduidade($id_avaliado){
+		$sql = $this->pdo->prepare("SELECT id FROM assiduidade WHERE id_avaliado = :id_avaliado");
+		$sql->bindValue(":id_avaliado", $id_avaliado);
+		$sql->execute();
+		return $sql = $sql->fetchAll();
+	}
+    
+    public function countAssiduidade($id_avaliado){
+		$sql = $this->pdo->prepare("SELECT id_avaliado, count(id_avaliado) as resposta FROM assiduidade WHERE id_avaliado = :id_avaliado GROUP BY id_avaliado");
+		$sql->bindValue(":id_avaliado", $id_avaliado);
+		$sql->execute();
+		return $sql = $sql->fetchAll();
+	}
+    
 
 }
 ?>

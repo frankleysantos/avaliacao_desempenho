@@ -76,12 +76,14 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
    	<div class="col-md">
     <p><a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a></p>
     </div>
+    <!--
     <div class="col-md" align="center">
        <a class="btn btn-info" href="parecer_final.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Parecer final</a>
     </div>
     <div class="col-md" align="right">
     	<a class="btn btn-danger" href="resumo_avaliacao.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Resumo das Avaliações</a>
     </div>
+    -->
    </div>
 </div>
             <h4 align="center" class="hidden-print"><?=$id_avaliacao?>º Avaliação</h4>
@@ -205,6 +207,22 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 		     <?php endif ?>
 	        </tbody>
           </table>
+<div class="hidden-print" style="padding-top: 20px; padding-bottom: 50px;">
+   <div class="row">
+    <?php if ($total >= 60): ?>
+    <div class="col-md">
+       <a class="btn btn-info" href="parecer_final.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Parecer final</a>
+    </div>
+    <?php else: ?>
+    <div class="col-md">
+       <label class="btn btn-secondary">Parecer final bloqueado: nota < 60</label>
+    </div>
+    <?php endif ?>
+    <div class="col-md" align="right">
+      <a class="btn btn-danger" href="resumo_avaliacao.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Resumo das Avaliações</a>
+    </div>
+   </div>
+</div>
 
 <?php
           if ($total < 1):

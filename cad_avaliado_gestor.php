@@ -43,16 +43,16 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 	<legend>Cadastro do Avaliado (Área Gestor)</legend>
 
 	<div class="form-group">
-		<label for="">Nome</label>
+		<label class="fas fa-users">Nome</label>
 		<input type="text" class="form-control" id="" placeholder="Nome do Gestor" name="nome" required>
 	</div>
 
 	<div class="form-group">
-		<label for="">Matricula</label>
+		<label class="fas fa-file-signature">Matricula</label>
 		<input type="text" class="form-control" id="" placeholder="Matricula" name="matricula" required onkeyup="numero(this);">
 	</div>
 	<div class="form-group">
-		<label for="">Cargo</label>
+		<label class="fas fa-address-card">Cargo</label>
 		<select name="cargo" class="form-control" required="required">
 			<option value="">Escolha...</option>
 			<?php foreach ($carg as $funcao): ?>
@@ -61,7 +61,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 		</select>
 	</div>
 	<div class="form-group">
-		<label for="">Secretaria</label>
+		<label class="fas fa-arrow-circle-right">Secretaria</label>
 		<select name="secretaria" class="form-control" required="required">
 			<option value="">Escolha...</option>
 			<?php foreach ($secre as $dado): ?>
@@ -70,7 +70,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 		</select>
 	</div>
 	<div class="form-group">
-		<label for="">Data de Nomeação</label>
+		<label class="fas fa-calendar-alt">Data de Nomeação</label>
 		<input type="text" class="form-control" id="" placeholder="Data de Nomeação" name="data_nomeacao" required onkeypress="dataConta(this)" minlength="10" maxlength="10">
 	</div>
 
@@ -79,7 +79,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 		<input type="hidden" name="chefe" class="form-control" value="<?php echo $chefe = $_SESSION['Login'];?>">
 	</div>
 
-	<button type="submit" class="btn btn-primary">Cadastrar</button>
+	<button type="submit" class="btn btn-primary fas fa-edit">Cadastrar</button>
 </form>
 
 <?php

@@ -20,7 +20,6 @@ $id            = $_GET['id_avaliado'];
 $avaliado      = new Avaliado($pdo);
 $aval          = $avaliado->listaAvaliado($id);
 $assiduidade   = new Assiduidade($pdo);
-$avaliado = new Avaliado($pdo);
 $assiduidade = new Assiduidade($pdo);         
 $disciplina = new Disciplina($pdo);          
 $iniciativa = new Iniciativa($pdo);          
@@ -28,6 +27,8 @@ $produtividade = new Produtividade($pdo);
 $responsabilidade = new Responsabilidade($pdo);  
 $secretaria    = new Secretaria($pdo);
 $avaliacao     = new Avaliacao($pdo);
+$id_avaliado = $_GET['id_avaliado'];
+$avaliacao = $avaliacao->todosAvaliacao();
 
 ?>
 <div class="container">
@@ -51,64 +52,14 @@ $avaliacao     = new Avaliacao($pdo);
         <?php foreach ($aval as $avalnome) {
 		$id_secretaria = $avalnome['secretaria'];
 		$secre = $secretaria->listaSecretariaID($id_secretaria);
-        echo $secre['nome'];
+        echo utf8_encode($secre['nome']);
 		} ?>
 	</p>
-
-	<?php 
-	$id_avaliado = $_GET['id_avaliado'];    
-    $ass = $assiduidade->calculoAssiduidade($id_avaliado, '1');
-    $dis = $disciplina->calculoDisciplina($id_avaliado, '1');
-    $ini = $iniciativa->calculoIniciativa($id_avaliado, '1');
-    $pro = $produtividade->calculoProdutividade($id_avaliado, '1');
-    $resp = $responsabilidade->calculoResponsabilidade($id_avaliado, '1');
-    $primeira_etapa = $ass['totalassiduidade']+ $dis['totaldisciplina'] + $ini['totaliniciativa'] + $pro['totalprodutividade'] + $resp['totalresponsabilidade'];
-    $primeira_data = $ass['insercao'];
-
-
-    $ass = $assiduidade->calculoAssiduidade($id_avaliado, '2');
-    $dis = $disciplina->calculoDisciplina($id_avaliado, '2');
-    $ini = $iniciativa->calculoIniciativa($id_avaliado, '2');
-    $pro = $produtividade->calculoProdutividade($id_avaliado, '2');
-    $resp = $responsabilidade->calculoResponsabilidade($id_avaliado, '2');
-    $segunda_etapa = $ass['totalassiduidade']+ $dis['totaldisciplina'] + $ini['totaliniciativa'] + $pro['totalprodutividade'] + $resp['totalresponsabilidade'];
-    $segunda_data = $ass['insercao'];
-
-    $ass = $assiduidade->calculoAssiduidade($id_avaliado, '3');
-    $dis = $disciplina->calculoDisciplina($id_avaliado, '3');
-    $ini = $iniciativa->calculoIniciativa($id_avaliado, '3');
-    $pro = $produtividade->calculoProdutividade($id_avaliado, '3');
-    $resp = $responsabilidade->calculoResponsabilidade($id_avaliado, '3');
-    $terceira_etapa = $ass['totalassiduidade']+ $dis['totaldisciplina'] + $ini['totaliniciativa'] + $pro['totalprodutividade'] + $resp['totalresponsabilidade'];
-    $terceira_data = $ass['insercao'];
-
-    $ass = $assiduidade->calculoAssiduidade($id_avaliado, '4');
-    $dis = $disciplina->calculoDisciplina($id_avaliado, '4');
-    $ini = $iniciativa->calculoIniciativa($id_avaliado, '4');
-    $pro = $produtividade->calculoProdutividade($id_avaliado, '4');
-    $resp = $responsabilidade->calculoResponsabilidade($id_avaliado, '4');
-    $quarta_etapa = $ass['totalassiduidade']+ $dis['totaldisciplina'] + $ini['totaliniciativa'] + $pro['totalprodutividade'] + $resp['totalresponsabilidade'];
-    $quarta_data = $ass['insercao'];
-
-    $ass = $assiduidade->calculoAssiduidade($id_avaliado, '5');
-    $dis = $disciplina->calculoDisciplina($id_avaliado, '5');
-    $ini = $iniciativa->calculoIniciativa($id_avaliado, '5');
-    $pro = $produtividade->calculoProdutividade($id_avaliado, '5');
-    $resp = $responsabilidade->calculoResponsabilidade($id_avaliado, '5');
-    $quinta_etapa = $ass['totalassiduidade']+ $dis['totaldisciplina'] + $ini['totaliniciativa'] + $pro['totalprodutividade'] + $resp['totalresponsabilidade'];
-    $quinta_data = $ass['insercao'];
-
-    $ass = $assiduidade->calculoAssiduidade($id_avaliado, '6');
-    $dis = $disciplina->calculoDisciplina($id_avaliado, '6');
-    $ini = $iniciativa->calculoIniciativa($id_avaliado, '6');
-    $pro = $produtividade->calculoProdutividade($id_avaliado, '6');
-    $resp = $responsabilidade->calculoResponsabilidade($id_avaliado, '6');
-    $sexta_etapa = $ass['totalassiduidade']+ $dis['totaldisciplina'] + $ini['totaliniciativa'] + $pro['totalprodutividade'] + $resp['totalresponsabilidade'];
-    $sexta_data = $ass['insercao'];
-
-	 ?>
-
-	<table class="table table-striped table-hover">
+    
+	<?php
+	
+    ?>
+    <table class="table table-striped table-hover">
 		<thead>
 			<tr>
 				<th>Data avaliação</th>
@@ -118,189 +69,56 @@ $avaliacao     = new Avaliacao($pdo);
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td><?php
-				$data = date('d/m/Y', strtotime($primeira_data));
-				if ($data == '31/12/1969') {
-					echo "";
-				}else{
-					echo $data;
-				}
-				?></td>
-				<td>
-					<?php if ($primeira_etapa > 5): ?>
-						<label>Realizado</label>
-					<?php else: ?>
-						<label>Não Realizado</label>
-					<?php endif ?>
-				</td>
-				<td>
-					<?php if ($primeira_etapa > 5): ?>
-					<?=$primeira_etapa?></td>
-					<?php endif ?>
-				<td>
-					<?php if ($primeira_etapa > 0):?>
-					<?php if ($primeira_etapa >= 60): ?>
-						<label>Aprovado</label>
-					<?php else: ?>
-						<label>Reprovado</label>
-					<?php endif ?>
-					<?php endif ?>
-				</td>
-			</tr>
-
-			<tr>
-				<td><?php
-				$data = date('d/m/Y', strtotime($segunda_data));
-				if ($data == '31/12/1969') {
-					echo "";
-				}else{
-					echo $data;
-				}?></td>
-				<td>
-					<?php if ($segunda_etapa > 5): ?>
-						<label>Realizado</label>
-					<?php else: ?>
-						<label>Não Realizado</label>
-					<?php endif ?>
-				</td>
-				<td>
-					<?php if ($segunda_etapa > 0): ?>
-					<?=$segunda_etapa?>
-					<?php endif ?>	
-				</td>
-				<td>
-					<?php if ($segunda_etapa > 0): ?>
-					<?php if ($segunda_etapa >= 60): ?>
-						<label>Aprovado</label>
-					<?php else: ?>
-						<label>Reprovado</label>
-					<?php endif ?>
-					<?php endif ?>
-				</td>
-			</tr>
-
-			<tr>
-				<td><?php
-				$data = date('d/m/Y', strtotime($terceira_data));
-				if ($data == '31/12/1969') {
-					echo "";
-				}else{
-					echo $data;
-				}?></td>
-				<td><?php if ($terceira_etapa > 5): ?>
-						<label>Realizado</label>
-					<?php else: ?>
-						<label>Não Realizado</label>
-					<?php endif ?></td>
-				<td>
-					<?php if ($terceira_etapa > 0): ?>
-					<?=$terceira_etapa?>
-					<?php endif ?>		
-				</td>
-				<td>
-					<?php if ($terceira_etapa > 0): ?>
-					<?php if ($terceira_etapa >= 60): ?>
-						<label>Aprovado</label>
-					<?php else: ?>
-						<label>Reprovado</label>
-					<?php endif ?>
-					<?php endif ?>
-				</td>
-			</tr>
-
-			<tr>
-				<td><?php
-				$data = date('d/m/Y', strtotime($quarta_data));
-				if ($data == '31/12/1969') {
-					echo "";
-				}else{
-					echo $data;
-				}?></td>
-				<td>
-					<?php if ($quarta_etapa > 5): ?>
-						<label>Realizado</label>
-					<?php else: ?>
-						<label>Não Realizado</label>
-					<?php endif ?>
-				</td>
-				<td>
-					<?php if ($quarta_etapa > 0): ?>
-					<?=$quarta_etapa?>
-					<?php endif ?>
-				</td>
-				<td><?php if ($quarta_etapa > 0): ?>
-					<?php if ($quarta_etapa >= 60): ?>
-						<label>Aprovado</label>
-					<?php else: ?>
-						<label>Reprovado</label>
-					<?php endif ?>
-					<?php endif ?>
-				</td>
-			</tr>
-
-			<tr>
-				<td><?php
-				$data = date('d/m/Y', strtotime($quinta_data));
-				if ($data == '31/12/1969') {
-					echo "";
-				}else{
-					echo $data;
-				}?></td>
-				<td>
-					<?php if ($quinta_etapa > 5): ?>
-						<label>Realizado</label>
-					<?php else: ?>
-						<label>Não Realizado</label>
-					<?php endif ?>
-				</td>
-				<td>
-					<?php if ($quinta_etapa > 0):?>
-					<?=$quinta_etapa?>
-					<?php endif ?>
-				</td>
-				<td><?php if ($quinta_etapa > 0):?>
-					<?php if ($quinta_etapa >= 60): ?>
-						<label>Aprovado</label>
-					<?php else: ?>
-						<label>Reprovado</label>
-					<?php endif ?>
-					<?php endif ?>
-				</td>
-			</tr>
-
-			<tr>
-				<td><?php
-				$data = date('d/m/Y', strtotime($sexta_data));
-				if ($data == '31/12/1969') {
-					echo "";
-				}else{
-					echo $data;
-				}
-				?></td>
-				<td>
-					<?php if ($sexta_etapa > 5): ?>
-						<label>Realizado</label>
-					<?php else: ?>
-						<label>Não Realizado</label>
-					<?php endif ?>
-				</td>
-				<td>
-					<?php if ($sexta_etapa > 0):?>
-					<?=$sexta_etapa?>
-					<?php endif ?>		
-				</td>
-				<td><?php if ($sexta_etapa > 0):?>
-					<?php if ($sexta_etapa >= 60): ?>
-						<label>Aprovado</label>
-					<?php else: ?>
-						<label>Reprovado</label>
-					<?php endif ?>
-					<?php endif ?>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+    <?php
+    foreach ($avaliacao as $avaliacao):
+	$id_avaliacao = $avaliacao['id'];
+	$ass = $assiduidade->calculoAssiduidade($id_avaliado, $id_avaliacao);
+	$dis = $disciplina->calculoDisciplina($id_avaliado, $id_avaliacao);
+    $ini = $iniciativa->calculoIniciativa($id_avaliado, $id_avaliacao);
+    $pro = $produtividade->calculoProdutividade($id_avaliado, $id_avaliacao);
+    $resp = $responsabilidade->calculoResponsabilidade($id_avaliado, $id_avaliacao);
+    $_SESSION['valor'][$id_avaliacao] = $ass['totalassiduidade']+ $dis['totaldisciplina'] + $ini['totaliniciativa'] + $pro['totalprodutividade'] + $resp['totalresponsabilidade'];
+    $_SESSION['data'][$id_avaliacao] = $ass['insercao'];
+    ?>
+    
+    <tr>
+    	<td><?php
+    	$data = date('d/m/Y', strtotime($_SESSION['data'][$id_avaliacao]));
+    	if ($data == '31/12/1969') {
+    		echo "";
+    	}else{
+    		echo $data;
+    	}
+    	?>	
+    	</td>
+    	<?php if ($_SESSION['valor'][$id_avaliacao] > 5): ?>
+		<td><label>Realizado</label></td>
+	    <?php else: ?>
+		<td><label>Não Realizado</label></td>
+		<?php endif ?>
+    	<td>
+    	<?php 
+    	if ($_SESSION['valor'][$id_avaliacao] > 0) {
+    		echo $_SESSION['valor'][$id_avaliacao];
+    	}else{
+    		echo "";
+    	}
+    	?>
+    			
+    	</td>
+    	<?php if ($_SESSION['valor'][$id_avaliacao] > 0):?>
+		<?php if ($_SESSION['valor'][$id_avaliacao] >= 60): ?>  
+		<td>Aprovado</td>
+		<?php else: ?>
+	    <td>Reprovado</td>
+		<?php endif ?>
+		<?php else: ?>
+		<td></td>
+		<?php endif ?>    
+	</tr>
+    <?php endforeach;?>
+	 </tbody>
+	 </table>
 </div>
 <div class="row">
 	<div class="col-md"><p>Ciente em ____/____/_____ </p></div>
@@ -318,7 +136,6 @@ $avaliacao     = new Avaliacao($pdo);
 <div class="hidden-print">
         <p>
          <a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a>
-         <a href="notificacao_resultado_pdf.php" class="btn btn-danger" target="_blank">Gerar PDF</a>
         </p>
 </div>
 

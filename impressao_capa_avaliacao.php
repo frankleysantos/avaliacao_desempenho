@@ -220,7 +220,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
            <div class="hidden-print container">
             <p>
              <!--<a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a>-->
-             <a href="capa_avaliacao.php"  class="btn btn-danger" target="_blank">Gerar PDF e Imprimir</a>
+             <a href="capa_avaliacao.php"  class="btn btn-danger fas fa-print" target="_blank">Gerar PDF e Imprimir</a>
             </p>
            </div>
 <?php

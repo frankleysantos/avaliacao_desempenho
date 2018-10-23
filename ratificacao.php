@@ -45,7 +45,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 <p align="center" style="padding-top: 80px">__________________________________________________________<br>Prefeito Municipal</p>
   <div class="hidden-print">
     <p>
-    <a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a>
+    <a href="#" onclick="window.print()" class="btn btn-warning fas fa-print">Imprimir</a>
     </p>
   </div>
 </div>

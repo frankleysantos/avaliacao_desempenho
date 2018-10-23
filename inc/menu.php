@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-info navmeu">
-  <a class="navbar-brand" href="index.php">Home</a>
+  <a class="navbar-brand" href="index.php"><label class="fas fa-home">Home</label></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -49,7 +49,7 @@
       </li>
         <?php endif ?>
       <li class="nav-item">
-        <a class="nav-link" href="inc/sair.php">Sair</a>
+        <a class="nav-link" href="inc/sair.php"><label class="fas fa-sign-out-alt">Sair</label></a>
       </li>
       <?php endif ?>
     </ul>

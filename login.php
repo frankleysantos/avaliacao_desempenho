@@ -22,22 +22,27 @@ if (isset($_POST['matricula']) && !empty($_POST['matricula']) && isset($_POST['s
 	}
 }
 ?>
-<form action="" method="POST" role="form">
-	<legend>Login do Usuário</legend>
+<div class="d-flex justify-content-center">
+    <img src="resources/images/logo.png">
+</div>
+<div class="d-flex justify-content-center">
+	<h4 align="center">Digite sua matricula e senha.</h4>
+</div>
 
+<form action="" method="POST" role="form">
 	<div class="form-group">
-		<label for="">Matricula</label>
-		<input type="text" class="form-control" id="" placeholder="Matricula" name="matricula">
+		<label class="fas fa-user-lock">Matricula</label>
+		<input type="text" class="form-control" id="" placeholder="000000" name="matricula">
 	</div>
 
 	<div class="form-group">
-		<label for="">Senha</label>
-		<input type="password" class="form-control" id="" placeholder="Senha" name="senha">
+		<label class="fas fa-key">Senha</label>
+		<input type="password" class="form-control" id="" placeholder="********" name="senha">
 	</div>
 
 	
 
-	<button type="submit" class="btn btn-primary">Logar</button>
+	<button type="submit" class="btn btn-primary fas fa-sign-in-alt">&ensp;Logar</button>
 </form>
 <?php
 require "inc/rodape.php";  

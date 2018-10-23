@@ -33,13 +33,13 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) { ?>
       			<td><?=$aval['nome']?></td>
       			<td><?=$aval['matricula']?></td>
       			<td><?=$aval['data_nomeacao']?></td>
-                        <td><a class="btn btn-success" href="edit_avaliado.php?id=<?=$aval['id']?>">Editar</a></td>
+                        <td><a class="btn btn-success fas fa-edit" href="edit_avaliado.php?id=<?=$aval['id']?>">Editar</a></td>
                         <?php 
                         $id_avaliado = $aval['id'];
                         $ass = $assiduidade->listaAssiduidade($id_avaliado);
                         if (count($ass) < 1):
                         ?>
-                        <td><a class="btn btn-danger" href="excluir_avaliado.php?id=<?=$aval['id']?>">Excluir</a></td>
+                        <td><a class="btn btn-danger fas fa-trash-alt" href="excluir_avaliado.php?id=<?=$aval['id']?>">Excluir</a></td>
                         <?php else: ?>
                         <td>Exclusão proibida</td>
                         <?php endif ?>
@@ -60,10 +60,10 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) { ?>
                         <td><?=$aval['nome']?></td>
                         <td><?=$aval['matricula']?></td>
                         <td><?=$aval['data_nomeacao']?></td>
-                        <td><a class="btn btn-success" href="edit_avaliado.php?id=<?=$aval['id']?>">Editar</a></td>
+                        <td><a class="btn btn-success fas fa-edit" href="edit_avaliado.php?id=<?=$aval['id']?>">Editar</a></td>
                         <!--<td><label class="badge badge-warning">Já respondido</label></td>-->
                         <td>Exclusão proibida</td>
-                        <td><a class="btn btn-info" href="liberar_resp_avaliado.php?id=<?=$aval['id']?>">Liberar Proxima Avaliação</a></td>
+                        <td><a class="btn btn-info fas fa-file-signature" href="liberar_resp_avaliado.php?id=<?=$aval['id']?>">Liberar Proxima Avaliação</a></td>
                         <?php
                         $id_avaliado = $aval['id'];  
                         $assresp = $assiduidade->countAssiduidade($id_avaliado);

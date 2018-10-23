@@ -70,7 +70,10 @@ $avaliacao = $avaliacao->todosAvaliacao();
 		</thead>
 		<tbody>
     <?php
+    $count =0;
+    $soma = 0;
     foreach ($avaliacao as $avaliacao):
+    $count = $count+1;
 	$id_avaliacao = $avaliacao['id'];
 	$ass = $assiduidade->calculoAssiduidade($id_avaliado, $id_avaliacao);
 	$dis = $disciplina->calculoDisciplina($id_avaliado, $id_avaliacao);
@@ -79,6 +82,7 @@ $avaliacao = $avaliacao->todosAvaliacao();
     $resp = $responsabilidade->calculoResponsabilidade($id_avaliado, $id_avaliacao);
     $_SESSION['valor'][$id_avaliacao] = $ass['totalassiduidade']+ $dis['totaldisciplina'] + $ini['totaliniciativa'] + $pro['totalprodutividade'] + $resp['totalresponsabilidade'];
     $_SESSION['data'][$id_avaliacao] = $ass['insercao'];
+    $soma = $_SESSION['valor'][$id_avaliacao] + $soma;
     ?>
     
     <tr>
@@ -116,7 +120,22 @@ $avaliacao = $avaliacao->todosAvaliacao();
 		<td></td>
 		<?php endif ?>    
 	</tr>
-    <?php endforeach;?>
+    <?php 
+    endforeach;
+    $calculo = round(($soma * 100) / ($calc = $count * 100), 2);
+    ?>
+      <tr class="hidden-print">
+      	<td></td>
+      	<td><b>Média Pontuação - Total:</b></td>
+      	<td><b><?=$calculo?>%</b></td>
+      	<td>
+      		<?php if ($calculo >= 60) {
+      			echo "Aprovado";
+      		}else{
+      			echo "<b>Reprovado</b>";
+      		} ?>
+      	</td>
+      </tr>
 	 </tbody>
 	 </table>
 </div>

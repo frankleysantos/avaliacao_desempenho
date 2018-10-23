@@ -44,7 +44,7 @@ $responsabilidade = new Responsabilidade($pdo);
 		    <?php endforeach ?>
 	      </select>
     </div>
-        <button type="submit" class="btn btn-primary">Buscar</button>
+        <button type="submit" class="btn btn-primary fas fa-search">Buscar</button>
 	</div>
 </form>
 </div>
@@ -93,8 +93,8 @@ $total = $ass['totalassiduidade'] + $dis['totaldisciplina'] + $ini['totaliniciat
 
        <div class="hidden-print">
         <p>
-         <a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a>
-         <a href="notificacao_resultado_pdf.php" class="btn btn-danger" target="_blank">Gerar PDF</a>
+         <a href="#" onclick="window.print()" class="btn btn-warning fas fa-print">Imprimir</a>
+         <a href="notificacao_resultado_pdf.php" class="btn btn-danger fas fa-file-pdf" target="_blank">Gerar PDF</a>
         </p>
        </div>
  </div>

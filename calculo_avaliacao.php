@@ -23,10 +23,10 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 ?>
 
 <form action="" method="POST" role="form" class="hidden-print">
-	<legend>Avaliação de Desempenho</legend>
+	<legend align="center">Avaliação de Desempenho</legend>
 
 	<div class="form-group">
-		<label for="">Avaliações Cadastradas</label>
+		<label class="fas fa-book-open">Avaliações Cadastradas</label>
 		<select name="id_avaliacao" id="inputNome" class="form-control" required="required">
 			  <option value="">Escolha...</option>
 			<?php foreach ($avaliacao as $info): ?>
@@ -34,7 +34,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 			<?php endforeach ?>
 		</select>
 	</div>
-	<button type="submit" class="btn btn-primary">Buscar</button>
+	<button type="submit" class="btn btn-primary fas fa-search">Buscar</button>
 </form>
     <?php  if (!isset($_POST['id_avaliacao']) && empty($_POST['id_avaliacao'])):
      $id = $_GET['id_avaliado']; 
@@ -74,7 +74,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 <div class="hidden-print" style="padding-top: 20px;">
    <div class="row">
    	<div class="col-md">
-    <p><a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a></p>
+    <p><a href="#" onclick="window.print()" class="btn btn-warning fas fa-print">Imprimir</a></p>
     </div>
     <!--
     <div class="col-md" align="center">
@@ -201,7 +201,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 		     <?php if ($total > 1): ?>
 		     <tr class="hidden-print">
 		       <td colspan="4">
-               <a class="btn btn-success" href="cad_observacao.php?id=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Cadastrar Observações</a>
+               <a class="btn btn-success fas fa-edit" href="cad_observacao.php?id=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Cadastrar Observações</a>
            </td>
 		     </tr>
 		     <?php endif ?>
@@ -212,16 +212,16 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
     <?php if ($total >= 60): ?>
       <?php $_SESSION['parecer']['resultado'] = "aprovado" ?>
     <div class="col-md">
-       <a class="btn btn-info" href="parecer_final.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Parecer final</a>
+       <a class="btn btn-info fas fa-file-signature" href="parecer_final.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Parecer final</a>
     </div>
     <?php else: ?>
       <?php $_SESSION['parecer']['resultado'] = "reprovado" ?>
     <div class="col-md">
-       <a class="btn btn-info" href="parecer_final.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Parecer final</a>
+       <a class="btn btn-info fas fa-file-signature" href="parecer_final.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Parecer final</a>
     </div>
     <?php endif ?>
     <div class="col-md" align="right">
-      <a class="btn btn-danger" href="resumo_avaliacao.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Resumo das Avaliações</a>
+      <a class="btn btn-danger fas fa-file-signature" href="resumo_avaliacao.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Resumo das Avaliações</a>
     </div>
    </div>
 </div>

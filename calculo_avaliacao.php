@@ -210,12 +210,14 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 <div class="hidden-print" style="padding-top: 20px; padding-bottom: 50px;">
    <div class="row">
     <?php if ($total >= 60): ?>
+      <?php $_SESSION['parecer']['resultado'] = "aprovado" ?>
     <div class="col-md">
        <a class="btn btn-info" href="parecer_final.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Parecer final</a>
     </div>
     <?php else: ?>
+      <?php $_SESSION['parecer']['resultado'] = "reprovado" ?>
     <div class="col-md">
-       <label class="btn btn-secondary">Parecer final bloqueado: nota < 60</label>
+       <a class="btn btn-info" href="parecer_final.php?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>">Parecer final</a>
     </div>
     <?php endif ?>
     <div class="col-md" align="right">

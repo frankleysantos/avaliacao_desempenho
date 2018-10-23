@@ -76,7 +76,7 @@ $total = $ass['totalassiduidade'] + $dis['totaldisciplina'] + $ini['totaliniciat
       </div>
 
       <div class="row" style="padding-top: 50px">
-       <p align="justify">&ensp;&ensp;&ensp;&ensp;CIENTIFICAMOS que, conforme Avaliação de Desempenho realizada no dia <b><?=$_SESSION['notificacao']['data_avaliacao'];?></b>, V.Sª. atingiu a pontuação necessária à aprovação durante o Estágio Probatório, referente a este período  avaliatório, obtenção <b><?=$_SESSION['notificacao']['total']=$total?></b> pontos no processo realizado.
+       <p align="justify">&ensp;&ensp;&ensp;&ensp;CIENTIFICAMOS que, conforme Avaliação de Desempenho realizada no dia <b><?=$_SESSION['notificacao']['data_avaliacao'];?></b>, V.Sª. <?php if ($total < 60) echo "não"?> atingiu a pontuação necessária à aprovação durante o Estágio Probatório, referente a este período  avaliatório, obtenção <b><?=$_SESSION['notificacao']['total']=$total?></b> pontos no processo realizado.
        </p>
       </div>
       

@@ -43,7 +43,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                               <div class="w-100"></div>
                               
                               <div class="col-md" style="padding-bottom: 120px;">
-                                    <p align="justify">&ensp;&ensp;&ensp;&ensp;&ensp;De acordo com as normas estabelecidas na Lei Complementar Municipal nº88/2011 e em Atendimento ao disposto no paragrafo 4º do art.41 da Constituição Federal, estamos encaminhando o Processo Administrativo de Avaliação Especial de Desempenho em Estágio Probatório, devidamente instruído e aprovado pela Comissão de Avaliação, informando que o servidor acima mencionado, está devidamente aprovado, neste período avaliatório, incubido a V.Exª. ratificar o resultado para todos os fins de direito.</p>
+                                    <p align="justify">&ensp;&ensp;&ensp;&ensp;&ensp;De acordo com as normas estabelecidas na Lei Complementar Municipal nº88/2011 e em Atendimento ao disposto no paragrafo 4º do art.41 da Constituição Federal, estamos encaminhando o Processo Administrativo de Avaliação Especial de Desempenho em Estágio Probatório, devidamente instruído e aprovado pela Comissão de Avaliação, informando que o servidor acima mencionado, está devidamente <?php echo $_SESSION['parecer']['resultado'];?>, neste período avaliatório, incubido a V.Exª. ratificar o resultado para todos os fins de direito.</p>
                               </div>
             </div>
 

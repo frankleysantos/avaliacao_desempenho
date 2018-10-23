@@ -11,7 +11,7 @@
 <label><b>SERVIDOR:</b>&ensp;<?=$_SESSION['notificacao']['nome'];?></label>
 <br>
 <br>
-<p align="justify">&ensp;&ensp;&ensp;&ensp;CIENTIFICAMOS que, conforme Avaliação de Desempenho realizada no dia <b><?=$_SESSION['notificacao']['data_avaliacao']?></b>, V.Sª. atingiu a pontuação necessária à aprovação durante o Estágio Probatório, referente a este período  avaliatório, obtenção <b><?=$_SESSION['notificacao']['total']?></b> pontos no processo realizado.
+<p align="justify">&ensp;&ensp;&ensp;&ensp;CIENTIFICAMOS que, conforme Avaliação de Desempenho realizada no dia <b><?=$_SESSION['notificacao']['data_avaliacao']?></b>, V.Sª. <?php if ($_SESSION['notificacao']['total'] < 60) echo "não"?> atingiu a pontuação necessária à aprovação durante o Estágio Probatório, referente a este período  avaliatório, obtenção <b><?=$_SESSION['notificacao']['total']?></b> pontos no processo realizado.
 </p>
 <p align="justify">&ensp;&ensp;&ensp;&ensp;O Processo Administrativo instruído com todos os documentos necessários à ratificação deste resultado será arquivado na sua pasta funcional e estará à disposição para retirada de cópia caso do interesse de V.Sª.</p>
 <br>

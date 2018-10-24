@@ -14,26 +14,24 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])){
          $avaliacao->inserirAvaliacao($nome, $data_avaliacao);
          }
         ?>
-
+<h4 align="center">Cadastrar Avaliação</h4>
 <form action="" method="POST" role="form">
-	<legend>Cadastrar Avaliação</legend>
-
 	<div class="form-group">
-		<label for="">Nome</label>
+		<label class="fas fa-users">Nome</label>
 		<input type="text" class="form-control" id="" placeholder="Ex: primeira avaliação" name="nome">
 	</div>
 	<div class="form-group">
-		<label for="">Data da Avaliação</label>
+		<label class="fas fa-calendar-alt">Data da Avaliação</label>
 		<input type="text" class="form-control" id="" placeholder="Ex: 00/00/0000" name="data_avaliacao" onkeypress="dataConta(this)" minlength="10" maxlength="10">
 	</div>
 
-	<button type="submit" class="btn btn-primary">Cadastrar</button>
+	<button type="submit" class="btn btn-primary fas fa-edit">Cadastrar</button>
 </form>
 <?php $aval = $avaliacao->listaAvaliacao(); ?>
 <br>
+<h4 align="center">Avaliações Cadastradas</h4>
    <table class="table table-bordered table-hover">
    	<thead>
-   		<legend align="center">Avaliações Cadastradas</legend>
    		<tr>
    			<th>Nome</th>
    			<th>Data avaliação</th>

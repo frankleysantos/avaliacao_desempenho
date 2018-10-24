@@ -1,81 +1,31 @@
--- phpMyAdmin SQL Dump
--- version 4.7.9
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3306
--- Generation Time: 10-Out-2018 às 14:36
--- Versão do servidor: 5.7.21
--- PHP Version: 5.6.35
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `avaliacao_desempenho`
---
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `assiduidade`
---
-
 DROP TABLE IF EXISTS `assiduidade`;
 CREATE TABLE IF NOT EXISTS `assiduidade` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
   `id_avaliado` int(10) DEFAULT NULL,
   `id_gestor` int(10) DEFAULT NULL,
+  `id_avaliacao` int(10) DEFAULT NULL,
   `assiduidade_q1` float DEFAULT NULL,
   `assiduidade_q2` float DEFAULT NULL,
   `assiduidade_obs1` text COLLATE utf8_unicode_ci,
   `assiduidade_obs2` text COLLATE utf8_unicode_ci,
+  `insercao` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_gestor` (`id_gestor`),
-  KEY `id_avaliacao` (`id_avaliado`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `id_avaliacao` (`id_avaliado`),
+  KEY `id_avaliacao_2` (`id_avaliacao`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `assiduidade`
---
-
-INSERT INTO `assiduidade` (`id`, `id_avaliado`, `id_gestor`, `assiduidade_q1`, `assiduidade_q2`, `assiduidade_obs1`, `assiduidade_obs2`) VALUES
-(1, 1, 1, 10, 10, 'teste 1', 'teste 1'),
-(2, 2, 1, 10, 7.5, 'teste', 'teste2');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `avaliacao`
---
 
 DROP TABLE IF EXISTS `avaliacao`;
 CREATE TABLE IF NOT EXISTS `avaliacao` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `data_avaliacao` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `liberacao` enum('0','1') COLLATE utf8_unicode_ci DEFAULT '0',
+  `insercao` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `avaliacao`
---
-
-INSERT INTO `avaliacao` (`id`, `nome`, `data_avaliacao`) VALUES
-(1, 'primeira avaliação', '10/10/2018');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `avaliado`
---
 
 DROP TABLE IF EXISTS `avaliado`;
 CREATE TABLE IF NOT EXISTS `avaliado` (
@@ -87,23 +37,11 @@ CREATE TABLE IF NOT EXISTS `avaliado` (
   `secretaria` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `data_nomeacao` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` enum('0','1') COLLATE utf8_unicode_ci DEFAULT '0',
+  `insercao` timestamp NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_gestor` (`id_gestor`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `avaliado`
---
-
-INSERT INTO `avaliado` (`id`, `id_gestor`, `nome`, `matricula`, `cargo`, `secretaria`, `data_nomeacao`, `status`) VALUES
-(1, 1, 'Carlos Augustos Soares Santos', '112535', '27', '13', '01/02/2018', '1'),
-(2, 1, 'Aquiles Santos de Paula', '116600', '27', '13', '01/06/2017', '1');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `cargo`
---
 
 DROP TABLE IF EXISTS `cargo`;
 CREATE TABLE IF NOT EXISTS `cargo` (
@@ -112,9 +50,6 @@ CREATE TABLE IF NOT EXISTS `cargo` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=301 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `cargo`
---
 
 INSERT INTO `cargo` (`id`, `nome`) VALUES
 (1, 'ADMINIST. REGIONAL'),
@@ -418,39 +353,23 @@ INSERT INTO `cargo` (`id`, `nome`) VALUES
 (299, 'VIGIA-MEDIADOR CAPS AD III'),
 (300, 'VIGILANTE');
 
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `disciplina`
---
-
 DROP TABLE IF EXISTS `disciplina`;
 CREATE TABLE IF NOT EXISTS `disciplina` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `id_avaliado` int(10) NOT NULL,
   `id_gestor` int(10) NOT NULL,
+  `id_avaliacao` int(10) DEFAULT NULL,
   `disciplina_q1` float NOT NULL,
   `disciplina_q2` float NOT NULL,
   `disciplina_obs1` text COLLATE utf8_unicode_ci NOT NULL,
   `disciplina_obs2` text COLLATE utf8_unicode_ci NOT NULL,
+  `insercao` timestamp NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_avaliado` (`id_avaliado`),
-  KEY `id_gestor` (`id_gestor`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `id_gestor` (`id_gestor`),
+  KEY `id_avaliacao` (`id_avaliacao`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `disciplina`
---
-
-INSERT INTO `disciplina` (`id`, `id_avaliado`, `id_gestor`, `disciplina_q1`, `disciplina_q2`, `disciplina_obs1`, `disciplina_obs2`) VALUES
-(1, 1, 1, 7.5, 7.5, '', 'teste 2'),
-(2, 2, 1, 10, 7.5, '', '');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `gestor`
---
 
 DROP TABLE IF EXISTS `gestor`;
 CREATE TABLE IF NOT EXISTS `gestor` (
@@ -460,107 +379,80 @@ CREATE TABLE IF NOT EXISTS `gestor` (
   `cargo` varchar(155) COLLATE utf8_unicode_ci NOT NULL,
   `senha` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `perfil` enum('admin','avaliador','coordenador') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'avaliador',
+  `insercao` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `gestor`
---
-
-INSERT INTO `gestor` (`id`, `nome`, `matricula`, `cargo`, `senha`, `perfil`) VALUES
-(1, 'Jeferson nepomuceno teles', '1234', 'chefe cpd', '81dc9bdb52d04dc20036dbd8313ed055', 'avaliador'),
-(2, 'Farlison Grande Boi', '152489', 'Gerente de Projetos', '81dc9bdb52d04dc20036dbd8313ed055', 'coordenador'),
-(3, 'Thaylon Paulino Pereira', '113626', 'Assessor de informÃ¡tica 2', '81dc9bdb52d04dc20036dbd8313ed055', 'avaliador');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `iniciativa`
---
 
 DROP TABLE IF EXISTS `iniciativa`;
 CREATE TABLE IF NOT EXISTS `iniciativa` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `id_avaliado` int(10) NOT NULL,
   `id_gestor` int(10) NOT NULL,
+  `id_avaliacao` int(10) DEFAULT NULL,
   `iniciativa_q1` float NOT NULL,
   `iniciativa_q2` float NOT NULL,
   `iniciativa_obs1` text COLLATE utf8_unicode_ci NOT NULL,
   `iniciativa_obs2` text COLLATE utf8_unicode_ci NOT NULL,
+  `insercao` timestamp NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_avaliado` (`id_avaliado`),
-  KEY `id_gestor` (`id_gestor`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `id_gestor` (`id_gestor`),
+  KEY `id_avaliacao` (`id_avaliacao`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `iniciativa`
---
 
-INSERT INTO `iniciativa` (`id`, `id_avaliado`, `id_gestor`, `iniciativa_q1`, `iniciativa_q2`, `iniciativa_obs1`, `iniciativa_obs2`) VALUES
-(1, 1, 1, 7.5, 7.5, 'teste 2', 'teste 2'),
-(2, 2, 1, 10, 10, '', '');
+DROP TABLE IF EXISTS `observacao`;
+CREATE TABLE IF NOT EXISTS `observacao` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id_avaliado` int(10) NOT NULL,
+  `id_avaliacao` int(10) NOT NULL,
+  `obs_comissao` text COLLATE utf8_unicode_ci NOT NULL,
+  `presidente` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `membro_um` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `membro_dois` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `obs_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_avaliado` (`id_avaliado`),
+  KEY `id_avaliacao` (`id_avaliacao`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `produtividade`
---
 
 DROP TABLE IF EXISTS `produtividade`;
 CREATE TABLE IF NOT EXISTS `produtividade` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `id_avaliado` int(10) NOT NULL,
   `id_gestor` int(10) NOT NULL,
+  `id_avaliacao` int(10) DEFAULT NULL,
   `produtividade_q1` float NOT NULL,
   `produtividade_q2` float NOT NULL,
   `produtividade_obs1` text COLLATE utf8_unicode_ci NOT NULL,
   `produtividade_obs2` text COLLATE utf8_unicode_ci NOT NULL,
+  `insercao` timestamp NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_avaliado` (`id_avaliado`),
-  KEY `id_gestor` (`id_gestor`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `id_gestor` (`id_gestor`),
+  KEY `id_avaliacao` (`id_avaliacao`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `produtividade`
---
-
-INSERT INTO `produtividade` (`id`, `id_avaliado`, `id_gestor`, `produtividade_q1`, `produtividade_q2`, `produtividade_obs1`, `produtividade_obs2`) VALUES
-(1, 1, 1, 5, 5, 'teste 3', 'teste 3'),
-(2, 2, 1, 10, 10, '', '');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `responsabilidade`
---
 
 DROP TABLE IF EXISTS `responsabilidade`;
 CREATE TABLE IF NOT EXISTS `responsabilidade` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `id_avaliado` int(10) NOT NULL,
   `id_gestor` int(10) NOT NULL,
+  `id_avaliacao` int(10) DEFAULT NULL,
   `responsabilidade_q1` float NOT NULL,
   `responsabilidade_q2` float NOT NULL,
   `responsabilidade_obs1` text COLLATE utf8_unicode_ci NOT NULL,
   `responsabilidade_obs2` text COLLATE utf8_unicode_ci NOT NULL,
+  `insercao` timestamp NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_avaliado` (`id_avaliado`),
-  KEY `id_gestor` (`id_gestor`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `id_gestor` (`id_gestor`),
+  KEY `id_avaliacao` (`id_avaliacao`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `responsabilidade`
---
-
-INSERT INTO `responsabilidade` (`id`, `id_avaliado`, `id_gestor`, `responsabilidade_q1`, `responsabilidade_q2`, `responsabilidade_obs1`, `responsabilidade_obs2`) VALUES
-(1, 1, 1, 2.5, 2.5, 'teste 4', 'teste 5'),
-(2, 2, 1, 10, 10, '', 'tesfsdfsdfsd');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `secretaria`
---
 
 DROP TABLE IF EXISTS `secretaria`;
 CREATE TABLE IF NOT EXISTS `secretaria` (
@@ -569,9 +461,6 @@ CREATE TABLE IF NOT EXISTS `secretaria` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `secretaria`
---
 
 INSERT INTO `secretaria` (`id`, `nome`) VALUES
 (1, 'Administração'),
@@ -589,7 +478,3 @@ INSERT INTO `secretaria` (`id`, `nome`) VALUES
 (13, 'Planejamento'),
 (14, 'Gabinete');
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

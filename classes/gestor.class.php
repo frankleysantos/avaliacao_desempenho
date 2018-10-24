@@ -11,11 +11,12 @@
  		$this->pdo = $pdo;
  	}
 
- 	public function inserirGestor($nome, $matricula, $cargo, $senha){
- 		$sql = $this->pdo->prepare("INSERT INTO gestor (nome, matricula, cargo, senha, insercao) VALUES (:nome, :matricula, :cargo, :senha, now())");
+ 	public function inserirGestor($nome, $matricula, $cargo, $secretaria, $senha){
+ 		$sql = $this->pdo->prepare("INSERT INTO gestor (nome, matricula, cargo, secretaria, senha, insercao) VALUES (:nome, :matricula, :cargo, :secretaria, :senha, now())");
  		$sql->bindValue(":nome", $nome);
  		$sql->bindValue(":matricula", $matricula);
  		$sql->bindValue(":cargo", $cargo);
+ 		$sql->bindValue(":secretaria", $secretaria);
  		$sql->bindValue(":senha", $senha);
  		return $sql->execute();
  	}

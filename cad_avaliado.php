@@ -41,9 +41,8 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
                                             
 }
 ?>
+<h4 align="center">Cadastro do Avaliado (Comissão)</h4>
 <form action="" method="POST" role="form">
-	<legend>Cadastro do Avaliado (Comissão)</legend>
-
 	<div class="form-group">
 		<label class="fas fa-users">Nome</label>
 		<input type="text" class="form-control" id="" placeholder="Nome do Gestor" name="nome" required>

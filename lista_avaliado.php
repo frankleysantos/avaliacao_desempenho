@@ -14,16 +14,15 @@ $avaliado = $avaliado->todosAvaliado();
 if ($sql['perfil'] == 'coordenador'){
 
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) { ?>
-    
+    <h4 align="center">Funcionários em estágio Probatório</h4>
       <table class="table table-bordered table-hover">
-      	<legend align="center">Funcionários em estágio Probatório</legend>
       	<thead>
       		<tr class="table-success">
-      			<th>Nome</th>
-      			<th>Matrícula</th>
-      			<th>Data Nomeação</th>
-                        <th colspan="2">Ação</th>
-                        <th colspan="2">Avaliações</th>
+      			<th><label class="fas fa-users">Nome</label></th>
+      			<th><label class="fas fa-file-signature">Matrícula</label></th>
+      			<th><label class="fas fa-calendar-alt">Nomeação</label></th>
+                        <th colspan="2"><label class="fas fa-edit">Ação</label></th>
+                        <th colspan="2"><label class="fas fa-file-signature">Avaliações</label></th>
       		</tr>
       	</thead>
       	<tbody>
@@ -41,18 +40,18 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) { ?>
                         ?>
                         <td><a class="btn btn-danger fas fa-trash-alt" href="excluir_avaliado.php?id=<?=$aval['id']?>">Excluir</a></td>
                         <?php else: ?>
-                        <td>Exclusão proibida</td>
+                        <td><label class="badge badge-pill badge-dark">Exclusão proibida</label></td>
                         <?php endif ?>
-                        <td><label class="badge badge-warning">Avaliação liberada</label></td>
+                        <td><label class="badge badge-pill badge-warning">Avaliação liberada</label></td>
                         <?php
                         $id_avaliado = $aval['id'];  
                         $assresp = $assiduidade->countAssiduidade($id_avaliado);
                         if (count($assresp) > 0):
                         foreach ($assresp as $resposta):?>
-                        <td><?=$resposta['resposta']?>&ensp;Resposta(as)</td>
+                        <td><label class="badge badge-pill badge-secondary"><?=$resposta['resposta']?>&ensp;Resposta(as)</label></td>
                         <?php endforeach?>
                         <?php else: ?>
-                        <td>Nenhuma resposta</td>
+                        <td><label class="badge badge-pill badge-danger">Nenhuma resposta</label></td>
                         <?php endif ?>
       		</tr>
                   <?php else: ?>
@@ -62,13 +61,13 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) { ?>
                         <td><?=$aval['data_nomeacao']?></td>
                         <td><a class="btn btn-success fas fa-edit" href="edit_avaliado.php?id=<?=$aval['id']?>">Editar</a></td>
                         <!--<td><label class="badge badge-warning">Já respondido</label></td>-->
-                        <td>Exclusão proibida</td>
-                        <td><a class="btn btn-info fas fa-file-signature" href="liberar_resp_avaliado.php?id=<?=$aval['id']?>">Liberar Proxima Avaliação</a></td>
+                        <td><label class="badge badge-pill badge-dark">Exclusão proibida</label></td>
+                        <td><a class="btn btn-info fas fa-file-signature" href="liberar_resp_avaliado.php?id=<?=$aval['id']?>">Liberar Avaliação</a></td>
                         <?php
                         $id_avaliado = $aval['id'];  
                         $assresp = $assiduidade->countAssiduidade($id_avaliado);
                         foreach ($assresp as $resposta):?>
-                        <td><?=$resposta['resposta']?>&ensp;Resposta(as)</td>
+                        <td><label class="badge badge-pill badge-secondary"><?=$resposta['resposta']?>&ensp;Resposta(as)</label></td>
                         <?php endforeach?>
                   </tr>
                   <?php endif ?>

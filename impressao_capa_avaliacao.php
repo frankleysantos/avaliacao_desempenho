@@ -36,7 +36,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 			<?php endforeach ?>
 		</select>
 	</div>
-	<button type="submit" class="btn btn-primary">Buscar</button>
+	<button type="submit" class="btn btn-primary fas fa-search">Buscar</button>
 </form>
 </div>
     <?php  if (!isset($_POST['id_avaliacao']) && empty($_POST['id_avaliacao'])):

@@ -102,6 +102,37 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
             <?php $cargo = $cargo->listaCargoID($id_cargo); ?>
             <p>Cargo: <?php  echo $_SESSION['avaliado']['cargo'] = $cargo['nome'];?></p>
             <p>Comissão Avaliação:</p>
+            <div class="container row">
+            <div class="col-md">
+               <?php if (count($observacao) > 0): ?>
+               <?php foreach ($observacao as $obs): 
+               $id = $obs['presidente'];
+               $presidente = $gestor->listaStatus($id);
+               echo $presidente['nome'];
+               endforeach; ?>
+               <?php endif ?>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md">
+               <?php if (count($observacao) > 0): ?>
+               <?php foreach ($observacao as $obs): 
+               $id = $obs['membro_um'];
+               $membro_um = $gestor->listaStatus($id);
+               echo $membro_um['nome'];
+               endforeach; ?>
+               <?php endif ?>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md">
+               <?php if (count($observacao) > 0): ?>
+               <?php foreach ($observacao as $obs): 
+               $id = $obs['membro_dois'];
+               $membro_dois = $gestor->listaStatus($id);
+               echo $membro_dois['nome'];
+               endforeach; ?>
+               <?php endif ?>
+            </div>
+            </div>
             <legend align="center">AVALIAÇÃO DE DESEMPENHO EM ESTÁGIO PROBATÓRIO</legend>
             <table class="table table-striped table-hover">
             	<thead>

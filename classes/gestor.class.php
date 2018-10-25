@@ -11,12 +11,13 @@
  		$this->pdo = $pdo;
  	}
 
- 	public function inserirGestor($nome, $matricula, $cargo, $secretaria, $senha){
- 		$sql = $this->pdo->prepare("INSERT INTO gestor (nome, matricula, cargo, secretaria, senha, insercao) VALUES (:nome, :matricula, :cargo, :secretaria, :senha, now())");
+ 	public function inserirGestor($nome, $matricula, $cargo, $secretaria, $perfil, $senha){
+ 		$sql = $this->pdo->prepare("INSERT INTO gestor (nome, matricula, cargo, secretaria, perfil, senha, insercao) VALUES (:nome, :matricula, :cargo, :secretaria, :perfil, :senha, now())");
  		$sql->bindValue(":nome", $nome);
  		$sql->bindValue(":matricula", $matricula);
  		$sql->bindValue(":cargo", $cargo);
  		$sql->bindValue(":secretaria", $secretaria);
+ 		$sql->bindValue(":perfil", $perfil);
  		$sql->bindValue(":senha", $senha);
  		return $sql->execute();
  	}
@@ -30,7 +31,7 @@
  	}
 
  	public function listarGestor(){
- 		$sql = $this->pdo->prepare("SELECT * FROM gestor");
+ 		$sql = $this->pdo->prepare("SELECT * FROM gestor WHERE perfil = 'coordenador'");
  		$sql ->execute();
  		return $sql->fetchAll();
  	}

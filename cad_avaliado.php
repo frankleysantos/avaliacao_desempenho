@@ -14,7 +14,7 @@ $cargo = new Cargo($pdo);
 
 $secre = $secretaria->listaSecretaria();
 
-$cargo = $cargo->listaCargo();
+$carg = $cargo->listaCargo();
 
 $chefe = $gestor->listarGestor();
 
@@ -56,7 +56,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 		<label class="fas fa-address-card">Cargo</label>
 		<select name="cargo" class="form-control" required="required">
 			<option value="">Escolha...</option>
-			<?php foreach ($cargo as $funcao): ?>
+			<?php foreach ($carg as $funcao): ?>
 			<option value="<?=$funcao['id']?>"><?=utf8_encode($funcao['nome'])?></option>	
 		    <?php endforeach ?>
 		</select>

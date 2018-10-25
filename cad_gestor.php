@@ -9,7 +9,7 @@ $gestor = new Gestor($pdo);
 $secretaria = new Secretaria($pdo);
 $cargo = new Cargo($pdo);
 $secre = $secretaria->listaSecretaria();
-$cargo = $cargo->listaCargo();
+$carg = $cargo->listaCargo();
 
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 	//verifica se o perfil é coordenador
@@ -20,9 +20,10 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 	    $matricula = addslashes($_POST['matricula']);
 	    $cargo     = addslashes($_POST['cargo']);
 	    $secretaria= addslashes($_POST['secretaria']);
+	    $perfil    = addslashes($_POST['perfil']);
 	    $senha     = addslashes(md5($_POST['senha']));
 
-	    $gestor->inserirGestor($nome, $matricula, $cargo, $secretaria, $senha);
+	    $gestor->inserirGestor($nome, $matricula, $cargo, $secretaria, $perfil, $senha);
 	    echo "<div class='alert alert-success alert-dismissible fade show' role='alert' align='center'>
                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
@@ -48,7 +49,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 		<label class="fas fa-address-card">Cargo</label>
 		<select name="cargo" class="form-control" required="required">
 			<option value="">Escolha...</option>
-			<?php foreach ($cargo as $funcao): ?>
+			<?php foreach ($carg as $funcao): ?>
 			<option value="<?=$funcao['id']?>"><?=utf8_encode($funcao['nome'])?></option>	
 		    <?php endforeach ?>
 		</select>
@@ -61,6 +62,16 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 			<?php foreach ($secre as $dado): ?>
 			<option value="<?=$dado['id']?>"><?=utf8_encode($dado['nome'])?></option>		
 		    <?php endforeach ?>
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label class="fas fa-users">Perfil</label>
+		<select name="perfil" class="form-control" required="required">
+			<option>Escolha o Perfil...</option>
+			<option value="avaliador">Avaliador (Gestor)</option>
+			<option value="coordenador">Membro Comissão</option>
+
 		</select>
 	</div>
 

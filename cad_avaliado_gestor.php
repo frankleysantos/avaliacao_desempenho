@@ -39,7 +39,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
                                             
 }
 ?>
-<form action="" method="POST" role="form">
+<form action="" method="POST" role="form" style="padding-bottom: 100px;">
 	<legend>Cadastro do Avaliado (Área Gestor)</legend>
 
 	<div class="form-group">

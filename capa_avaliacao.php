@@ -12,11 +12,9 @@ ob_start();
                 <br>
                 <br>
                 <br>
-                <br>
 <h1 align="center">AVALIAÇÃO</h1>
 <h1 align="center">DE</h1>
 <h1 align="center">DESEMPENHO</h1>
-            <br>
             <br>
             <br>
             <br>
@@ -29,12 +27,14 @@ ob_start();
             <br>
             <br> 
             <br>
-            <br>
             <p>Processo nº: <?=$_SESSION['avaliado']['processo']?></p>
             <p>Avaliado: <?=$_SESSION['avaliado']['nome']?></p>
             <p>Matricula: <?=$_SESSION['avaliado']['matricula']?></p>
             <p>Cargo: <?=$_SESSION['avaliado']['cargo']?></p>
             <p>Comissão Avaliação:</p>
+            <p>&ensp;&ensp;&ensp;&ensp;<?=$_SESSION['avaliado']['presidente']?><br>&ensp;&ensp;&ensp;&ensp;<?=$_SESSION['avaliado']['membro_um']?><br>
+            &ensp;&ensp;&ensp;&ensp;<?=$_SESSION['avaliado']['membro_dois']?>
+            </p>
 
 <h4 align="center">AVALIAÇÃO DE DESEMPENHO EM ESTÁGIO PROBATÓRIO</h4>
 <br>

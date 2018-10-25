@@ -95,8 +95,22 @@ class Avaliado
     }
 
     public function statusAvaliacaoAll(){
-		$sql = $this->pdo->prepare("UPDATE avaliado SET status = '0'");
-		return $sql ->execute();
+    	$sql = $this->pdo->prepare("SELECT count(id) as totalavaliacao FROM avaliacao");
+    	$sql->execute();
+    	$sql = $sql->fetch();
+    	$avaliacao = $sql['totalavaliacao'];
+    	$sql2 = $this->pdo->prepare("SELECT id_avaliado, count(id_avaliado) as resposta FROM assiduidade GROUP BY id_avaliado");
+    	$sql2->execute();
+    	$sql2 = $sql2->fetchAll();
+    	foreach ($sql2 as $qntinfo) {
+    		if ($qntinfo['resposta'] < $avaliacao) {
+    			$id_avaliado = $qntinfo['id_avaliado'];
+    			$sql3 = $this->pdo->prepare("UPDATE avaliado SET status = '0' WHERE id = :id_avaliado");
+    			$sql3->bindValue(":id_avaliado", $id_avaliado);
+		        $sql3 ->execute();
+    		}
+    	}
+    	return true;
 	}
 }
 ?>

@@ -8,16 +8,16 @@
       <?php if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) :?>
         <?php if ($sql['perfil'] == 'coordenador'):?>
       <li class="nav-item active">
-        <a class="nav-link" href="cad_gestor.php"><label class="fas fa-edit">Cadastrar Avaliador</label><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="cad_gestor.php"><label class="fas fa-edit">Avaliador / Comissão</label><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <label class="fas fa-users">Avaliado</label>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="cad_avaliado.php">Cadastrar Avaliado</a>
+          <a class="dropdown-item" href="cad_avaliado.php">Cadastrar</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="lista_avaliado.php">Listar Avaliados</a>
+          <a class="dropdown-item" href="lista_avaliado.php">Listar</a>
         </div>
       </li>
       <!--
@@ -37,7 +37,7 @@
           <label class="fas fa-file-signature">Avaliacão</label>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="cad_avaliacao_desempenho.php">Cadastrar Avaliacão</a>
+          <a class="dropdown-item" href="cad_avaliacao_desempenho.php">Cadastrar / Listar</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="liberar_avaliacao_all.php">Liberar Avaliação</a>
         </div>

@@ -16,7 +16,7 @@ $secre = $secretaria->listaSecretaria();
 
 $carg = $cargo->listaCargo();
 
-$chefe = $gestor->listarGestor();
+$chefe = $gestor->listarGestorAll();
 
 if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 	$nome      = addslashes($_POST['nome']);
@@ -31,18 +31,26 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 		$avaliado ->inserirAvaliado($nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe);
 		header("Location: index.php");
 	}else{
+
+		$avaliado_id = $avaliado->verificaAvaliado($matricula);
+
+		foreach ($avaliado_id as $gestorid) {
+			$id = $gestorid['id_gestor'];
+		}
+		$chefe_nome = $gestor->listaStatus($id);
 		echo "<div class='alert alert-danger alert-dismissible fade show' role='alert' align='center'>
                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
                </button>
-                <strong>Matricula já cadastrada!</strong>
+                <strong>Matricula do Servidor já cadastrada para o Chefe:&ensp;".$chefe_nome['nome']."</strong>
               </div>";
+              $chefe = $gestor->listarGestorAll();
 	}
                                             
 }
 ?>
 <h4 align="center">Cadastro do Avaliado (Comissão)</h4>
-<form action="" method="POST" role="form">
+<form action="" method="POST" role="form" style="padding-bottom: 50px;">
 	<div class="form-group">
 		<label class="fas fa-users">Nome</label>
 		<input type="text" class="form-control" id="" placeholder="Nome do Gestor" name="nome" required>

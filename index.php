@@ -6,6 +6,14 @@ require "classes/gestor.class.php";
 $avaliado = new Avaliado($pdo);
 $gestor   = new Gestor($pdo);
 $id = $_SESSION['Login'];
+if (isset($_GET['msn']) && !empty($_GET['msn'])) {
+        echo "<div class='alert alert-danger alert-dismissible fade show' role='alert' align='center'>
+               <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+               </button>
+                <strong>A matricula inserida já existe!</strong>
+              </div>";
+    }
 ?>
 <div class="jumbotron">
   <h1 class="display-4">Bem Vindo</h1>

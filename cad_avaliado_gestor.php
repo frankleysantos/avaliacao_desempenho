@@ -29,11 +29,17 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 		$avaliado ->inserirAvaliado($nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe);
 		header("Location: index.php?cad=cadastrado");
 	}else{
+		$avaliado_id = $avaliado->verificaAvaliado($matricula);
+
+		foreach ($avaliado_id as $gestorid) {
+			$id = $gestorid['id_gestor'];
+		}
+		$chefe_nome = $gestor->listaStatus($id);
 		echo "<div class='alert alert-danger alert-dismissible fade show' role='alert' align='center'>
                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
                </button>
-                <strong>Matricula já cadastrada!</strong>
+                <strong>Matricula do Servidor já cadastrada para o Chefe:&ensp;".$chefe_nome['nome']."</strong>
               </div>";
 	}
                                             

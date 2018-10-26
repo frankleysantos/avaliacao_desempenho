@@ -51,16 +51,50 @@ class Avaliado
     }
 
 	public function updateAvaliado($id, $nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe){
-        $sql = $this->pdo->prepare("UPDATE avaliado SET nome = :nome, matricula = :matricula, cargo = :cargo, secretaria = :secretaria, data_nomeacao = :data_nomeacao, id_gestor = :chefe WHERE id = :id");
-		$sql ->bindValue(":id", $id);
-		$sql ->bindValue(":nome", $nome);
-		$sql ->bindValue(":matricula", $matricula);
-		$sql ->bindValue(":cargo", $cargo);
-		$sql ->bindValue(":secretaria", $secretaria);
-		$sql ->bindValue(":data_nomeacao", $data_nomeacao);
-		$sql ->bindValue(":chefe", $chefe);
-		return $sql ->execute();
+        $sql = $this->pdo->prepare("SELECT id, matricula FROM avaliado");
+        $sql ->execute();
+        $sql = $sql->fetchAll();
+
+        foreach ($sql as $dado) {
+        	if($dado['matricula'] == $matricula && $dado['id'] == $id){
+        		$sql2 = $this->pdo->prepare("UPDATE avaliado SET nome = :nome, matricula = :matricula, cargo = :cargo, secretaria = :secretaria, data_nomeacao = :data_nomeacao, id_gestor = :chefe WHERE id = :id");
+		        $sql2 ->bindValue(":id", $id);
+		        $sql2 ->bindValue(":nome", $nome);
+		        $sql2 ->bindValue(":matricula", $matricula);
+		        $sql2 ->bindValue(":cargo", $cargo);
+		        $sql2 ->bindValue(":secretaria", $secretaria);
+		        $sql2 ->bindValue(":data_nomeacao", $data_nomeacao);
+		        $sql2 ->bindValue(":chefe", $chefe);
+		        $sql2 ->execute();
+		        header("Location: lista_avaliado.php");  
+		        break;
+        }
+            if($dado['id'] == $id){
+            	$sql3 = $this->pdo->prepare("SELECT matricula FROM avaliado WHERE matricula = :matricula");
+            	$sql3->bindValue(":matricula", $matricula);
+            	$sql3->execute();
+
+            	if ($sql3->rowCount() < 1) {
+        	    $sql2 = $this->pdo->prepare("UPDATE avaliado SET nome = :nome, matricula = :matricula, cargo = :cargo, secretaria = :secretaria, data_nomeacao = :data_nomeacao, id_gestor = :chefe WHERE id = :id");
+		        $sql2 ->bindValue(":id", $id);
+		        $sql2 ->bindValue(":nome", $nome);
+		        $sql2 ->bindValue(":matricula", $matricula);
+		        $sql2 ->bindValue(":cargo", $cargo);
+		        $sql2 ->bindValue(":secretaria", $secretaria);
+		        $sql2 ->bindValue(":data_nomeacao", $data_nomeacao);
+		        $sql2 ->bindValue(":chefe", $chefe);
+		        $sql2 ->execute();
+		        header("Location: lista_avaliado.php");
+		        break;  
+		        }
+		        else{
+		        header("Location: index.php?msn=1");
+		        break;
+		        }
+            }
 	}
+	return true;
+}
 
 	public function listaAvaliados(){
     	$sql = $this->pdo->prepare("SELECT * FROM avaliado WHERE status = '1'");

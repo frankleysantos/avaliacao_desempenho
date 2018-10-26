@@ -17,7 +17,7 @@ $secre = $secretaria->listaSecretaria();
 
 $cargo = $cargo->listaCargo();
 
-$chefe = $gestor->listarGestor();
+$chefe = $gestor->listarGestorAll();
 $id = $_GET['id'];
 
 if (isset($_POST['nome']) && !empty($_POST['nome'])) {
@@ -28,12 +28,20 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 	$data_nomeacao = addslashes($_POST['data_nomeacao']);
 	$chefe     = addslashes($_POST['chefe']);
 
-    $avaliado ->updateAvaliado($id, $nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe);
-    header("Location: lista_avaliado.php");                                         
+    $avaliado ->updateAvaliado($id, $nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe);                                     
 }
 
 if (count($avaliado->listaAvaliado($id)) > 0) {
-    $aval = $avaliado->listaAvaliado($id);
+    $aval = $avaliado->listaAvaliado($id); 
+
+    if (isset($_GET['msn']) && !empty($_GET['msn'])) {
+        echo "<div class='alert alert-danger alert-dismissible fade show' role='alert' align='center'>
+               <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+               </button>
+                <strong>Não pode ser editado pois matricula já existe!</strong>
+              </div>";
+    } 
 ?>
 <form action="" method="POST" role="form">
 	<legend>Edição dados do Avaliado</legend>

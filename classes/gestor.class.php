@@ -36,6 +36,12 @@
  		return $sql->fetchAll();
  	}
 
+ 	public function listarGestorAll(){
+ 		$sql = $this->pdo->prepare("SELECT * FROM gestor");
+ 		$sql ->execute();
+ 		return $sql->fetchAll();
+ 	}
+
  	public function listaStatus($id){
  		$sql = $this->pdo->prepare("SELECT nome, perfil FROM gestor WHERE id = :id");
  		$sql ->bindValue(":id", $id);

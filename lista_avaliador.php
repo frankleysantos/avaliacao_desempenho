@@ -14,6 +14,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
     		<thead>
     			<tr>
     				<th>Nome</th>
+                    <th>Matricula</th>
     				<th>Perfil</th>
     				<th>Ações</th>
     			</tr>
@@ -22,8 +23,9 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
     			<?php foreach ($avaliador as $aval_gestor): ?>
     			<tr>
     				<td><?=$aval_gestor['nome'];?></td>
+                    <td><?=$aval_gestor['matricula'];?></td>
     				<td><?=$aval_gestor['perfil'];?></td>
-    				<td><a href="edit_gestor_avaliador.php?id_gestor=<?=$aval_gestor['id'];?>">Editar</a></td>
+    				<td><a class="btn btn-info fas fa-edit" href="edit_gestor_avaliador.php?id_gestor=<?=$aval_gestor['id'];?>">Editar</a></td>
     			</tr>
     			<?php endforeach; ?>
     		</tbody>

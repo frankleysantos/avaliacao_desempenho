@@ -8,7 +8,7 @@
       <?php if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) :?>
         <?php if ($sql['perfil'] == 'coordenador'):?>
       <li class="nav-item active dropdown">
-        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><label class="fas fa-edit">Avaliador / Comissão</label><span class="sr-only">(current)</span></a>
+        <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><label class="fas fa-edit">Avaliador / Comissão</label><span class="sr-only">(current)</span></a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="cad_gestor.php">Cadastrar</a>
           <div class="dropdown-divider"></div>
@@ -16,7 +16,7 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <label class="fas fa-users">Avaliado</label>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -38,7 +38,7 @@
       </li>
       -->
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <label class="fas fa-file-signature">Avaliacão</label>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">

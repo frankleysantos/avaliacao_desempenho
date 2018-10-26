@@ -37,7 +37,7 @@
  	}
 
  	public function listarGestorAll(){
- 		$sql = $this->pdo->prepare("SELECT * FROM gestor");
+ 		$sql = $this->pdo->prepare("SELECT * FROM gestor ORDER BY nome");
  		$sql ->execute();
  		return $sql->fetchAll();
  	}
@@ -47,6 +47,24 @@
  		$sql ->bindValue(":id", $id);
  		$sql ->execute();
  		return $sql = $sql->fetch();
+ 	}
+
+ 	public function listaGestorID($id_gestor){
+ 		$sql = $this->pdo->prepare("SELECT * FROM gestor WHERE id = :id_gestor");
+ 		$sql ->bindValue(":id_gestor", $id_gestor);
+ 		$sql ->execute();
+ 		return $sql = $sql->fetch();
+ 	}
+
+ 	public function updateGestor($id_gestor, $nome, $matricula, $cargo, $secretaria, $perfil){
+ 		$sql = $this->pdo->prepare("UPDATE gestor SET nome = :nome, matricula = :matricula, cargo = :cargo, secretaria = :secretaria, perfil = :perfil WHERE id = :id_gestor");
+ 		$sql->bindValue(":nome", $nome);
+ 		$sql->bindValue(":matricula", $matricula);
+ 		$sql->bindValue(":cargo", $cargo);
+ 		$sql->bindValue(":secretaria", $secretaria);
+ 		$sql->bindValue(":perfil", $perfil);
+ 		$sql->bindValue(":id_gestor", $id_gestor);
+ 		return $sql->execute();
  	}
  } 
 

@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `avaliacao` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
+
 DROP TABLE IF EXISTS `avaliado`;
 CREATE TABLE IF NOT EXISTS `avaliado` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -49,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `cargo` (
   `nome` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=301 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 
 INSERT INTO `cargo` (`id`, `nome`) VALUES
@@ -353,6 +355,7 @@ INSERT INTO `cargo` (`id`, `nome`) VALUES
 (299, 'VIGIA-MEDIADOR CAPS AD III'),
 (300, 'VIGILANTE');
 
+
 DROP TABLE IF EXISTS `disciplina`;
 CREATE TABLE IF NOT EXISTS `disciplina` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -374,14 +377,20 @@ CREATE TABLE IF NOT EXISTS `disciplina` (
 DROP TABLE IF EXISTS `gestor`;
 CREATE TABLE IF NOT EXISTS `gestor` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `matricula` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `cargo` varchar(155) COLLATE utf8_unicode_ci NOT NULL,
-  `senha` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `perfil` enum('admin','avaliador','coordenador') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'avaliador',
-  `insercao` timestamp NOT NULL,
+  `nome` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `matricula` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cargo` varchar(155) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `secretaria` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `senha` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `perfil` enum('admin','avaliador','coordenador') COLLATE utf8_unicode_ci DEFAULT 'avaliador',
+  `insercao` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+INSERT INTO `gestor` (`id`, `nome`, `matricula`, `cargo`, `secretaria`, `senha`, `perfil`, `insercao`) VALUES
+(1, 'admin', '999999', '1', '13', '827ccb0eea8a706c4c34a16891f84e7b', 'coordenador', '2018-10-25 03:00:00');
+
 
 
 DROP TABLE IF EXISTS `iniciativa`;
@@ -402,6 +411,7 @@ CREATE TABLE IF NOT EXISTS `iniciativa` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
+
 DROP TABLE IF EXISTS `observacao`;
 CREATE TABLE IF NOT EXISTS `observacao` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -416,7 +426,6 @@ CREATE TABLE IF NOT EXISTS `observacao` (
   KEY `id_avaliado` (`id_avaliado`),
   KEY `id_avaliacao` (`id_avaliacao`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 
 DROP TABLE IF EXISTS `produtividade`;
 CREATE TABLE IF NOT EXISTS `produtividade` (

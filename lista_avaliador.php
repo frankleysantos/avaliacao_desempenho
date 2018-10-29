@@ -27,6 +27,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
     				<td><?=$aval_gestor['perfil'];?></td>
     				<td><a class="btn btn-info fas fa-edit" href="edit_gestor_avaliador.php?id_gestor=<?=$aval_gestor['id'];?>">Editar</a></td>
                     <td><a class="btn btn-danger fas fa-trash" href="excluir_gestor.php?id_gestor=<?=$aval_gestor['id'];?>">Excluir</a></td>
+                    <td><a class="btn btn-success fas fa-key" href="alterar_senha.php?id_gestor=<?=$aval_gestor['id'];?>">Alterar Senha</a></td>
     			</tr>
     			<?php endforeach; ?>
     		</tbody>

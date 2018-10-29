@@ -78,6 +78,13 @@
         $sql->bindValue(":id_gestor", $id_gestor);
         return $sql->execute();
  	}
+
+ 	public function updateSenha($id_gestor, $senha){
+        $sql = $this->pdo->prepare("UPDATE gestor SET senha = md5(:senha) WHERE id = :id_gestor");
+ 		$sql->bindValue(":senha", $senha);
+ 		$sql->bindValue(":id_gestor", $id_gestor);
+ 		return $sql->execute();
+ 	}
  } 
 
 

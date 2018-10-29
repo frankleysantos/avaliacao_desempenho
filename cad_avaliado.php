@@ -29,7 +29,12 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 
 	if (count($avaliado->verificaAvaliado($matricula)) < 1) {
 		$avaliado ->inserirAvaliado($nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe);
-		header("Location: index.php");
+		echo "<div class='alert alert-success alert-dismissible fade show' role='alert' align='center'>
+               <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+               </button>
+                <strong>Cadastrado com sucesso!</strong>
+              </div>";
 	}else{
 
 		$avaliado_id = $avaliado->verificaAvaliado($matricula);

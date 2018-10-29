@@ -92,7 +92,7 @@ if (isset($_POST['responsabilidade_q1']) && !empty($_POST['responsabilidade_q1']
 
 }
 ?>
-
+<div class="container" style="padding-bottom: 100px">
 <form action="" method="POST" role="form">
 	<hr>
     <h4>Assiduidade</h4>
@@ -366,6 +366,7 @@ if (isset($_POST['responsabilidade_q1']) && !empty($_POST['responsabilidade_q1']
 
 	<button type="submit" class="btn btn-primary">Cadastrar</button>
 </form>
+</div>
 
 <?php 
 }else{

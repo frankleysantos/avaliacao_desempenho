@@ -36,6 +36,12 @@
  		return $sql->fetchAll();
  	}
 
+ 	public function listarGestorAvaliador(){
+ 		$sql = $this->pdo->prepare("SELECT * FROM gestor WHERE perfil = 'avaliador' ORDER BY nome");
+ 		$sql ->execute();
+ 		return $sql->fetchAll();
+ 	}
+
  	public function listarGestorAll(){
  		$sql = $this->pdo->prepare("SELECT * FROM gestor ORDER BY nome");
  		$sql ->execute();
@@ -65,6 +71,12 @@
  		$sql->bindValue(":perfil", $perfil);
  		$sql->bindValue(":id_gestor", $id_gestor);
  		return $sql->execute();
+ 	}
+
+ 	public function excluirGestor($id_gestor){
+        $sql = $this->pdo->prepare("DELETE FROM gestor WHERE id = :id_gestor");
+        $sql->bindValue(":id_gestor", $id_gestor);
+        return $sql->execute();
  	}
  } 
 

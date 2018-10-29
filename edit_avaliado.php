@@ -17,7 +17,7 @@ $secre = $secretaria->listaSecretaria();
 
 $cargo = $cargo->listaCargo();
 
-$chefe = $gestor->listarGestorAll();
+$chefe = $gestor->listarGestorAvaliador();
 $id = $_GET['id'];
 
 if (isset($_POST['nome']) && !empty($_POST['nome'])) {
@@ -43,7 +43,8 @@ if (count($avaliado->listaAvaliado($id)) > 0) {
               </div>";
     } 
 ?>
-<form action="" method="POST" role="form">
+<div class="container">
+<form action="" method="POST" role="form" style="padding-bottom: 100px;">
 	<legend>Edição dados do Avaliado</legend>
 
 	<?php foreach ($aval as $info):?>
@@ -93,6 +94,7 @@ if (count($avaliado->listaAvaliado($id)) > 0) {
     <?php endforeach ?>
 	<button type="submit" class="btn btn-primary">Alterar</button>
 </form>
+</div>
 
 <?php
 }

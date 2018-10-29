@@ -16,7 +16,7 @@ $secre = $secretaria->listaSecretaria();
 
 $carg = $cargo->listaCargo();
 
-$chefe = $gestor->listarGestorAll();
+$chefe = $gestor->listarGestorAvaliador();
 
 if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 	$nome      = addslashes($_POST['nome']);
@@ -49,6 +49,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
                                             
 }
 ?>
+<div class="container">
 <h4 align="center">Cadastro do Avaliado (Comissão)</h4>
 <form action="" method="POST" role="form" style="padding-bottom: 50px;">
 	<div class="form-group">
@@ -96,6 +97,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 
 	<button type="submit" class="btn btn-primary fas fa-edit">Cadastrar</button>
 </form>
+</div>
 
 <?php
 }else{

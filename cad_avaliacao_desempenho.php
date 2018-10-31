@@ -35,6 +35,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])){
    		<tr>
    			<th>Nome</th>
    			<th>Data avaliação</th>
+            <th>Ações</th>
    		</tr>
    	</thead>
    	<tbody>
@@ -42,6 +43,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])){
    		<tr>
    			<td><?=$dado['nome'];?></td>
    			<td><?=$dado['data_avaliacao'];?></td>
+            <td><a class="btn btn-info fas fa-edit" href="editar_avaliacao.php?id_avaliacao=<?=$dado['id'];?>">Editar</a></td>
    		</tr>
          <?php endforeach ?>
    	</tbody>

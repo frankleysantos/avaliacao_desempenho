@@ -29,5 +29,13 @@ class Responsabilidade
         $sql ->execute();
         return $sql = $sql->fetch();
 	}
+
+	public function avaliacaoResponsabilidade($id_avaliacao, $id_avaliado){
+        $sql = $this->pdo->prepare("SELECT * FROM responsabilidade WHERE id_avaliacao = :id_avaliacao AND id_avaliado = :id_avaliado");
+        $sql ->bindValue(":id_avaliacao", $id_avaliacao);
+        $sql ->bindValue(":id_avaliado", $id_avaliado);
+        $sql ->execute();
+        return $sql = $sql->fetchAll();
+	}
 }
 ?>

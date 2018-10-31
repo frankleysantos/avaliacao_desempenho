@@ -42,10 +42,10 @@
       </li>
         <?php endif ?>
       <li class="nav-item active">
-        <a class="nav-link" href="inc/sair.php"><label class="fas fa-sign-out-alt">Sair</label></a>
+        <a class="nav-link" href="alterar_senha.php"><label class="fas fa-sign-out-alt">Alterar Senha</label></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="alterar_senha.php"><label class="fas fa-sign-out-alt">Alterar Senha</label></a>
+        <a class="nav-link" href="inc/sair.php"><label class="fas fa-sign-out-alt">Sair</label></a>
       </li>
       <?php endif ?>
     </ul>

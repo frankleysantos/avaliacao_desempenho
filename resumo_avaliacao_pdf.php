@@ -3,7 +3,6 @@
  ?>
  <h4 align="center" style="padding-top: 20px; padding-bottom: 20px">RESUMO DO CONJUNTO DAS AVALIAÇÕES DO ESTÁGIO PROBATÓRIO</h4>
             <table class="table table-striped table-hover">
-            	<tbody>
             		<tr>
             			<th>Cargo / Emprego:</th>
             			<td style="padding-bottom: 10px"><?=$_SESSION['resumo']['cargo'];?></td>

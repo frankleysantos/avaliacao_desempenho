@@ -17,7 +17,7 @@ class Avaliacao
 	}
 
 	public function listaAvaliacaoID($id_avaliacao){
-		$sql = $this->pdo->prepare("SELECT nome FROM avaliacao WHERE id = :id_avaliacao");
+		$sql = $this->pdo->prepare("SELECT * FROM avaliacao WHERE id = :id_avaliacao");
 		$sql ->bindValue(":id_avaliacao", $id_avaliacao);
 		$sql -> execute();
 		return $sql->fetch();
@@ -34,6 +34,14 @@ class Avaliacao
 		$sql = $this->pdo->prepare("SELECT * FROM avaliacao");
 		$sql -> execute();
 		return $sql->fetchAll();
+	}
+
+	public function updateAvaliacao($id_avaliacao, $nome, $data_avaliacao){
+		$sql = $this->pdo->prepare("UPDATE avaliacao SET nome = :nome, data_avaliacao = :data_avaliacao WHERE id = :id_avaliacao");
+		$sql->bindValue(":nome", $nome);
+		$sql->bindValue(":data_avaliacao", $data_avaliacao);
+		$sql->bindValue(":id_avaliacao", $id_avaliacao);
+		return $sql->execute();
 	}
 }
 

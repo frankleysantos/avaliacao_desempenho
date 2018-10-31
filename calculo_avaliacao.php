@@ -75,6 +75,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
    <div class="row">
    	<div class="col-md">
     <p><a href="#" onclick="window.print()" class="btn btn-warning fas fa-print">Imprimir</a></p>
+    <p><a href="lista_obs_avaliador?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>" class="btn btn-info fas fa-users">Observações Avaliador</a></p>
     </div>
     <!--
     <div class="col-md" align="center">

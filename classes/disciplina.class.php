@@ -30,5 +30,13 @@ class Disciplina
         $sql ->execute();
         return $sql = $sql->fetch();
 	}
+
+	public function avaliacaoDisciplina($id_avaliacao, $id_avaliado){
+        $sql = $this->pdo->prepare("SELECT * FROM disciplina WHERE id_avaliacao = :id_avaliacao AND id_avaliado = :id_avaliado");
+        $sql ->bindValue(":id_avaliacao", $id_avaliacao);
+        $sql ->bindValue(":id_avaliado", $id_avaliado);
+        $sql ->execute();
+        return $sql = $sql->fetchAll();
+	}
 }
 ?>

@@ -40,7 +40,7 @@ $avaliacao = $avaliacao->todosAvaliacao();
 
 	<p><label><b>Servidor:</b></label>
 		<?php foreach ($aval as $avalnome) {
-		echo $avalnome['nome'];	
+		echo $nome = $avalnome['nome'];	
 		} ?>
 	</p>
 	<p><label><b>Matricula:</b></label>
@@ -153,9 +153,10 @@ $avaliacao = $avaliacao->todosAvaliacao();
 	</div>
 </div>
 <div class="hidden-print">
-        <p>
-         <a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a>
-        </p>
+        <div class="row">
+          <div class="col-md"><a href="relatorios.php?id_avaliado=<?=$_GET['id_avaliado']?>&nome=<?=$nome?>" class="btn btn-danger fas fa-file-pdf">Relatórios</a></div>
+          <div class="col-md" align="right"><a href="#" onclick="window.print()" class="btn btn-warning fas fa-print">Imprimir</a></div>
+        </div>
 </div>
 
 <?php

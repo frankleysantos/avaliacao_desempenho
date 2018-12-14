@@ -75,7 +75,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
    <div class="row">
    	<div class="col-md">
     <p><a href="#" onclick="window.print()" class="btn btn-warning fas fa-print">Imprimir</a></p>
-    <p><a href="lista_obs_avaliador?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>" class="btn btn-info fas fa-users">Observações Avaliador</a></p>
+    <p><a href="lista_obs_avaliador?id_avaliado=<?=$id_avaliado?>&id_avaliacao=<?=$id_avaliacao?>" class="btn btn-info fas fa-users">Observações da Chefia Imediata</a></p>
     </div>
     <!--
     <div class="col-md" align="center">
@@ -103,7 +103,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
             			<td><?php echo $dado['data_nomeacao']; ?></td>
             			<?php $id_cargo = $dado['cargo']; ?>
             			<?php $cargo = $cargo->listaCargoID($id_cargo); ?>
-            			<td><b>Cargo:</b>&ensp;<?php  echo $cargo['nome'];?></td>
+            			<td><b>Cargo:</b>&ensp;<?php  echo utf8_encode($cargo['nome']);?></td>
             		</tr>
             		<tr>
             			<th>Unidade Administrativa:</th>

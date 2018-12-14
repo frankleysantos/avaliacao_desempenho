@@ -92,10 +92,11 @@ $total = $ass['totalassiduidade'] + $dis['totaldisciplina'] + $ini['totaliniciat
       <p align="center">Teófilo Otoni <?php echo strftime('%d de %B de %Y', strtotime('today'));?>
 
        <div class="hidden-print">
-        <p>
-         <a href="#" onclick="window.print()" class="btn btn-warning fas fa-print">Imprimir</a>
-         <a href="notificacao_resultado_pdf.php" class="btn btn-danger fas fa-file-pdf" target="_blank">Gerar PDF</a>
-        </p>
+          <div class="row">
+            <div class="col-md"><a href="relatorios.php?id_avaliado=<?=$_GET['id_avaliado']?>&nome=<?=$_SESSION['notificacao']['nome'];?>" class="btn btn-warning fas fa-file-pdf">Relatórios</a></div>
+            <div class="col-md" align="right"><a href="#" onclick="window.print()" class="btn btn-warning fas fa-print">Imprimir</a>
+         <a href="notificacao_resultado_pdf.php" class="btn btn-danger fas fa-file-pdf" target="_blank">Gerar PDF</a></div>
+          </div>
        </div>
  </div>
 <?php endif ?>

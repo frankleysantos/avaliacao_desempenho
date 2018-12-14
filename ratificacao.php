@@ -44,9 +44,10 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 <p align="center" style="padding-top: 80px;">Prefeitura Municipal de Teófilo Otoni <?php echo strftime('%d de %B de %Y', strtotime('today'));?>
 <p align="center" style="padding-top: 80px">__________________________________________________________<br>Prefeito Municipal</p>
   <div class="hidden-print">
-    <p>
-    <a href="#" onclick="window.print()" class="btn btn-warning fas fa-print">Imprimir</a>
-    </p>
+    <div class="row">
+    	<div class="col-md"><a href="relatorios.php?id_avaliado=<?=$_GET['id_avaliado']?>&nome=<?=$nome?>" class="btn btn-warning fas fa-file-pdf">Relatórios</a></div>
+    	<div class="col-md" align="right"><a href="#" onclick="window.print()" class="btn btn-danger fas fa-print">Imprimir</a></div>
+    </div>
   </div>
 </div>
 

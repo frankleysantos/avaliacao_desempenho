@@ -249,10 +249,11 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
            </div>
 
            <div class="hidden-print container">
-            <p>
+            <div class="row">
              <!--<a href="#" onclick="window.print()" class="btn btn-warning">Imprimir</a>-->
-             <a href="capa_avaliacao.php"  class="btn btn-danger fas fa-print" target="_blank">Gerar PDF e Imprimir</a>
-            </p>
+             <div class="col-md"><a href="relatorios.php?id_avaliado=<?=$_GET['id_avaliado']?>&nome=<?=$_SESSION['avaliado']['nome']?>" class="btn btn-warning fas fa-file">Relatórios</a></div>
+             <div class="col-md" align="right"><a href="capa_avaliacao.php"  class="btn btn-danger fas fa-print" target="_blank">Gerar PDF e Imprimir</a></div>
+             </div>
            </div>
 <?php
         } //aqui fecha o formulário de busca. 

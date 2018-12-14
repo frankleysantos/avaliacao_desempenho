@@ -46,7 +46,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 }
 ?>
 <form action="" method="POST" role="form" style="padding-bottom: 100px;">
-	<legend>Cadastro do Avaliado (Área Gestor)</legend>
+	<legend align="center">Cadastrar Funcionário a ser Avaliado</legend>
 
 	<div class="form-group">
 		<label class="fas fa-users">Nome</label>
@@ -84,8 +84,10 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 	<div class="form-group">
 		<input type="hidden" name="chefe" class="form-control" value="<?php echo $chefe = $_SESSION['Login'];?>">
 	</div>
-
-	<button type="submit" class="btn btn-primary fas fa-edit">Cadastrar</button>
+	<div class="row">
+		<div class="col-md"><a href="index.php" class="btn btn-danger fas fa-arrow-left">Voltar</a></div>
+		<div class="col-md" align="right"><button type="submit" class="btn btn-primary fas fa-edit">Cadastrar</button></div>
+	</div>
 </form>
 
 <?php

@@ -10,10 +10,11 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
 		if (isset($_GET['id_avaliacao']) && !empty($_GET['id_avaliacao'])) {
 			$id_avaliacao   = $_GET['id_avaliacao'];
 			if (isset($_POST['nome']) && !empty($_POST['nome'])) {
+			$id_atualizado_por  = $_SESSION['Login'];
 			$nome           = $_POST['nome'];
 			$data_avaliacao = $_POST['data_avaliacao'];
 			$data_final		= $_POST['data_final'];
-			$avaliacao->updateAvaliacao($id_avaliacao, $nome, $data_avaliacao, $data_final);
+			$avaliacao->updateAvaliacao($id_avaliacao, $nome, $data_avaliacao, $data_final, $id_atualizado_por);
 			header("Location: cad_avaliacao_desempenho.php");
 			}
 		}

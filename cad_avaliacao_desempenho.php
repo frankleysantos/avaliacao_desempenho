@@ -9,10 +9,11 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])){
         if ($sql['perfil'] == 'coordenador'){
          
          if (isset($_POST['nome']) && !empty($_POST['nome'])) {
+         $id_inserido_por  = $_SESSION['Login'];
          $nome             = $_POST['nome'];
          $data_avaliacao   = $_POST['data_avaliacao'];
          $data_final       = $_POST['data_final'];
-         $avaliacao->inserirAvaliacao($nome, $data_avaliacao, $data_final);
+         $avaliacao->inserirAvaliacao($nome, $data_avaliacao, $data_final, $id_inserido_por);
          }
         ?>
 <h4 align="center">Cadastrar Avaliação</h4>

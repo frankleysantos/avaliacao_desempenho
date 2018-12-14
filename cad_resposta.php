@@ -363,8 +363,10 @@ if (isset($_POST['responsabilidade_q1']) && !empty($_POST['responsabilidade_q1']
             <textarea class="form-control" rows="3" name="responsabilidade_obs2"></textarea>
     </div>
 	<hr>
-
-	<button type="submit" class="btn btn-primary">Cadastrar</button>
+	<div class="row">
+		<div class="col-md"><a href="busca_avaliacao.php?id=<?=$_GET['id']?>" class="btn btn-danger fas fa-arrow-left">Voltar</a></div>
+		<div class="col-md" align="right"><button type="submit" class="btn btn-primary fas fa-edit">Cadastrar</button></div>
+	</div>
 </form>
 </div>
 

@@ -1,6 +1,6 @@
 </div>
 <!-- jQuery -->
-		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="resources/js/jquery.min.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="functions.js"></script>
 		<script src="resources/js/bootstrap.min.js"></script>

@@ -92,7 +92,10 @@ if (count($avaliado->listaAvaliado($id)) > 0) {
 		</select>
 	</div>
     <?php endforeach ?>
-	<button type="submit" class="btn btn-primary">Alterar</button>
+    <div class="row">
+    	<div class="col-md"><a href="index.php" class="btn btn-danger fas fa-home">Home</a></div>
+    	<div class="col-md" align="right"><button type="submit" class="btn btn-primary fas fa-edit">Alterar</button></div>
+	</div>
 </form>
 </div>
 

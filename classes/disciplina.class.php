@@ -38,5 +38,12 @@ class Disciplina
         $sql ->execute();
         return $sql = $sql->fetchAll();
 	}
+
+	public function ultNotaDisciplina($id_avaliado){
+        $sql = $this->pdo->prepare("SELECT SUM(disciplina_q1+disciplina_q2) as totaldisciplina, insercao FROM disciplina WHERE id_avaliado = :id_avaliado AND id_avaliacao = (select max(id_avaliacao) from disciplina WHERE id_avaliado = :id_avaliado)");
+        $sql ->bindValue(":id_avaliado", $id_avaliado);
+        $sql ->execute();
+        return $sql = $sql->fetch();
+	}
 }
 ?>

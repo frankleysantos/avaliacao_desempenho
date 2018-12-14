@@ -87,7 +87,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
     -->
    </div>
 </div>
-            <h4 align="center" class="hidden-print"><?=$id_avaliacao?>º Avaliação</h4>
+            <h4 align="center" class="hidden-print"><?=$id_avaliacao?>ª Avaliação</h4>
             <h4 style="padding-top: 50px;" align="center">Anexo VII</h4>
             <table class="table table-striped table-hover">
             	<legend align="center" class="table-success">Avaliação Especial de Desempenho em Estágio Probatório</legend>

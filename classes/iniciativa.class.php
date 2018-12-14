@@ -38,5 +38,12 @@ class Iniciativa
         return $sql = $sql->fetchAll();
 	}
 	
+
+	public function ultNotaIniciativa($id_avaliado){
+        $sql = $this->pdo->prepare("SELECT SUM(iniciativa_q1+iniciativa_q2) as totaliniciativa, insercao FROM iniciativa WHERE id_avaliado = :id_avaliado AND id_avaliacao = (select max(id_avaliacao) from iniciativa WHERE id_avaliado = :id_avaliado)");
+        $sql ->bindValue(":id_avaliado", $id_avaliado);
+        $sql ->execute();
+        return $sql = $sql->fetch();
+	}
 }
 ?>

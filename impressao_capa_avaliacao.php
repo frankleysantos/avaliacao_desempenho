@@ -76,7 +76,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 ?>
             <div class="hidden-print">
             <p align="center"></p>
-            <h4 align="center"><?=$id_avaliacao?>º Avaliação</h4>
+            <h4 align="center"><?=$id_avaliacao?>ª Avaliação</h4>
             </div>
             <div class="row" align="center">
             <img src="resources/images/brasao.png" class="img-thumbnail">
@@ -100,7 +100,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
             <p>Matricula: <?php echo $_SESSION['avaliado']['matricula'] = $dado['matricula']; ?></p>
             <?php $id_cargo = $dado['cargo']; ?>
             <?php $cargo = $cargo->listaCargoID($id_cargo); ?>
-            <p>Cargo: <?php  echo $_SESSION['avaliado']['cargo'] = $cargo['nome'];?></p>
+            <p>Cargo: <?php  echo $_SESSION['avaliado']['cargo'] = utf8_encode($cargo['nome']);?></p>
             <p>Comissão Avaliação:</p>
             <div class="container row">
             <div class="col-md">
@@ -146,7 +146,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
             			<th>Data da nomeação:</th>
             			<td><?php echo $_SESSION['avaliado']['data_nomeacao'] = $dado['data_nomeacao']; ?></td>
             			<?php $id_cargo = $dado['cargo']; ?>
-            			<td><b>Cargo:</b>&ensp;<?php  echo $cargo['nome'];?></td>
+            			<td><b>Cargo:</b>&ensp;<?php  echo utf8_encode($cargo['nome']);?></td>
             		</tr>
             		<tr>
             			<th>Unidade Administrativa:</th>

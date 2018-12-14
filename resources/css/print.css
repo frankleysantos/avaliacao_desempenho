@@ -3,11 +3,6 @@
 	.hidden-print  { display: none !important; }
 
 	body {
-		margin-top: 8cm;
-		margin-right: 2cm;
-		margin-bottom: 8cm;
-		margin-left: 2cm;
-		page-break-after: always ;
-
+        font-size: 11px;
 	}
 }

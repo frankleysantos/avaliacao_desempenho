@@ -50,6 +50,14 @@ class Assiduidade
 		$sql->execute();
 		return $sql = $sql->fetchAll();
 	}
+
+
+	public function ultNotaAssiduidade($id_avaliado){
+        $sql = $this->pdo->prepare("SELECT SUM(assiduidade_q1+assiduidade_q2) as totalassiduidade, insercao FROM assiduidade WHERE id_avaliado = :id_avaliado AND id_avaliacao = (select max(id_avaliacao) from assiduidade WHERE id_avaliado = :id_avaliado)");
+        $sql ->bindValue(":id_avaliado", $id_avaliado);
+        $sql ->execute();
+        return $sql = $sql->fetch();
+	}
     
 
 }

@@ -65,7 +65,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
         <label class="fas fa-users">Perfil</label>
         <select name="perfil" class="form-control" required="required">
             <option>Escolha o Perfil...</option>
-            <option value="avaliador"<?php if ($gestor['perfil'] = 'avaliador') echo 'selected';?>>Avaliador (Gestor)</option>
+            <option value="avaliador"<?php if ($gestor['perfil'] = 'avaliador') echo 'selected';?>>Chefia Imediata</option>
             <option value="coordenador"<?php if ($gestor['perfil'] = 'coordenador') echo 'selected';?>>Membro Comissão</option>
 
         </select>

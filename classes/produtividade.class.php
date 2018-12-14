@@ -37,5 +37,12 @@ class Produtividade
         $sql ->execute();
         return $sql = $sql->fetchAll();
 	}
+
+	public function ultNotaProdutividade($id_avaliado){
+        $sql = $this->pdo->prepare("SELECT SUM(produtividade_q1+produtividade_q2) as totalprodutividade, insercao FROM produtividade WHERE id_avaliado = :id_avaliado AND id_avaliacao = (select max(id_avaliacao) from produtividade WHERE id_avaliado = :id_avaliado)");
+        $sql ->bindValue(":id_avaliado", $id_avaliado);
+        $sql ->execute();
+        return $sql = $sql->fetch();
+	}
 }
 ?>

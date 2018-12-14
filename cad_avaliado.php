@@ -55,7 +55,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 }
 ?>
 <div class="container">
-<h4 align="center">Cadastro do Avaliado (Comissão)</h4>
+<h4 align="center">Cadastro Funcionário a ser Avaliado</h4>
 <form action="" method="POST" role="form" style="padding-bottom: 50px;">
 	<div class="form-group">
 		<label class="fas fa-users">Nome</label>
@@ -99,8 +99,11 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 		    <?php endforeach ?>
 		</select>
 	</div>
-
-	<button type="submit" class="btn btn-primary fas fa-edit">Cadastrar</button>
+    
+    <div class="row">
+    	<div class="col-md"><a href="index" class="btn btn-danger fas fa-home">Home</a></div>
+    	<div class="col-md" align="right"><button type="submit" class="btn btn-primary fas fa-edit">Cadastrar</button></div>
+	</div>
 </form>
 </div>
 

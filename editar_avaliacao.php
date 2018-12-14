@@ -12,7 +12,8 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
 			if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 			$nome           = $_POST['nome'];
 			$data_avaliacao = $_POST['data_avaliacao'];
-			$avaliacao->updateAvaliacao($id_avaliacao, $nome, $data_avaliacao);
+			$data_final		= $_POST['data_final'];
+			$avaliacao->updateAvaliacao($id_avaliacao, $nome, $data_avaliacao, $data_final);
 			header("Location: cad_avaliacao_desempenho.php");
 			}
 		}
@@ -25,11 +26,15 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
 		<input type="text" class="form-control" id="" placeholder="Ex: primeira avaliação" name="nome" value="<?=$aval['nome']?>">
 	</div>
 	<div class="form-group">
-		<label class="fas fa-calendar-alt">Data da Avaliação</label>
-		<input type="text" class="form-control" id="" placeholder="Ex: 00/00/0000" name="data_avaliacao" onkeypress="dataConta(this)" minlength="10" maxlength="10" value="<?=$aval['data_avaliacao']?>">
+		<label class="fas fa-calendar-alt">Data Inicial da Avaliação</label>
+		<input type="text" class="form-control" id="" placeholder="Ex: 00/00/0000" name="data_avaliacao" onkeypress="dataConta(this)" minlength="10" maxlength="10" value="<?=$aval['data_avaliacao']?>" required>
+	</div>
+	<div class="form-group">
+		<label class="fas fa-calendar-alt">Data Final da Avaliação</label>
+		<input type="text" class="form-control" id="" placeholder="Ex: 00/00/0000" name="data_final" onkeypress="dataConta(this)" minlength="10" maxlength="10" value="<?=$aval['data_final']?>" required>
 	</div>
 
-	<button type="submit" class="btn btn-primary fas fa-edit">Editar</button>
+	<button type="submit" class="btn btn-primary fas fa-edit">Salvar</button>
 </form>
 <?php
 	endif;

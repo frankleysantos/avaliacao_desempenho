@@ -23,10 +23,11 @@ class Avaliacao
 		return $sql->fetch();
 	}
 
-	public function inserirAvaliacao($nome, $data_avaliacao){
-		$sql = $this->pdo->prepare("INSERT INTO avaliacao (nome, data_avaliacao, liberacao, insercao) VALUES (:nome, :data_avaliacao, '1', now())");
+	public function inserirAvaliacao($nome, $data_avaliacao, $data_final){
+		$sql = $this->pdo->prepare("INSERT INTO avaliacao (nome, data_avaliacao, data_final, liberacao, insercao) VALUES (:nome, :data_avaliacao, :data_final, '1', now())");
 		$sql ->bindValue(":nome", $nome);
 		$sql ->bindValue(":data_avaliacao", $data_avaliacao);
+		$sql ->bindValue(":data_final", $data_final);
 		$sql -> execute();
 	}
 
@@ -36,11 +37,12 @@ class Avaliacao
 		return $sql->fetchAll();
 	}
 
-	public function updateAvaliacao($id_avaliacao, $nome, $data_avaliacao){
-		$sql = $this->pdo->prepare("UPDATE avaliacao SET nome = :nome, data_avaliacao = :data_avaliacao WHERE id = :id_avaliacao");
+	public function updateAvaliacao($id_avaliacao, $nome, $data_avaliacao, $data_final){
+		$sql = $this->pdo->prepare("UPDATE avaliacao SET nome = :nome, data_avaliacao = :data_avaliacao, data_final = :data_final WHERE id = :id_avaliacao");
 		$sql->bindValue(":nome", $nome);
 		$sql->bindValue(":data_avaliacao", $data_avaliacao);
 		$sql->bindValue(":id_avaliacao", $id_avaliacao);
+		$sql->bindValue(":data_final", $data_final);
 		return $sql->execute();
 	}
 }

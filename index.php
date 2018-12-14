@@ -3,8 +3,18 @@ require "inc/cabecalho.php";
 require "inc/config.php";
 require "classes/avaliado.class.php";
 require "classes/gestor.class.php";
-$avaliado = new Avaliado($pdo);
-$gestor   = new Gestor($pdo);
+require "classes/disciplina.class.php";
+require "classes/iniciativa.class.php";
+require "classes/produtividade.class.php";
+require "classes/responsabilidade.class.php";
+require "classes/assiduidade.class.php";
+$avaliado     = new Avaliado($pdo);
+$gestor       = new Gestor($pdo);
+$assiduidade  = new Assiduidade($pdo);
+$disciplina        = new Disciplina($pdo);
+$iniciativa        = new Iniciativa($pdo);
+$produtividade     = new Produtividade($pdo);
+$responsabilidade  = new Responsabilidade($pdo);
 $id = $_SESSION['Login'];
 if (isset($_GET['msn']) && !empty($_GET['msn'])) {
   echo "<div class='alert alert-danger alert-dismissible fade show' role='alert' align='center'>
@@ -42,11 +52,20 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
           <tr>
             <th><label class="fas fa-users">Nome</label></th>
             <th><label class="fas fa-file-alt">Matricula</label></th>
-            <th><label class="fas fa-user-edit">Ações</label></th>
+            <th colspan="2"><label class="fas fa-user-edit">Ações</label></th>
           </tr>
         </thead>
         <tbody>              
           <?php    foreach ($info as $dado):?>
+            <?php
+                $id_avaliado = $dado['id']; 
+                $nota_assiduidade       = $assiduidade->ultNotaAssiduidade($id_avaliado);
+                $nota_disciplina        = $disciplina->ultNotaDisciplina($id_avaliado);
+                $nota_iniciativa        = $iniciativa->ultNotaIniciativa($id_avaliado);
+                $nota_produtividade  = $produtividade->ultNotaProdutividade($id_avaliado);
+                $nota_responsabilidade  = $responsabilidade->ultNotaResponsabilidade($id_avaliado);  
+
+              ?>
             <tr>
               <td><?= $dado['nome']?></td>
               <td><?= $dado['matricula']?></td>
@@ -54,9 +73,16 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
                 <td><a class="btn btn-success" href="busca_avaliacao.php?id=<?=$dado['id']?>"><label class="fas fa-search">Avaliar Funcionário</label></a>
                   <a class="btn btn-info" href="edit_avaliado.php?id=<?=$dado['id']?>"><label class="fas fa-user-edit">Editar</label></a>
                 </td>
+                <?php if ($nota_assiduidade['totalassiduidade'] > 0): ?>
+                  <td><b>Ultima Nota:</b><label class="badge badge-danger"><?=$nota_assiduidade['totalassiduidade']+$nota_disciplina['totaldisciplina']+$nota_iniciativa['totaliniciativa']+$nota_produtividade['totalprodutividade']+$nota_responsabilidade['totalresponsabilidade'];?></label></td>
+                <?php else: ?>
+                <td><b>Nenhuma avaliação respondida</b></td>
+              <?php endif; ?>
               <?php endif?>
               <?php if ($dado['status'] == '1'):?>
                 <td><label class="badge badge-warning">Avaliação respondida</label></td>
+              
+                <td><b>Ultima Nota:</b><label class="badge badge-danger"><?=$nota_assiduidade['totalassiduidade']+$nota_disciplina['totaldisciplina']+$nota_iniciativa['totaliniciativa']+$nota_produtividade['totalprodutividade']+$nota_responsabilidade['totalresponsabilidade'];?></label></td>
               <?php endif?>
             </tr>
           <?php    endforeach ?>

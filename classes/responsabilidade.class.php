@@ -37,5 +37,13 @@ class Responsabilidade
         $sql ->execute();
         return $sql = $sql->fetchAll();
 	}
+
+
+	public function ultNotaResponsabilidade($id_avaliado){
+        $sql = $this->pdo->prepare("SELECT SUM(responsabilidade_q1+responsabilidade_q2) as totalresponsabilidade, insercao FROM responsabilidade WHERE id_avaliado = :id_avaliado AND id_avaliacao = (select max(id_avaliacao) from responsabilidade WHERE id_avaliado = :id_avaliado)");
+        $sql ->bindValue(":id_avaliado", $id_avaliado);
+        $sql ->execute();
+        return $sql = $sql->fetch();
+	}
 }
 ?>

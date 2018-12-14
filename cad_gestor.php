@@ -33,7 +33,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 	
      }
 ?>
-<h4 align="center">Cadastro do Gestor (Avaliador) </h4>
+<h4 align="center">Cadastro Chefia Imediata (Avaliador) ou Membro da Comissão</h4>
 <form action="" method="POST" role="form" style="padding-bottom: 100px;">
 	<div class="form-group">
 		<label class="fas fa-users">Nome</label>
@@ -69,7 +69,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 		<label class="fas fa-users">Perfil</label>
 		<select name="perfil" class="form-control" required="required">
 			<option>Escolha o Perfil...</option>
-			<option value="avaliador">Avaliador (Gestor)</option>
+			<option value="avaliador">Chefia Imediata</option>
 			<option value="coordenador">Membro Comissão</option>
 
 		</select>
@@ -79,8 +79,12 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 		<label class="fas fa-key">Senha</label>
 		<input type="password" class="form-control" id="" placeholder="*******" name="senha" required>
 	</div>
-
-	<button type="submit" class="btn btn-primary fas fa-edit">Cadastrar</button>
+    <div class="row">
+    	<div class="col-md"><a href="index.php" class="btn btn-info fas fa-home">Home</a></div>
+    	<div class="col-md" align="right">
+			<button type="submit" class="btn btn-primary fas fa-edit">Cadastrar</button>
+		</div>
+	</div>
 </form>
 
 <?php

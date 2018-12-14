@@ -20,7 +20,7 @@ if (isset($_POST['relatorio']) && !empty($_POST['relatorio'])) {
 	}
 	if ($_POST['relatorio'] == 'termo') {
 		$id_avaliado = $_GET['id_avaliado'];
-	    header("Location: http://localhost/avaliacao/termo_circunstanciado.php?id_avaliado=$id_avaliado");
+	    header("Location: termo_circunstanciado.php?id_avaliado=$id_avaliado");
 	}
 }
 ?>

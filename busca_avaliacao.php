@@ -9,17 +9,17 @@ require "classes/responsabilidade.class.php";
 require "classes/assiduidade.class.php";
 require "classes/avaliado.class.php";
 
-$avaliado          = new Avaliado($pdo);
-$assiduidade       = new Assiduidade($pdo);
-$disciplina        = new Disciplina($pdo);
-$iniciativa        = new Iniciativa($pdo);
-$produtividade     = new Produtividade($pdo);
-$responsabilidade  = new Responsabilidade($pdo);
-$avaliacao         = new Avaliacao($pdo);
-$avaliacao         = $avaliacao->listaAvaliacao();
+$avaliado          	= new Avaliado($pdo);
+$assiduidade       	= new Assiduidade($pdo);
+$disciplina        	= new Disciplina($pdo);
+$iniciativa        	= new Iniciativa($pdo);
+$produtividade     	= new Produtividade($pdo);
+$responsabilidade  	= new Responsabilidade($pdo);
+$avaliacao         	= new Avaliacao($pdo);
+$infoavaliacao		= new Avaliacao($pdo);
+$avaliacao         	= $avaliacao->listaAvaliacao();
+$dtavaliacao 		= $infoavaliacao->todosAvaliacao();
 $id = $_GET['id'];
-
-
 if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
 	$id_avaliado = $_GET['id'];
     $avaliado = $avaliado->listaAvaliado($id);
@@ -44,10 +44,35 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
 	<div class="form-group">
 		<label for="">Avaliações Cadastradas</label>
 		<select name="id_avaliacao" id="inputNome" class="form-control" required="required">
-			  <option value="">Escolha...</option>
-			<?php foreach ($avaliacao as $info): ?>
-			  <option value="<?=$info['id']?>"><?=$info['nome'];?></option>	
-			<?php endforeach ?>
+			  <option value="" disabled selected>Escolha a Avaliação...</option>
+			<?php  
+				$date = date('d/m/Y');
+				$data_atual = explode("/", $date);
+				$dia_atual = $data_atual[0];
+				$mes_atual = $data_atual[1];
+				$ano_atual = $data_atual[2];
+				foreach ($dtavaliacao as $info_avaliacao) {
+				    $data_final = $info_avaliacao['data_final'];
+				    $data_fim = explode("/", $data_final);
+				    $ano_fim = $data_fim[2];
+				    $mes_fim = $data_fim[1];
+				    $dia_fim = $data_fim[0];
+				    if ($ano_atual == $ano_fim) {
+				    	if ($mes_atual <= $mes_fim) {
+				    		if ($dia_atual <= $dia_fim) {
+				?>
+							<option value="<?=$info_avaliacao['id']?>"><?=$info_avaliacao['nome'];?> - <?=$info_avaliacao['data_avaliacao'];?> a <?=$info_avaliacao['data_final'];?></option>	
+				<?php	
+				    		}
+				    	}
+				    }
+ 				   if ($ano_atual < $ano_fim) {
+ 				?>
+ 							<option value="<?=$info_avaliacao['id']?>"><?=$info_avaliacao['nome'];?> - <?=$info_avaliacao['data_avaliacao'];?> a <?=$info_avaliacao['data_final'];?></option>	
+ 				<?php
+				    }
+				}
+			 ?>
 		</select>
 	</div>
 	<button type="submit" class="btn btn-primary">Buscar</button>

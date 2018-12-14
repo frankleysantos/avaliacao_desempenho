@@ -11,7 +11,10 @@ session_start();
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="resources/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link href="resources/css/fontawesome.css" rel="stylesheet">
+        <link href="resources/css/brands.css" rel="stylesheet">
+        <link href="resources/css/solid.css" rel="stylesheet">
+        <link href="resources/css/all.css" rel="stylesheet">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,5 +40,5 @@ session_start();
             ?>
 
             <?php require "inc/menu.php"; ?>
-		    <div class="container">
+		    <div class="container" style="padding-bottom: 80px;">
 			

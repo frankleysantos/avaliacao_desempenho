@@ -29,7 +29,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) { ?>
       	    <?php foreach ($avaliado as $aval): ?>
                   <?php if($aval['status'] == '0'): ?>
       		<tr>
-      			<td><?=$aval['nome']?></td>
+      			<td><?=utf8_encode($aval['nome'])?></td>
       			<td><?=$aval['matricula']?></td>
       			<td><?=$aval['data_nomeacao']?></td>
                         <td><a class="btn btn-success fas fa-edit" href="edit_avaliado.php?id=<?=$aval['id']?>">Editar</a></td>

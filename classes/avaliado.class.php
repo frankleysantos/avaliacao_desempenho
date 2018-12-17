@@ -20,7 +20,7 @@ class Avaliado
 
 	public function inserirAvaliado($nome, $matricula, $cargo, $secretaria, $data_nomeacao ,$chefe){
 		$sql = $this->pdo->prepare("INSERT INTO avaliado (nome, matricula, cargo, secretaria, data_nomeacao, id_gestor, insercao) VALUES (:nome, :matricula, :cargo, :secretaria, :data_nomeacao, :id_gestor, now())");
-		$sql ->bindValue(":nome", $nome);
+		$sql ->bindValue(":nome", utf8_decode($nome));
 		$sql ->bindValue(":matricula", $matricula);
 		$sql ->bindValue(":cargo", $cargo);
 		$sql ->bindValue(":secretaria", $secretaria);
@@ -59,7 +59,7 @@ class Avaliado
         	if($dado['matricula'] == $matricula && $dado['id'] == $id){
         		$sql2 = $this->pdo->prepare("UPDATE avaliado SET nome = :nome, matricula = :matricula, cargo = :cargo, secretaria = :secretaria, data_nomeacao = :data_nomeacao, id_gestor = :chefe WHERE id = :id");
 		        $sql2 ->bindValue(":id", $id);
-		        $sql2 ->bindValue(":nome", $nome);
+		        $sql2 ->bindValue(":nome", utf8_decode($nome));
 		        $sql2 ->bindValue(":matricula", $matricula);
 		        $sql2 ->bindValue(":cargo", $cargo);
 		        $sql2 ->bindValue(":secretaria", $secretaria);

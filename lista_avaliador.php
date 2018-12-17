@@ -22,7 +22,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])):
     		<tbody>
     			<?php foreach ($avaliador as $aval_gestor): ?>
     			<tr>
-    				<td><?=$aval_gestor['nome'];?></td>
+    				<td><?=utf8_encode($aval_gestor['nome']);?></td>
                     <td><?=$aval_gestor['matricula'];?></td>
     				<td>
                         <?php if($aval_gestor['perfil'] == "coordenador"):?>

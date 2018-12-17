@@ -33,7 +33,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])) {
 <form action="" method="POST" role="form" style="padding-bottom: 100px;">
     <div class="form-group">
         <label class="fas fa-users">Nome</label>
-        <input type="text" class="form-control" id="" placeholder="Nome Completo" name="nome" required value="<?=$gestor['nome'];?>">
+        <input type="text" class="form-control" id="" placeholder="Nome Completo" name="nome" required value="<?=utf8_encode($gestor['nome']);?>">
     </div>
 
     <div class="form-group">

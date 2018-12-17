@@ -50,7 +50,7 @@ if (isset($_SESSION['Login']) && !empty($_SESSION['Login'])){
    	<tbody>
          <?php foreach ($aval as $dado):?>
    		<tr>
-   			<td><?=$dado['nome'];?></td>
+   			<td><?=utf8_encode($dado['nome']);?></td>
    			<td><?=$dado['data_avaliacao'];?></td>
             <td><?=$dado['data_final'];?></td>
             <td><a class="btn btn-info fas fa-edit" href="editar_avaliacao.php?id_avaliacao=<?=$dado['id'];?>">Editar</a></td>

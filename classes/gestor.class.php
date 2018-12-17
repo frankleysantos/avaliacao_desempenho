@@ -13,7 +13,7 @@
 
  	public function inserirGestor($nome, $matricula, $cargo, $secretaria, $perfil, $senha){
  		$sql = $this->pdo->prepare("INSERT INTO gestor (nome, matricula, cargo, secretaria, perfil, senha, insercao) VALUES (:nome, :matricula, :cargo, :secretaria, :perfil, :senha, now())");
- 		$sql->bindValue(":nome", $nome);
+ 		$sql->bindValue(":nome", utf8_decode($nome));
  		$sql->bindValue(":matricula", $matricula);
  		$sql->bindValue(":cargo", $cargo);
  		$sql->bindValue(":secretaria", $secretaria);
@@ -64,7 +64,7 @@
 
  	public function updateGestor($id_gestor, $nome, $matricula, $cargo, $secretaria, $perfil){
  		$sql = $this->pdo->prepare("UPDATE gestor SET nome = :nome, matricula = :matricula, cargo = :cargo, secretaria = :secretaria, perfil = :perfil WHERE id = :id_gestor");
- 		$sql->bindValue(":nome", $nome);
+ 		$sql->bindValue(":nome", utf8_decode($nome));
  		$sql->bindValue(":matricula", $matricula);
  		$sql->bindValue(":cargo", $cargo);
  		$sql->bindValue(":secretaria", $secretaria);
